@@ -1,0 +1,169 @@
+RYU
+- name: Ryu
+- price: 1800
+- life: 100
+- attack: 20
+- magicName1: SHORYUKEN
+- magicDmg1: 17
+- magicName2: TATSUMAKI
+- magicDmg2: 20
+- magicName3: HADOKEN EX
+- magicDmg3: 37
+- physical_resistance: 35
+- magical_resistance: 30
+- width: 17
+- height: 52
+- special: 3920
+
+KEN
+- name: Ken
+- price: 1800
+- life: 98
+- attack: 24
+- magicName1: TATSUMAKI
+- magic1Dmg: 16
+- magicName2: HADOKEN
+- magicDmg2: 20
+- magicName3: SHORYUKEN EX
+- magicDmg3: 32
+- physical_resistance: 32
+- magical_resistance: 21
+- width: 17
+- height: 52
+- special: 1620
+
+SAGAT
+- name: Sagat
+- price: 2800
+- life: 95
+- attack: 22
+- magicName1: TIGER SHOT
+- magicDmg1: 12
+- MagicName2: TIGER KNEE
+- magicDmg2: 18
+- magicName3: TIGER UPPERCUT
+- magicDmg3: 28
+- physical_resistance: 40
+- magical_resistance: 15
+- width: 20
+- height: 64
+- special: 3600
+
+AKUMA
+- name: Akuma
+- price: 5600
+- life: 75
+- attack: 30
+- magicName1: GOHADOKEN EX
+- magicDmg1: 20
+- magicName2: ASHURA SENKU
+- magicDmg2: 32
+- magicName3: KURETSUHA
+- magicDmg3: 60
+- physical_resistance: 11
+- magical_resistance: 4
+- width: 17
+- height: 54
+- special: 5390
+
+BALROG
+- name: Balrog
+- price: 4700
+- life: 110
+- attack: 32
+- magicName1: SCREW SMASH
+- magicDmg1: 12
+- magicName2: BURST BUFFALO
+- magicDmg2: 16
+- magicName3: GIGATON BLOW
+- magicDmg3: 22
+- physical_resistance: 68
+- magical_resistance: 19
+- width: 18
+- height: 57
+- special: 4960
+
+CHUN-LI
+- name: Chun-Li
+- price: 4700
+- life: 125
+- attack: 27
+- magicName1: KIKOKEN
+- magicDmg1: 28
+- magicName2: HYAKURETSUKYAKU
+- magicDmg2: 30
+- magicName3: HOYOKUSEN
+- magicDmg3: 38
+- physical_resistance: 16
+- magical_resistance: 47
+- width: 20
+- height: 55 
+- special: 5160
+
+DHALSIM
+- name: Dhalsim
+- price: 3500
+- life: 122
+- attack: 13
+- magicName1: YOGA FIRE
+- magicDmg1: 21
+- magicName2: YOGA FLAME
+- magicDmg2: 32
+- magicName3: YOGA SUNBURST
+- magicDmg3: 43
+- physical_resistance: 8
+- magical_resistance: 52
+- width: 20
+- height: 46
+- special: 2160
+
+M.BISON
+- name: M.Bison
+- price: 5600
+- life: 135
+- attack: 22
+- magicName1: PSYCHO BLAST
+- magicDmg1: 16
+- magicName2: DEVIL REVERSE
+- magicDmg2: 24
+- magicName3: PSYCHO CRUSHER
+- magicDmg3: 50
+- physical_resistance: 42
+- magical_resistance: 38
+- width: 26
+- height: 68
+- special: 5900
+
+GUILE
+- name: Guile
+- price: 2800
+- life: 112
+- attack: 21
+- magicName1: SONIC BOOM EX
+- magicDmg1: 24
+- magicName2: FLASH KICK
+- magicDmg2: 19
+- magicName3: SONIC TEMPEST
+- magicDmg3: 34
+- physical_resistance: 28
+- magical_resistance: 24
+- width: 18
+- height: 52
+- special: 4280
+
+VEGA
+- name: Vega
+- price: 3500
+- life: 91
+- attack: 18
+- magicName1: FLYING BARCELONA
+- magicDmg1: 8
+- magicName2: CRIMSON TERROR
+- magicDmg2: 26
+- magicName3: BLOODY RAIN
+- magicDmg3: 39
+- physical_resistance: 17
+- magical_resistance: 17
+- width: 19
+- height: 58
+- special: 1800

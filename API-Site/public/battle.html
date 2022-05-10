@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main_style.css" />
+    <link rel="stylesheet" href="css/battle_style.css" />
+    <link rel="icon" href="assets/imgs/ark-logo1.png" />
+    <title>FIGHT</title>
+  </head>
+  <body>
+    <!-- LOADING SCREEN -->
+    <div id="div_loading" class="div-loading">
+      <img src="assets/circle-loading.gif" />
+    </div>
+    <!-- STAGE -->
+    <div id="div_stage" class="div-stage"></div>
+    <!-- SPECIAL ANIMATION -->
+    <div id="div_special">
+      <img id="img_special" src="" alt="" />
+    </div>
+    <!-- ACTION LOG -->
+    <div id="div_log">20</div>
+
+    <div class="div-special">
+      <div id="player_attacks"></div>
+      <div id="enemy_attacks"></div>
+    </div>
+
+    <!-- TOP SECTION -->
+    <div class="top-section">
+      <!-- PLAYER SIDE -->
+      <div class="div-character">
+        <!-- char portrait -->
+        <div id="player_portrait" class="div-portrait"></div>
+        <div class="div-bars">
+          <!-- life -->
+          <div class="div-border-hp">
+            <div id="player_hp" class="div-hp"></div>
+          </div>
+          <div class="div-under-hp">
+            <!-- char name -->
+            <p id="name_player" class="name-char"></p>
+            <!-- round -->
+            <div class="div-rounds">
+              <img
+                src="assets/imgs/battle/roundBoxOFF.png"
+                id="player_roundBOX2"
+              />
+              <img
+                src="assets/imgs/battle/roundBoxOFF.png"
+                id="player_roundBOX1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TIMER -->
+      <div id="div_timer"><p id="p_timer" class="underline">99</p></div>
+      <!-- ENEMY SIDE -->
+      <div class="div-character reverse-enemy">
+        <!-- char portrait -->
+        <div
+          id="enemy_portrait"
+          class="div-portrait"
+          style="transform: scale(-1, 1)"
+        ></div>
+        <div class="div-bars">
+          <!-- life -->
+          <div class="div-border-hp" style="transform: scale(-1, 1)">
+            <div id="enemy_hp" class="div-hp"></div>
+          </div>
+          <div class="div-under-hp reverse-enemy">
+            <!-- char name -->
+            <p id="name_enemy" class="name-char"></p>
+            <!-- round -->
+            <div class="div-rounds">
+              <img
+                src="assets/imgs/battle/roundBoxOFF.png"
+                id="enemy_roundBOX1"
+              />
+              <img
+                src="assets/imgs/battle/roundBoxOFF.png"
+                id="enemy_roundBOX2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END OF TOP SECTION -->
+
+    <!-- CHARACTERS -->
+    <div class="div-chars">
+      <div id="player_group" class="div-char-group" style="margin-right: 5vw">
+        <!-- PLAYER MENU -->
+        <div id="div_choices" class="div-choices">
+          <div id="div_actions" class="div-choices actions">
+            <button
+              id="btn_attack"
+              onclick="rollHit('PA')"
+              style="transform: rotate(6deg) skew(0.2rad)"
+            >
+              ATTA<b>CK</b>
+            </button>
+            <button
+              id="btn_defend"
+              onclick="defend()"
+              style="transform: rotate(0deg)"
+            >
+              DE<b>F</b>END
+            </button>
+            <button
+              id="btn_powers"
+              onclick="showPowers()"
+              style="transform: rotate(-6deg) skew(-0.2rad)"
+            >
+              <b>S</b>PECIAL
+            </button>
+          </div>
+          <div id="div_magicks" class="div-choices magics">
+            <button id="btn_m1" onclick="magicHit('m1', 'MA')">
+              <b>1</b>
+            </button>
+            <button id="btn_m2" onclick="magicHit('m2', 'MA')">
+              <b>2</b>
+            </button>
+            <button id="btn_m3" onclick="magicHit('m3', 'MA')">
+              <b>3</b>
+            </button>
+          </div>
+        </div>
+        <!-- END OF PLAYER MENU -->
+        <div id="player_sprite" class="div-sprite"></div>
+      </div>
+      <div id="enemy_group" class="div-char-group">
+        <div id="enemy_sprite" class="div-sprite"></div>
+      </div>
+    </div>
+    <!-- END OF CHARACTERS -->
+
+    <!-- BOTTOM SECTION: MANA/TURNS -->
+    <div class="bottom-section">
+      <!-- player mana -->
+      <div class="div-mana-gauges">
+        <div id="player_gauge1" class="div-mana"></div>
+        <div id="player_gauge2" class="div-mana"></div>
+        <div id="player_gauge3" class="div-mana"></div>
+        <div id="player_EX" class="div-EX">EX</div>
+      </div>
+      <!-- turn counter -->
+      <div id="div_turn">
+        <p id="p_turn"></p>
+        <p>TURN</p>
+      </div>
+      <!-- enemy mana -->
+      <div
+        class="div-mana-gauges"
+        id="enemy_sgauges"
+        style="flex-direction: row; transform: skew(-0.4rad)"
+      >
+        <div id="enemy_gauge1" class="div-mana"></div>
+        <div id="enemy_gauge2" class="div-mana"></div>
+        <div id="enemy_gauge3" class="div-mana"></div>
+        <div id="enemy_EX" class="div-EX" style="right: 0">EX</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="js/globalSettings.js"></script>
+<script src="js/battle.js"></script>

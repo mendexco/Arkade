@@ -1,0 +1,73 @@
+/* DEFAULT FONT */
+@font-face {
+  font-family: Banks;
+  src: url(../assets/fonts/Banks&MilesSingleLine.ttf);
+}
+/* TITLE FONT */
+@font-face {
+  font-family: Squids;
+  src: url(../assets/fonts/GameOfSquids.otf);
+}
+/* DRAWS FONTS */
+@font-face {
+  font-family: SSF;
+  src: url(../assets/fonts/StreetFighter.ttf);
+}
+
+body {
+  font-family: Banks;
+}
+
+.div-loading {
+  /* size */
+  width: 100vw;
+  height: 100vh;
+  /* position */
+  position: absolute;
+  z-index: 1;
+  /* flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color */
+  background-color: rgba(132, 11, 51, 1);
+}
+/* GIF OF LOADING */
+.div-loading img {
+  width: 10vw;
+}
+
+/* HEADER */
+header {
+}
+
+header .navbar {
+}
+
+header img {
+}
+
+header ul {
+}
+
+header li {
+}
+/* BANNER */
+
+/* FOOTER */
+footer {
+}
+
+footer .navbar {
+}
+
+footer img {
+}
+
+footer p {
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* HOME PAGE */

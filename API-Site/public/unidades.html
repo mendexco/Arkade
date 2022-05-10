@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link id="link_theme" rel="stylesheet" href="css/theme_dark.css" />
+    <title>Unidades | OMNI Têxtil</title>
+    <link rel="icon" href="assets/imgs/header-footer/logo_imgWHITE.png" />
+  </head>
+
+  <body onload="carregarUnidades()">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="container">
+        <a onclick="confirmarAction('sair')" class="href-title" title="Página principal">
+          <img
+            src="assets/imgs/header-footer/logo-OMNI_Textil.png"
+            alt="OMNI TÊXTIL"
+          />
+        </a>
+        <!-- ALTERAR A CLASSE EM DETERMINADAS PÁGINAS -->
+        <ul class="navbar-header" id="navbar_cadastro">
+          <li class="page-selected"><a href="unidades.html">Unidades</a></li>
+          <hr />
+          <li class="" id="li_cadastro">
+            <a href="cadastro.html">Cadastro</a>
+          </li>
+          <hr id="hr_cadastro" />
+          <li class="">
+            <a onclick="confirmarAction('sair')">Sair</a>
+          </li>
+          <img
+            id="img_theme"
+            onclick="theme_change()"
+            src=""
+            title="Mudar tema"
+            alt="Sol do Tema"
+          />
+        </ul>
+      </div>
+    </div>
+
+    <!-- BANNER -->
+    <div class="banner banner-unidades">
+      <div class="container">
+        <!-- CARD DE UNIDADES -->
+        <div class="card-input card-unidades">
+          <h1>UNIDADES</h1>
+          <div class="form-box form-unidades">
+            <div class="form-input form-select-p">
+              <select class="form-select" id="select_unidades">
+                <option value="0">-</option>
+              </select>
+            </div>
+          </div>
+          <button
+            onclick=""
+            class="form-button form-btn-dashboard"
+            title="Ir para a dashboard"
+          >
+            <a href="setores.html">DASHBOARD</a>
+          </button>
+          <div id="div_aguardar" class="loading-div">
+            <img src="assets/circle-loading.gif" id="loading-gif" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMAÇÃO -->
+    <div id="div_confirm" class="div-confirm">
+      <div class="div-buttons">
+        <p id="p_confirm"></p>
+        <button onclick="" id="button_sim" class="form-button">sim</button>
+        <button onclick="fecharConfirm()" class="form-button">não</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <!-- FORM-REPORT_FEEDBACKS -->
+      <div class="side-form" id="side_menu">
+        <img
+          onclick="fecharForm()"
+          class="close-window"
+          src="assets/imgs/header-footer/close.png"
+          title="fechar"
+          alt="fechar janela"
+        />
+        <textarea id="textarea_omni" maxlength="220" minlength="30"></textarea>
+        <button
+          onclick="enviarFeedback()"
+          class="form-button side-form-btn"
+          title="Enviar"
+        >
+          enviar
+        </button>
+      </div>
+      <div class="container">
+        <!-- BOX DE REPORT -->
+        <button
+          class="box reports"
+          onclick="mostrarMenu()"
+          title="enviar mensagem"
+        >
+          <img src="assets/imgs/header-footer/logo_lupa.png" alt="lupa" />
+          <p>
+            Feedbacks<br />
+            Reports
+          </p>
+        </button>
+        <!-- BOX DE CONTATO -->
+        <div class="box contato">
+          <h4>Contato</h4>
+          <hr />
+          <h5>
+            <img
+              src="assets/imgs/header-footer/logo_whats.png"
+              alt="whats"
+            />(011)2534-1484
+          </h5>
+          <h5>
+            <img
+              src="assets/imgs/header-footer/logo_email.png"
+              alt="email"
+            />omnisuport@solution.com
+          </h5>
+        </div>
+        <!-- BOX DA OMNI SOLUTIONS -->
+        <div class="box">
+          <h2>OMNI Solution</h2>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script src="js/funcoes.js"></script>
+<script src="js/script.js"></script>

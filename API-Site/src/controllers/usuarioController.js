@@ -8,33 +8,37 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    usuarioModel.listar()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    var fkEmpresa = req.body.empresaServer;
+
+    if (fkEmpresa == undefined) {
+        res.status(400).send("Sua empresa está undefined!");
+    } else {
+
+        usuarioModel.listar()
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 }
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var idCharacter = req.body.idServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+    if (idCharacter == undefined) {
+        res.status(400).send("idChar is undefined!");
     } else {
         
-        usuarioModel.entrar(email, senha)
+        usuarioModel.entrar(idCharacter)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -61,22 +65,28 @@ function entrar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var cargo = req.body.cargoServer;
+    var fkEmpresa = req.body.empresaServer;
+    var fkAdmin = req.body.adminServer;
 
-    // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    } else if (cargo == undefined) {
+        res.status(400).send("Seu cargo está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua empresa está undefined!");
+    } else if (fkAdmin == undefined) {
+        res.status(400).send("Seu admin está undefined!");
     } else {
         
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(nome, email, senha, cargo, fkEmpresa, fkAdmin)
             .then(
                 function (resultado) {
                     res.json(resultado);
