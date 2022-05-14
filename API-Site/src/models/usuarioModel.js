@@ -12,7 +12,9 @@ function listar(fkEmpresa) {
 function entrar(idChar) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", idChar)
     var instrucao = `
-        SELECT * FROM Characters WHERE idChar = ${idChar};
+        SELECT * FROM Characters 
+            JOIN CharactersMetrics ON idChar = fkChar
+                WHERE idChar = ${idChar};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

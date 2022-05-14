@@ -35,36 +35,47 @@
 // sessionStorage.ENEMY_PR = 40;
 // sessionStorage.ENEMY_MR = 15;
 // sessionStorage.ENEMY_SPECIAL = 1600;
+// sessionStorage.PLAYER_ATK_S = 1050;
+// sessionStorage.PLAYER_ATK_W = 33;
+// sessionStorage.PLAYER_ATK_H = 58;
+// sessionStorage.PLAYER_SP1_S = 1920;
+// sessionStorage.PLAYER_SP1_W = 34;
+// sessionStorage.PLAYER_SP1_H = 68;
+// sessionStorage.PLAYER_SP2_S = 820;
+// sessionStorage.PLAYER_SP2_W = 66;
+// sessionStorage.PLAYER_SP2_H = 57;
+// sessionStorage.PLAYER_SP3_S = 1620;
+// sessionStorage.PLAYER_SP3_W = 46;
+// sessionStorage.PLAYER_SP3_H = 114;
+
+// sessionStorage.ENEMY_ATK_S = 640;
+// sessionStorage.ENEMY_ATK_W = 26;
+// sessionStorage.ENEMY_ATK_H = 52;
+// sessionStorage.ENEMY_SP1_S = 1190;
+// sessionStorage.ENEMY_SP1_W = 20;
+// sessionStorage.ENEMY_SP1_H = 100;
+// sessionStorage.ENEMY_SP2_S = 1620;
+// sessionStorage.ENEMY_SP2_W = 30;
+// sessionStorage.ENEMY_SP2_H = 72;
+// sessionStorage.ENEMY_SP3_S = 3540;
+// sessionStorage.ENEMY_SP3_W = 34;
+// sessionStorage.ENEMY_SP3_H = 55;
+
+sessionStorage.PLAYER_ENTRY_SPEED = 2180;
+sessionStorage.PLAYER_ENTRY_WIDTH = 19;
+sessionStorage.PLAYER_ENTRY_HEIGHT = 56;
+sessionStorage.PLAYER_LOSE_WIDTH = 34;
+sessionStorage.PLAYER_LOSE_HEIGHT = 52;
+sessionStorage.ENEMY_ENTRY_SPEED = 1440;
+sessionStorage.ENEMY_ENTRY_WIDTH = 23;
+sessionStorage.ENEMY_ENTRY_HEIGHT = 52;
+sessionStorage.ENEMY_LOSE_WIDTH = 34;
+sessionStorage.ENEMY_LOSE_HEIGHT = 52;
+
 // setup all necessary variables to the code
 // dice and roll vars
 var rollAction = 0;
 var diceSides = 0;
-
-sessionStorage.PLAYER_ATK_S = 1050;
-sessionStorage.PLAYER_ATK_W = 33;
-sessionStorage.PLAYER_ATK_H = 58;
-sessionStorage.PLAYER_SP1_S = 1920;
-sessionStorage.PLAYER_SP1_W = 34;
-sessionStorage.PLAYER_SP1_H = 68;
-sessionStorage.PLAYER_SP2_S = 820;
-sessionStorage.PLAYER_SP2_W = 57;
-sessionStorage.PLAYER_SP2_H = 57;
-sessionStorage.PLAYER_SP3_S = 1980;
-sessionStorage.PLAYER_SP3_W = 34;
-sessionStorage.PLAYER_SP3_H = 55;
-
-sessionStorage.ENEMY_ATK_S = 640;
-sessionStorage.ENEMY_ATK_W = 26;
-sessionStorage.ENEMY_ATK_H = 52;
-sessionStorage.ENEMY_SP1_S = 1190;
-sessionStorage.ENEMY_SP1_W = 20;
-sessionStorage.ENEMY_SP1_H = 100;
-sessionStorage.ENEMY_SP2_S = 1620;
-sessionStorage.ENEMY_SP2_W = 30;
-sessionStorage.ENEMY_SP2_H = 72;
-sessionStorage.ENEMY_SP3_S = 3540;
-sessionStorage.ENEMY_SP3_W = 34;
-sessionStorage.ENEMY_SP3_H = 55;
 
 // FIGHTERS
 // player vars ------
@@ -75,28 +86,32 @@ var playerLifeTotal = sessionStorage.PLAYER_LIFE;
 var playerLifeNow = playerLifeTotal;
 var playerPercentLife = 100;
 var playerAttack = sessionStorage.PLAYER_ATTACK;
-var pATKspeed = sessionStorage.PLAYER_ATK_S;
-var pATKwidth = sessionStorage.PLAYER_ATK_W;
-var pATKheight = sessionStorage.PLAYER_ATK_H;
+var pATKspeed = sessionStorage.PLAYER_ATK_SPEED;
+var pATKwidth = sessionStorage.PLAYER_ATK_WIDTH;
+var pATKheight = sessionStorage.PLAYER_ATK_HEIGHT;
 var playerGauge = 1;
 var playerNameM1 = sessionStorage.PLAYER_NAME_M1;
 var playerDmgM1 = sessionStorage.PLAYER_DMG_M1;
-var pSP1speed = sessionStorage.PLAYER_SP1_S;
-var pSP1width = sessionStorage.PLAYER_SP1_W;
-var pSP1height = sessionStorage.PLAYER_SP1_H;
+var pSP1speed = sessionStorage.PLAYER_SP1_SPEED;
+var pSP1width = sessionStorage.PLAYER_SP1_WIDTH;
+var pSP1height = sessionStorage.PLAYER_SP1_HEIGHT;
 var playerNameM2 = sessionStorage.PLAYER_NAME_M2;
 var playerDmgM2 = sessionStorage.PLAYER_DMG_M2;
-var pSP2speed = sessionStorage.PLAYER_SP2_S;
-var pSP2width = sessionStorage.PLAYER_SP2_W;
-var pSP2height = sessionStorage.PLAYER_SP2_H;
+var pSP2speed = sessionStorage.PLAYER_SP2_SPEED;
+var pSP2width = sessionStorage.PLAYER_SP2_WIDTH;
+var pSP2height = sessionStorage.PLAYER_SP2_HEIGHT;
 var playerNameM3 = sessionStorage.PLAYER_NAME_M3;
 var playerDmgM3 = sessionStorage.PLAYER_DMG_M3;
-var pSP3speed = sessionStorage.PLAYER_SP3_S;
-var pSP3width = sessionStorage.PLAYER_SP3_W;
-var pSP3height = sessionStorage.PLAYER_SP3_H;
+var pSP3speed = sessionStorage.PLAYER_SP3_SPEED;
+var pSP3width = sessionStorage.PLAYER_SP3_WIDTH;
+var pSP3height = sessionStorage.PLAYER_SP3_HEIGHT;
 var playerPR = sessionStorage.PLAYER_PR;
 var playerMR = sessionStorage.PLAYER_MR;
-var playerSpecial = sessionStorage.PLAYER_SPECIAL;
+var pEntrySpeed = sessionStorage.PLAYER_ENTRY_SPEED;
+var pEntryWidth = sessionStorage.PLAYER_ENTRY_WIDTH;
+var pEntryHeight = sessionStorage.PLAYER_ENTRY_HEIGHT;
+var pLoseWidth = sessionStorage.PLAYER_LOSE_WIDTH;
+var pLoseHeight = sessionStorage.PLAYER_LOSE_HEIGHT;
 // opponent vars ------
 var enemyName = sessionStorage.ENEMY_NAME;
 var enemyWidth = sessionStorage.ENEMY_WIDTH;
@@ -105,34 +120,37 @@ var enemyLifeTotal = sessionStorage.ENEMY_LIFE;
 var enemyLifeNow = enemyLifeTotal;
 var enemyPercentLife = 100;
 var enemyAttack = sessionStorage.ENEMY_ATTACK;
-var eATKspeed = sessionStorage.ENEMY_ATK_S;
-var eATKwidth = sessionStorage.ENEMY_ATK_W;
-var eATKheight = sessionStorage.ENEMY_ATK_H;
+var eATKspeed = sessionStorage.ENEMY_ATK_SPEED;
+var eATKwidth = sessionStorage.ENEMY_ATK_WIDTH;
+var eATKheight = sessionStorage.ENEMY_ATK_HEIGHT;
 var enemyGauge = 1;
 var enemyNameM1 = sessionStorage.ENEMY_NAME_M1;
 var enemyDmgM1 = sessionStorage.ENEMY_DMG_M1;
-var eSP1speed = sessionStorage.ENEMY_SP1_S;
-var eSP1width = sessionStorage.ENEMY_SP1_W;
-var eSP1height = sessionStorage.ENEMY_SP1_H;
+var eSP1speed = sessionStorage.ENEMY_SP1_SPEED;
+var eSP1width = sessionStorage.ENEMY_SP1_WIDTH;
+var eSP1height = sessionStorage.ENEMY_SP1_HEIGHT;
 var enemyNameM2 = sessionStorage.ENEMY_NAME_M2;
 var enemyDmgM2 = sessionStorage.ENEMY_DMG_M2;
-var eSP2speed = sessionStorage.ENEMY_SP2_S;
-var eSP2width = sessionStorage.ENEMY_SP2_W;
-var eSP2height = sessionStorage.ENEMY_SP2_H;
+var eSP2speed = sessionStorage.ENEMY_SP2_SPEED;
+var eSP2width = sessionStorage.ENEMY_SP2_WIDTH;
+var eSP2height = sessionStorage.ENEMY_SP2_HEIGHT;
 var enemyNameM3 = sessionStorage.ENEMY_NAME_M3;
 var enemyDmgM3 = sessionStorage.ENEMY_DMG_M3;
-var eSP3speed = sessionStorage.ENEMY_SP3_S;
-var eSP3width = sessionStorage.ENEMY_SP3_W;
-var eSP3height = sessionStorage.ENEMY_SP3_H;
+var eSP3speed = sessionStorage.ENEMY_SP3_SPEED;
+var eSP3width = sessionStorage.ENEMY_SP3_WIDTH;
+var eSP3height = sessionStorage.ENEMY_SP3_HEIGHT;
 var enemyPR = sessionStorage.ENEMY_PR;
 var enemyMR = sessionStorage.ENEMY_MR;
-var enemySpecial = sessionStorage.ENEMY_SPECIAL;
+var eEntrySpeed = sessionStorage.ENEMY_ENTRY_SPEED;
+var eEntryWidth = sessionStorage.ENEMY_ENTRY_WIDTH;
+var eEntryHeight = sessionStorage.ENEMY_ENTRY_HEIGHT;
+var eLoseWidth = sessionStorage.ENEMY_LOSE_WIDTH;
+var eLoseHeight = sessionStorage.ENEMY_LOSE_HEIGHT;
 
 // FIGHT FLOW
 // turn vars
 var turnCounter = 1;
 var turnOwner = "player"; //first turn definitions
-p_turn.innerHTML = `${turnCounter}`;
 var turnTimeout = 0;
 var turnChanger = 1000;
 
@@ -140,14 +158,14 @@ var turnChanger = 1000;
 var roundNow = 1;
 var playerRounds = 0;
 var enemyRounds = 0;
-var roundTimer = 0;
-var roundSeconds = 99;
 
 // additional vars
 var gaugeColor = "rgb(58, 58, 245)";
 var playerDefending = 0;
 var enemyDefending = 0;
 var defending = false;
+var defenseStatus = "";
+var attackStatus = "";
 
 // -----------------------------------------------------------------------------------------------------------------------------
 
@@ -155,7 +173,9 @@ var defending = false;
 setupEssencials();
 function setupEssencials() {
   // setting stage
-  div_stage.style.backgroundImage = `url(../assets/imgs/stages/stage_${playerName}.gif)`;
+  div_stage.style.backgroundImage = `url(../assets/imgs/stages/stage_${sessionStorage.STAGE}.gif)`;
+  // setting sfx
+  audio_music.src = `assets/audios/musics/${sessionStorage.STAGE}Theme.mp3`;
   // gif of each fighter
   player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Idle.gif)`;
   player_sprite.style.width = `${playerWidth}vw`;
@@ -178,22 +198,73 @@ function setupEssencials() {
   div_actions.style.display = "flex";
   div_magicks.style.display = "none";
 
-  // start timer
-  //   waitTimer(0.3);
-  fillGauge();
+  // disableButtons();
+  // screenMessage("Round1");
+  // setTimeout(function() {
+  //   fillGauge();
+  //   turnTimer();
+  //   if (randomizeRoll(2) == 1) {
+  //     turnOwner = "enemy";
+  //     changeTurn();
+  //   } else {
+  //     turnOwner = "player";
+  //     changeTurn();
+  //   }
+  // }, 3000);
+}
+
+function screenMessage(gifName) {
+  img_roundScreen.style.display = "flex";
+  img_roundScreen.style.pointerEvents = "all";
+  img_roundScreen.style.opacity = "1";
+  img_roundScreen.src = `assets/imgs/battle/${gifName}.gif`;
+  setTimeout(function () {
+    img_roundScreen.style.pointerEvents = "none";
+    img_roundScreen.style.opacity = "0";
+    img_roundScreen.src = ``;
+    img_roundScreen.style.display = "none";
+  }, 2700);
+}
+
+var turnSeconds = 5;
+var turnInterval;
+function turnTimer() {
+  clearInterval(turnInterval);
+  turnSeconds = 5;
+  turnInterval = setInterval(function() {
+    // console.log(turnSeconds);
+    if (turnSeconds < 0) {
+      changeTurn();
+    }
+    p_turn.innerHTML = turnSeconds;
+    turnSeconds--;
+    p_turn.style.fontSize = "2.5vw";
+    p_turn.style.opacity = "1";
+    div_turn.style.filter = "drop-shadow(0.2vw 0.4vw 0.6vw #ed145b)";
+    setTimeout(function() {
+      p_turn.style.fontSize = "2vw";
+      p_turn.style.opacity = "0";
+      div_turn.style.filter = "drop-shadow(0.0vw 0.1vw 1vw #ed145b)";
+    }, 500)
+  }, 1000);
 }
 
 // verify who will lead the next turn
 // also redirects to the updateMenu() and buttonStatus() functions
 function changeTurn() {
-  p_turn.innerHTML = `${turnCounter}`;
+  turnTimer();
+
   if (turnOwner == "player") {
     // next turn is opponent's one
-    turnOwner = "enemy";
-    enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Idle.gif)`;
-    console.log("Now it's opponent's turn!");
-    buttonStatus("enemy");
-    typeAI();
+    timer = randomizeRoll(5) * 1000;
+    console.log(timer);
+    setTimeout(function () {
+      turnOwner = "enemy";
+      enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Idle.gif)`;
+      console.log("Now it's opponent's turn!");
+      buttonStatus("enemy");
+      typeAI();
+    }, timer);
   } else {
     // next turn is player's one
     turnOwner = "player";
@@ -233,9 +304,9 @@ function buttonStatus(playing) {
 // enable a future possibility to BLOCK the attack at 'attackModifier()'
 // also increase +1 mana gauge and change turnOwner
 function defend() {
+  clearInterval(turnInterval);
   disableButtons();
   setTimeout(changeTurn, turnChanger);
-
   if (turnOwner == "player") {
     playerDefending++;
     player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Defending.gif)`;
@@ -247,7 +318,6 @@ function defend() {
   console.log(`${turnOwner.toUpperCase()} IS DEFENDING!...`);
   increaseGauge();
   turnCounter++;
-  //   changeTurn();
 }
 
 // increase 1 gauge bar
@@ -384,6 +454,7 @@ function showPowers() {
 
 // identify what level of the magical attack was selected
 function magicHit(level, typePARAM) {
+  clearInterval(turnInterval);
   disableButtons();
   updateMenu();
   var hitStatus = "";
@@ -405,27 +476,35 @@ function magicHit(level, typePARAM) {
 // direct de dice rolled to a hit status
 // identify what level of the physical attack was selected
 function rollHit(typePARAM) {
+  clearInterval(turnInterval);
   disableButtons();
 
   diceSides = 20;
   var diceNumber = randomizeRoll(diceSides);
   var hitStatus = "";
-  var toMiss = 4;
-  var toClose = 10;
-  var toHit = 18;
+  var toMiss = 6;
+  var toHit = 17;
 
+  // diceNumber = 18;
   if (diceNumber < toMiss) {
     console.log(`=> miss hit!`);
     hitStatus = "miss";
-  } else if (diceNumber < toClose) {
-    console.log(`=> close hit!`);
-    hitStatus = "close";
+    if (turnOwner == "player") {
+      logStatus("enemy", "evade");
+    } else {
+      logStatus("player", "evade");
+    }
   } else if (diceNumber < toHit) {
     console.log(`=> full hit!`);
     hitStatus = "hit";
   } else {
     console.log(`=> crit hit!`);
     hitStatus = "critic";
+    if (turnOwner == "player") {
+      logStatus("player", "crit");
+    } else {
+      logStatus("enemy", "crit");
+    }
   }
 
   var typeRoll = typePARAM;
@@ -437,30 +516,35 @@ function rollHit(typePARAM) {
 // regulates defense actions according to the enemy's defense VAR
 function typeAI() {
   disableButtons();
-  toPA = 8;
+  toPA = 6;
   toMA = 14;
 
   toPA += enemyDefending;
   toMA += enemyDefending;
-  console.log(`${toPA} - ${toMA}`);
+  toMA += enemyGauge;
+  // console.log(`${toPA} - ${toMA}`);
 
   diceSides = 20;
   var diceNumber = randomizeRoll(diceSides);
   // diceNumber = 7;
-  console.log(diceNumber);
-  if (diceNumber < 8) {
+  if (diceNumber < toPA) {
     console.log("ENEMY IS USING PHYSICAL ATTACK");
     rollHit("PA");
-  } else if (diceNumber < 14) {
+  } else if (diceNumber < toMA) {
     if (enemyGauge > 0) {
       console.log("ENEMY IS USING MAGICAL ATTACK");
       magicAI();
     } else {
-      console.log("ENEMY IS USING PHYSICAL ATTACK");
-      rollHit("PA");
+      var diceNumber2 = randomizeRoll(diceSides);
+      if (diceNumber2 > 10) {
+        console.log("ENEMY IS USING PHYSICAL ATTACK");
+        rollHit("PA");
+      } else {
+        defend();
+      }
     }
   } else {
-    console.log("AAAAAA");
+    // console.log("Enemy defending");
     defend();
   }
 }
@@ -522,14 +606,15 @@ function attackModifier(hitStatus, type) {
   if (type == "PA") {
     //MODIFYING
     // hit modifiers
+    // hitStatus = "";
     if (hitStatus == "miss") {
       attack *= 0;
-    } else if (hitStatus == "close") {
-      attack *= 0.5;
+      defenseStatus = "miss";
     } else if (hitStatus == "hit") {
       attack *= 1;
     } else {
       attack *= 1.5;
+      attackStatus = "crit";
     }
     // applying physics resistance
     console.log(`ATTACK: ${attack} X PR: ${PR}`);
@@ -580,21 +665,51 @@ function attackModifier(hitStatus, type) {
     DEFENSE FAILS: ${defenseFails}
     PLAYER: ${playerDefending}
     ENEMY: ${enemyDefending}`);
-    if (diceNumber >= 19) {
-      attack *= 1.5;
-      console.log("... reflected!");
+    // diceNumber = 5;
+    if (hitStatus == "miss") {
+      if (turnOwner == "player") {
+        logStatus("enemy", "evade");
+      } else {
+        logStatus("player", "evade");
+      }
+      defenseStatus = "miss";
     } else if (diceNumber <= defenseFails) {
       attack *= 2;
       playerDefending = 0;
       enemyDefending = 0;
+      if (turnOwner == "player") {
+        logStatus("player", "broke");
+      } else {
+        logStatus("enemy", "broke");
+      }
       console.log("... defense fails");
+      defenseStatus = "broke";
     } else {
       attack = 0;
+      if (turnOwner == "player") {
+        logStatus("enemy", "defended");
+      } else {
+        logStatus("player", "defended");
+      }
       console.log("... defended!");
+      defenseStatus = "defended";
     }
   }
-  logBox(attack, hitStatus);
+  animateDefense();
   return attack;
+}
+
+function logStatus(char, divLog) {
+  // console.log(char);
+  // console.log(divLog);
+  var log = document.getElementById(`${char}_${divLog}`);
+  log.style.filter = "brightness(1)";
+  log.style.opacity = "1";
+  log.style.position = "absolute";
+  var logTimeout = setTimeout(function () {
+    log.style.filter = "brightness(15)";
+    log.style.opacity = "0";
+  }, 2000);
 }
 
 // reduce life bar - damage
@@ -605,15 +720,13 @@ function attackModifier(hitStatus, type) {
 function lifeReduce(hitStatus, typePARAM) {
   var typeAttack = typePARAM;
   var attack = attackModifier(hitStatus, typeAttack);
-
   // APPLY DAMAGE
   if (turnOwner == "player") {
-    animateAction(turnOwner, typePARAM);
     console.log(`
-      Past Life: ${enemyLifeNow}
-      Damage: ${attack}
-      Actual Life: ${enemyLifeNow - attack}
-      `);
+    Past Life: ${enemyLifeNow}
+    Damage: ${attack}
+    Actual Life: ${enemyLifeNow - attack}
+    `);
     enemyLifeNow -= attack;
     enemyPercentLife = (100 * enemyLifeNow) / enemyLifeTotal;
     if (enemyPercentLife > 0) {
@@ -621,16 +734,16 @@ function lifeReduce(hitStatus, typePARAM) {
       // continue round
       defending = false;
       turnCounter++;
+      animateAction(turnOwner, typePARAM, false);
     } else {
       enemy_hp.style.width = `0%`;
-      endRound("player");
+      endRound(turnOwner, typePARAM);
     }
   } else {
-    animateAction(turnOwner, typePARAM);
     console.log(`
-      Past Life: ${playerLifeNow}
-      Damage: ${attack}
-      Actual Life: ${playerLifeNow - attack}
+    Past Life: ${playerLifeNow}
+    Damage: ${attack}
+    Actual Life: ${playerLifeNow - attack}
       DIV Percentage: ${(100 * (playerLifeNow - attack)) / playerLifeTotal}%
       `);
     playerLifeNow -= attack;
@@ -640,142 +753,113 @@ function lifeReduce(hitStatus, typePARAM) {
       // continue round
       defending = false;
       turnCounter++;
+      animateAction(turnOwner, typePARAM, false);
     } else {
       player_hp.style.width = `0%`;
-      endRound("enemy");
+      endRound(turnOwner, typePARAM);
     }
   }
   attack = 0;
 }
 
-function timeoutRound() {
-  if (playerPercentLife >= enemyPercentLife) {
-    endRound("player");
-  } else {
-    endRound("enemy");
-  }
-}
-
-// increase the round count
-// verify who won the round
-// change box image of round victory
-// reset fighter's health
-// if someone win 2 times, redirect to endGame() function
-function endRound(roundWinner) {
-  clearTimeout(turnTimeout);
-  var gameState = "continue";
-  var gameWinner = "";
-  updateMenu();
-  roundNow++;
-  if (roundWinner == "player") {
-    if (playerRounds < 1) {
-      turnTimeout = setTimeout(changeTurn, Number(playerSpecial) + 500);
-      playerRounds++;
-      player_roundBOX1.src = "assets/imgs/battle/roundBoxON.png";
-      player_roundBOX1.style.boxShadow = "0px 0px 10px #ed145b";
-    } else {
-      player_roundBOX2.src = "assets/imgs/battle/roundBoxON.png";
-      player_roundBOX2.style.boxShadow = "0px 0px 10px #ed145b";
-      gameState = "finished";
-      gameWinner = "Player";
-    }
-  } else {
-    if (enemyRounds < 1) {
-      turnTimeout = setTimeout(changeTurn, Number(enemySpecial) + 500);
-      enemyRounds++;
-      enemy_roundBOX1.src = "assets/imgs/battle/roundBoxON.png";
-      enemy_roundBOX1.style.boxShadow = "0px 0px 10px #ed145b";
-    } else {
-      enemy_roundBOX2.src = "assets/imgs/battle/roundBoxON.png";
-      enemy_roundBOX2.style.boxShadow = "0px 0px 10px #ed145b";
-      gameState = "finished";
-      gameWinner = "Enemy";
-    }
-  }
-
-  animateRound(roundWinner);
-
-  if (gameState == "continue") {
-    console.log(`ROUND FINISHED: ${roundWinner} WINS!`);
-    turnOwner = roundWinner;
-    // RESETING ALL
-    // player health
-    player_hp.style.width = `100%`;
-    playerLifeNow = 100;
-    playerPercentLife = 100;
-    // enemy health
-    enemy_hp.style.width = `100%`;
-    enemyLifeNow = 100;
-    enemyPercentLife = 100;
-    // game settings
-    turnCounter = 0;
-    roundSeconds = 99;
-    // waitTimer(1);
-  } else {
-    endGame(gameWinner);
-  }
-}
-
-var timeoutSpecial = "";
-function animateRound(char, time) {
-  clearTimeout(timeoutSpecial);
-  div_special.style.display = "flex";
-  if (char == "player") {
-    time = playerSpecial;
-    img_special.src = `assets/imgs/chars/${playerName}/RoundWin.gif`;
-    enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Lose.gif)`;
-    div_attacks.style.transform = "scaleX(+1)";
-  } else {
-    time = enemySpecial;
-    img_special.src = `assets/imgs/chars/${enemyName}/RoundWin.gif`;
-    enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Lose.gif)`;
-    div_attacks.style.transform = "scaleX(-1)";
-  }
-
-  timeoutSpecial = setTimeout(function () {
-    div_attacks.style.display = "none";
-    img_special.src = "";
-    clearTimeout(timeoutSpecial);
-  }, time);
-}
-
-function endGame(winner) {
-  disableButtons();
-  console.log("desabling buttons...");
-  console.log(`${winner} is the winner`);
-}
-
-// logBox();
-function logBox(attack, hitStatus) {
-  div_log.style.display = "flex";
+function animateDefense() {
+  var defenseChar = "";
   if (turnOwner == "player") {
-    div_log.style.left = "115vh";
+    defenseChar = "enemy";
   } else {
-    div_log.style.left = "77vh";
+    defenseChar = "player";
   }
-
-  div_log.innerHTML = attack;
-  if (hitStatus == "miss") {
-    div_log.style.color = "blue";
-  } else if (hitStatus == "close") {
-    div_log.style.color = "yellow";
-  } else if (hitStatus == "hit") {
-    div_log.style.color = "white";
-  } else if (hitStatus == "critic") {
-    div_log.style.color = "red";
+  var char = document.getElementById(`${defenseChar}_sprite`);
+  // console.log(char);
+  // defenseStatus = "";
+  if (defenseStatus == "defended") {
+      char.style.filter = "drop-shadow(0.8vw 1vw 1vw #ffd700ad) brightness(1.25)";
+      if (defenseChar == "enemy") {
+        char.style.transform = "scale(-1.05, 1.05)";
+        char.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Defending.gif)`;
+      } else {
+        char.style.transform = "scale(1.05, 1.05)";
+        char.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Defending.gif)`;
+      }
+      setTimeout(function () {
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black) brightness(1)";
+        if (defenseChar == "enemy") {
+          char.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Idle.gif)`;
+          char.style.transform = "scale(-1, 1)";
+        } else {
+          char.style.transform = "scale(1, 1)";
+          char.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Idle.gif)`;
+        }
+      }, 900);
+    defenseStatus = "";
+  } else if (defenseStatus == "miss") {
+    if (turnOwner == "player") {
+      char.style.filter = "drop-shadow(0.4vw 0vw 0.4vw #0084ff)";
+      char.style.transform = "scale(-1,1) skew(10deg) translateX(-3vw)";
+      setTimeout(function () {
+        char.style.transform = "scale(-1,1)";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 800);
+    } else {
+      char.style.filter = "drop-shadow(0.4vw 0vw 0.4vw #0084ff)";
+      char.style.transform = "skew(10deg) translateX(-3vw)";
+      setTimeout(function () {
+        char.style.transform = "";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 800);
+    }
+    defenseStatus = "";
+  } else if (defenseStatus == "broke") {
+    if (turnOwner == "player") {
+      char.style.filter = "grayscale(0.7) invert(1)";
+      char.style.transform = "scale(-1,1) rotate(-10deg)";
+      setTimeout(function () {
+        char.style.transform = "scale(-1,1)";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 200);
+    } else {
+      char.style.filter = "grayscale(0.7) invert(1)";
+      char.style.transform = "rotate(-10deg)";
+      setTimeout(function () {
+        char.style.transform = "";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 200);
+    }
+    defenseStatus = "";
+  } else {
+    if (turnOwner == "player") {
+      char.style.filter = "brightness(0) invert(1)";
+      char.style.transform = "scale(-1,1) rotate(-10deg)";
+      setTimeout(function () {
+        char.style.transform = "scale(-1,1)";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 150);
+    } else {
+      char.style.filter = "brightness(0) invert(1)";
+      char.style.transform = "rotate(-10deg)";
+      setTimeout(function () {
+        char.style.transform = "";
+        char.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      }, 150);
+    }
+    defenseStatus = "";
   }
 }
 
 var usingMagic = "";
-function animateAction(char, typeAction) {
-  var anmDuration = 0;
+var anmDuration = 0;
+function animateAction(char, typeAction, roundPass) {
+  var charShadow = document.getElementById(`${char}_sprite`);
+  console.log(typeAction);
   if (typeAction == "PA") {
     if (char == "player") {
+      player_sprite.style.zIndex = "1";
       player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Attack.gif)`;
       player_sprite.style.width = `${pATKwidth}vw`;
       player_sprite.style.height = `${pATKheight}vh`;
       anmDuration = pATKspeed;
     } else {
+      enemy_sprite.style.zIndex = "1";
       enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Attack.gif)`;
       enemy_sprite.style.width = `${eATKwidth}vw`;
       enemy_sprite.style.height = `${eATKheight}vh`;
@@ -784,11 +868,13 @@ function animateAction(char, typeAction) {
   } else {
     if (usingMagic == "m1") {
       if (char == "player") {
+        player_sprite.style.zIndex = "1";
         player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/SP1.gif)`;
         player_sprite.style.width = `${pSP1width}vw`;
         player_sprite.style.height = `${pSP1height}vh`;
         anmDuration = pSP1speed;
       } else {
+        enemy_sprite.style.zIndex = "1";
         enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/SP1.gif)`;
         enemy_sprite.style.width = `${eSP1width}vw`;
         enemy_sprite.style.height = `${eSP1height}vh`;
@@ -796,11 +882,13 @@ function animateAction(char, typeAction) {
       }
     } else if (usingMagic == "m2") {
       if (char == "player") {
+        player_sprite.style.zIndex = "1";
         player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/SP2.gif)`;
         player_sprite.style.width = `${pSP2width}vw`;
         player_sprite.style.height = `${pSP2height}vh`;
         anmDuration = pSP2speed;
       } else {
+        enemy_sprite.style.zIndex = "1";
         enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/SP2.gif)`;
         enemy_sprite.style.width = `${eSP2width}vw`;
         enemy_sprite.style.height = `${eSP2height}vh`;
@@ -808,11 +896,13 @@ function animateAction(char, typeAction) {
       }
     } else {
       if (char == "player") {
+        player_sprite.style.zIndex = "1";
         player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/SP3.gif)`;
         player_sprite.style.width = `${pSP3width}vw`;
         player_sprite.style.height = `${pSP3height}vh`;
         anmDuration = pSP3speed;
       } else {
+        enemy_sprite.style.zIndex = "1";
         enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/SP3.gif)`;
         enemy_sprite.style.width = `${eSP3width}vw`;
         enemy_sprite.style.height = `${eSP3height}vh`;
@@ -820,36 +910,150 @@ function animateAction(char, typeAction) {
       }
     }
   }
-  turnTimeout = setTimeout(function () {
-    if (char == "player") {
+
+  // attackStatus = "crit";
+  if (attackStatus == "crit") {
+    charShadow.style.filter = "drop-shadow(0.8vw 1vw 1vw #a50404)";    
+  }
+
+  if (roundPass == true) {
+    setTimeout(function () {
+      screenMessage("KO");
+      animateRound(turnOwner);
+    }, anmDuration);
+  } else {
+    turnTimeout = setTimeout(function () {
+      if (char == "player") {
+        player_sprite.style.zIndex = "0";
+        player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Idle.gif)`;
+        player_sprite.style.width = `${playerWidth}vw`;
+        player_sprite.style.height = `${playerHeight}vh`;
+      } else {
+        enemy_sprite.style.zIndex = "0";
+        enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Idle.gif)`;
+        enemy_sprite.style.width = `${enemyWidth}vw`;
+        enemy_sprite.style.height = `${enemyHeight}vh`;
+      }
+      charShadow.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+      attackStatus = "";
+      changeTurn();
+    }, anmDuration);
+  }
+}
+
+// increase the round count
+// verify who won the round
+// change box image of round victory
+// reset fighter's health
+// if someone win 2 times, redirect to endGame() function
+var intervalRound;
+var gameState = "continue";
+function endRound(roundWinner, attackType) {
+  updateMenu();
+  roundNow++;
+  if (roundWinner == "player") {
+    if (playerRounds < 1) {
+      animateAction(roundWinner, attackType, true);
+      intervalRound = setInterval(function () {
+        playerRounds++;
+        player_roundBOX1.src = "assets/imgs/battle/roundBoxON.png";
+        player_roundBOX1.style.boxShadow = "0px 0px 10px #ed145b";
+        // verifyEnd(gameState, roundWinner);
+      }, anmDuration);
+    } else {
+      gameState = "finished";
+      animateAction(roundWinner, attackType, true);
+      intervalRound = setInterval(function () {
+        player_roundBOX2.src = "assets/imgs/battle/roundBoxON.png";
+        player_roundBOX2.style.boxShadow = "0px 0px 10px #ed145b";
+        // verifyEnd(gameState, roundWinner);
+      }, anmDuration);
+    }
+  } else {
+    if (enemyRounds < 1) {
+      animateAction(roundWinner, attackType, true);
+      intervalRound = setInterval(function () {
+        enemyRounds++;
+        enemy_roundBOX1.src = "assets/imgs/battle/roundBoxON.png";
+        enemy_roundBOX1.style.boxShadow = "0px 0px 10px #ed145b";
+        // verifyEnd(gameState, roundWinner);
+      }, anmDuration);
+    } else {
+      gameState = "finished";
+      animateAction(roundWinner, attackType, true);
+      intervalRound = setInterval(function () {
+        enemy_roundBOX2.src = "assets/imgs/battle/roundBoxON.png";
+        enemy_roundBOX2.style.boxShadow = "0px 0px 10px #ed145b";
+        // verifyEnd(gameState, roundWinner);
+      }, anmDuration);
+    }
+  }
+}
+
+function animateRound(char) {
+  var charShadow = document.getElementById(`${char}_sprite`);
+  if (char == "player") {
+    player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Entry.gif)`;
+    player_sprite.style.width = `${pEntryWidth}vw`;
+    player_sprite.style.height = `${pEntryHeight}vh`;
+    enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Lose.png)`;
+    enemy_sprite.style.width = `${eLoseWidth}vw`;
+    enemy_sprite.style.height = `${eLoseHeight}vh`;
+  } else {
+    enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Entry.gif)`;
+    enemy_sprite.style.width = `${eEntryWidth}vw`;
+    enemy_sprite.style.height = `${eEntryHeight}vh`;
+    player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Lose.png)`;
+    player_sprite.style.width = `${pLoseWidth}vw`;
+    player_sprite.style.height = `${pLoseHeight}vh`;
+  }
+  charShadow.style.filter = "drop-shadow(0.6vw 0.6vw 1vw black)";
+  attackStatus = "";
+  setTimeout(function () {
+    verifyEnd(gameState, char);
+  }, 2000);
+}
+
+function verifyEnd(gameState, roundWinner) {
+  setTimeout(function () {
+    if (gameState == "continue") {
+      clearInterval(intervalRound);
+      console.log(`ROUND FINISHED: ${roundWinner} WINS!`);
+      turnOwner = roundWinner;
+      // RESETING ALL
+      // fighters metrics
+      player_sprite.style.zIndex = "0";
       player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Idle.gif)`;
       player_sprite.style.width = `${playerWidth}vw`;
       player_sprite.style.height = `${playerHeight}vh`;
-    } else {
+      enemy_sprite.style.zIndex = "0";
       enemy_sprite.style.backgroundImage = `url(assets/imgs/chars/${enemyName}/Idle.gif)`;
       enemy_sprite.style.width = `${enemyWidth}vw`;
       enemy_sprite.style.height = `${enemyHeight}vh`;
+      // player health
+      player_hp.style.width = `100%`;
+      playerLifeNow = 100;
+      playerPercentLife = 100;
+      // enemy health
+      enemy_hp.style.width = `100%`;
+      enemyLifeNow = 100;
+      enemyPercentLife = 100;
+      // game settings
+      turnCounter = 0;
+      roundSeconds = 99;
+      screenMessage(`Round${roundNow}`);
+      setTimeout(function () {
+        changeTurn();
+      }, 3000);
+    } else {
+      endGame(roundWinner);
     }
-    changeTurn();
-  }, anmDuration);
+  }, 2000);
 }
 
-function waitTimer(waitTime) {
-  waitTime *= 1000;
-  setTimeout(function () {
-    roundTimer = setInterval(battleTimer, 30);
-  }, waitTime);
-}
-
-function battleTimer() {
-  if (roundSeconds > 0) {
-    p_timer.innerHTML = roundSeconds;
-    roundSeconds--;
-    console.log("vai");
-  } else {
-    p_timer.innerHTML = "0";
-    clearInterval(roundTimer);
-    timeoutRound();
-    console.log("paro");
-  }
+function endGame(winner) {
+  disableButtons();
+  console.log("desabling buttons...");
+  console.log(`${winner} is the winner`);
+  window.location = `index.html`;
 }

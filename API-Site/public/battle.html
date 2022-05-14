@@ -12,16 +12,45 @@
   <body>
     <!-- LOADING SCREEN -->
     <div id="div_loading" class="div-loading">
-      <img src="assets/circle-loading.gif" />
+      <img src="assets/loading_logo.gif" />
     </div>
     <!-- STAGE -->
     <div id="div_stage" class="div-stage"></div>
+    <!-- MUSIC -->
+    <audio id="audio_music" autoplay loop preload>
+      <!-- <source src="assets/audios/char_themes/RyuTheme.mp3" type="audio/mpeg"> -->
+    </audio>
     <!-- SPECIAL ANIMATION -->
-    <div id="div_special">
-      <img id="img_special" src="" alt="" />
-    </div>
+    <img id="img_roundScreen" src="" />
     <!-- ACTION LOG -->
-    <div id="div_log">20</div>
+    <div id="player_log" class="log-hit">
+      <div id="player_evade" class="div-evade">
+        <span class="span-log span-evade"><b>E</b>VADE</span>
+      </div>
+      <div id="player_crit" class="div-crit">
+        <span class="span-log span-crit"><b>C</b>RIT</span>
+      </div>
+      <div id="player_defended" class="div-defense">
+        <span class="span-log span-defense"><b>D</b>EFENDED</span>
+      </div>
+      <div id="player_broke" class="div-defense">
+        <span class="span-log span-defense"><b>B</b>ROKE</span>
+      </div>
+    </div>
+    <div id="enemy_log" class="log-hit">
+      <div id="enemy_evade" class="div-evade">
+        <span class="span-log span-evade"><b>E</b>VADE</span>
+      </div>
+      <div id="enemy_crit" class="div-crit">
+        <span class="span-log span-crit"><b>C</b>RIT</span>
+      </div>
+      <div id="enemy_defended" class="div-defense">
+        <span class="span-log span-defense"><b>D</b>EFENDED</span>
+      </div>
+      <div id="enemy_broke" class="div-defense">
+        <span class="span-log span-defense"><b>B</b>ROKE</span>
+      </div>
+    </div>
 
     <div class="div-special">
       <div id="player_attacks"></div>
@@ -56,8 +85,12 @@
           </div>
         </div>
       </div>
+      <!-- TURN COUNTER -->
+      <div id="div_turn">
+        <p id="p_turn" class="underline">5</p>
+      </div>
       <!-- TIMER -->
-      <div id="div_timer"><p id="p_timer" class="underline">99</p></div>
+      <!-- <div id="div_timer"><p id="p_round" class="underline">99</p></div> -->
       <!-- ENEMY SIDE -->
       <div class="div-character reverse-enemy">
         <!-- char portrait -->
@@ -102,14 +135,14 @@
               onclick="rollHit('PA')"
               style="transform: rotate(6deg) skew(0.2rad)"
             >
-              ATTA<b>CK</b>
+              <b>A</b>TTACK
             </button>
             <button
               id="btn_defend"
               onclick="defend()"
               style="transform: rotate(0deg)"
             >
-              DE<b>F</b>END
+              <b>D</b>EFEND
             </button>
             <button
               id="btn_powers"
@@ -148,11 +181,6 @@
         <div id="player_gauge2" class="div-mana"></div>
         <div id="player_gauge3" class="div-mana"></div>
         <div id="player_EX" class="div-EX">EX</div>
-      </div>
-      <!-- turn counter -->
-      <div id="div_turn">
-        <p id="p_turn"></p>
-        <p>TURN</p>
       </div>
       <!-- enemy mana -->
       <div

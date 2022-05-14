@@ -13,7 +13,23 @@ RYU
 - magical_resistance: 30
 - width: 17
 - height: 52
-- special: 3920
+- atkSpeed: 640
+- atkWidth: 26
+- atkHeight: 52
+- sp1Speed: 1190
+- sp1Width: 20
+- sp1Height: 100
+- sp2Speed: 1620
+- sp2Width: 30
+- sp2Height: 72
+- sp3Speed: 3540
+- sp3Width: 34
+- sp3Height: 55
+- entrySpeed: 2180
+- entryWidth: 19
+- entryHeight: 56
+- loseWidth: 34
+- loseHeight: 52
 
 KEN
 - name: Ken
@@ -30,7 +46,23 @@ KEN
 - magical_resistance: 21
 - width: 17
 - height: 52
-- special: 1620
+- atkSpeed: 1050
+- atkWidth: 33
+- atkHeight: 58
+- sp1Speed: 1920
+- sp1Width: 34
+- sp1Height: 68
+- sp2Speed: 820
+- sp2Width: 66
+- sp2Height: 57
+- sp3Speed: 1620
+- sp3Width: 46
+- sp3Height: 114
+- entrySpeed: 1440
+- entryWidth: 23
+- entryHeight: 52
+- loseWidth: 34
+- loseHeight: 52
 
 SAGAT
 - name: Sagat
@@ -47,7 +79,23 @@ SAGAT
 - magical_resistance: 15
 - width: 20
 - height: 64
-- special: 3600
+- atkSpeed: 1880
+- atkWidth: 38
+- atkHeight: 64
+- sp1Speed: 4050
+- sp1Width: 48
+- sp1Height: 66
+- sp2Speed: 1280
+- sp2Width: 39
+- sp2Height: 84
+- sp3Speed: 3600
+- sp3Width: 54
+- sp3Height: 95
+- entrySpeed: 5500
+- entryWidth: 17
+- entryHeight: 60
+- loseWidth: 36
+- loseHeight: 47
 
 AKUMA
 - name: Akuma
@@ -64,7 +112,23 @@ AKUMA
 - magical_resistance: 4
 - width: 17
 - height: 54
-- special: 5390
+- atkSpeed: 1200
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 1350
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 1260
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 5390
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 840
+- entryWidth: 
+- entryHeight:
+- loseWidth: 
+- loseHeight:
 
 BALROG
 - name: Balrog
@@ -81,7 +145,23 @@ BALROG
 - magical_resistance: 19
 - width: 18
 - height: 57
-- special: 4960
+- atkSpeed: 1480
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 1260
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 1450
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 7100
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 300
+- entryWidth: 
+- entryHeight:
+- loseWidth: 
+- loseHeight:
 
 CHUN-LI
 - name: Chun-Li
@@ -98,7 +178,23 @@ CHUN-LI
 - magical_resistance: 47
 - width: 20
 - height: 55 
-- special: 5160
+- atkSpeed: 2500
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 1070
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 3180
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 5160
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 2950
+- entryWidth: 
+- entryHeight:
+- loseWidth: 
+- loseHeight:
 
 DHALSIM
 - name: Dhalsim
@@ -115,7 +211,24 @@ DHALSIM
 - magical_resistance: 52
 - width: 20
 - height: 46
-- special: 2160
+- atkSpeed: 
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 
+- entryWidth: 
+- entryHeight:
+- loseSpeed: 
+- loseWidth: 
+- loseHeight:
 
 M.BISON
 - name: M.Bison
@@ -132,7 +245,24 @@ M.BISON
 - magical_resistance: 38
 - width: 26
 - height: 68
-- special: 5900
+- atkSpeed: 
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 
+- entryWidth: 
+- entryHeight:
+- loseSpeed: 
+- loseWidth: 
+- loseHeight:
 
 GUILE
 - name: Guile
@@ -149,7 +279,24 @@ GUILE
 - magical_resistance: 24
 - width: 18
 - height: 52
-- special: 4280
+- atkSpeed: 
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 
+- entryWidth: 
+- entryHeight:
+- loseSpeed: 
+- loseWidth: 
+- loseHeight:
 
 VEGA
 - name: Vega
@@ -166,4 +313,21 @@ VEGA
 - magical_resistance: 17
 - width: 19
 - height: 58
-- special: 1800
+- atkSpeed: 
+- atkWidth: 
+- atkHeight: 
+- sp1Speed: 
+- sp1Width: 
+- sp1Height: 
+- sp2Speed: 
+- sp2Width: 
+- sp2Height: 
+- sp3Speed: 
+- sp3Width: 
+- sp3Height:  
+- entrySpeed: 
+- entryWidth: 
+- entryHeight:
+- loseSpeed: 
+- loseWidth: 
+- loseHeight:

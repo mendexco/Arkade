@@ -35,3 +35,57 @@ sessionStorage.ENEMY_DMG_M3 = character.magicDmg3;
 sessionStorage.ENEMY_PR = character.physical_resistance;
 sessionStorage.ENEMY_MR = character.magical_resistance;
 sessionStorage.ENEMY_SPECIAL = character.special;
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main_style.css" />
+    <link rel="stylesheet" href="css/selection_style.css" />
+    <title>Character Select | ARKADE</title>
+    <link rel="icon" href="assets/imgs/ark-logo1.png" />
+  </head>
+
+  <body>
+    <div id="back_stage"></div>
+    <!-- LOADING SCREEN -->
+    <div id="div_loading" class="div-loading">
+      <img src="assets/circle-loading.gif" />
+    </div>
+
+    <div class="div-mid">
+      <div id="player_preview" class="div-preview">
+        <img id="img_player" class="img-preview" />
+      </div>
+      <div id="enemy_preview" class="div-preview" style="transform: scaleX(-1)">
+        <img id="img_enemy" class="img-preview" />
+      </div>
+    </div>
+
+    <!-- CHARACTERS SELECTION -->
+    <div class="div-bottom">
+      <!-- stages -->
+      <div class="div-names">
+        <div id="player_name" class="char-name" style="text-align: end;"></div>
+        <div id="stage_name" class="char-name" style="width: 20%; text-align: center;">aaa</div>
+        <div id="enemy_name" class="char-name" style=""></div>
+      </div>
+      <div id="div_characters">
+        <div id="left_group" class="group-chars left-group"></div>        
+        <div id="right_group" class="group-chars right-group"></div>
+      </div>
+      <div id="div_characters">
+        <div id="left_group" class="group-chars left-group"></div>
+        <div id="right_group" class="group-chars right-group"></div>
+      </div>
+    </div>
+
+    <span id="random_symbol" onclick="randomizeCharacter()">?</span>
+    <div class="random-shape"></div>
+  </body>
+</html>
+
+<script src="js/globalSettings.js"></script>
+<script src="js/selectionScript.js"></script>
