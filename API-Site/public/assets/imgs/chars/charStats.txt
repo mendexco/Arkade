@@ -1,333 +1,519 @@
-RYU
+---------------- RYU ----------------
 - name: Ryu
 - price: 1800
 - life: 100
-- attack: 20
+- attack: 12
 - magicName1: SHORYUKEN
-- magicDmg1: 17
+- magicDmg1: 20
 - magicName2: TATSUMAKI
-- magicDmg2: 20
+- magicDmg2: 30
 - magicName3: HADOKEN EX
-- magicDmg3: 37
+- magicDmg3: 45
 - physical_resistance: 35
 - magical_resistance: 30
+
 - width: 17
 - height: 52
+- top: 39
+- side: 26
+- entryWidth: 18
+- entryHeight: 52
+- entryTop: 38
+- entrySide: 26
+- defendWidth: 18
+- defendHeight: 52
+- defendTop: 38
+- defendSide: 30
+- loseWidth: 35
+- loseHeight: 53
+- loseTop: 38
+- loseSide: 20
+
 - atkSpeed: 640
 - atkWidth: 26
 - atkHeight: 52
+- atkTop: 39
+- atkSide: 39
 - sp1Speed: 1190
-- sp1Width: 20
+- sp1Width: 22
 - sp1Height: 100
+- sp1Top: -9
+- sp1Side: 47
 - sp2Speed: 1620
-- sp2Width: 30
+- sp2Width: 36
 - sp2Height: 72
+- sp2Top: 19
+- sp2Side: 40
 - sp3Speed: 3540
-- sp3Width: 34
-- sp3Height: 55
-- entrySpeed: 2180
-- entryWidth: 19
-- entryHeight: 56
-- loseWidth: 34
-- loseHeight: 52
+- sp3Width: 41
+- sp3Height: 57
+- sp3Top: 34
+- sp3Side: 26
 
-KEN
+---------------- KEN ----------------
 - name: Ken
 - price: 1800
-- life: 98
-- attack: 24
+- life: 97
+- attack: 13
 - magicName1: TATSUMAKI
-- magic1Dmg: 16
+- magic1Dmg: 18
 - magicName2: HADOKEN
-- magicDmg2: 20
+- magicDmg2: 28
 - magicName3: SHORYUKEN EX
-- magicDmg3: 32
+- magicDmg3: 45
 - physical_resistance: 32
 - magical_resistance: 21
+
 - width: 17
 - height: 52
-- atkSpeed: 1050
-- atkWidth: 33
-- atkHeight: 58
-- sp1Speed: 1920
-- sp1Width: 34
-- sp1Height: 68
-- sp2Speed: 820
-- sp2Width: 66
-- sp2Height: 57
-- sp3Speed: 1620
-- sp3Width: 46
-- sp3Height: 114
-- entrySpeed: 1440
-- entryWidth: 23
+- top: 38
+- side: 26
+- entryWidth: 24
 - entryHeight: 52
+- entryTop: 38
+- entrySide: 26
+- defendWidth: 18
+- defendHeight: 52
+- defendTop: 38
+- defendSide: 30
 - loseWidth: 34
 - loseHeight: 52
+- loseTop: 39
+- loseSide: 18
 
-SAGAT
+- atkSpeed: 1050
+- atkWidth: 40
+- atkHeight: 59
+- atkTop: 31
+- atkSide: 31
+- sp1Speed: 1920
+- sp1Width: 37
+- sp1Height: 68
+- sp1Top: 23
+- sp1Side: 38
+- sp2Speed: 820
+- sp2Width: 64
+- sp2Height: 56
+- sp2Top: 35
+- sp2Side: 19
+- sp3Speed: 1620
+- sp3Width: 50
+- sp3Height: 127
+- sp3Top: -32
+- sp3Side: 32
+
+---------------- SAGAT ----------------
 - name: Sagat
 - price: 2800
-- life: 95
-- attack: 22
+- life: 97
+- attack: 14
 - magicName1: TIGER SHOT
-- magicDmg1: 12
+- magicDmg1: 16
 - MagicName2: TIGER KNEE
-- magicDmg2: 18
+- magicDmg2: 22
 - magicName3: TIGER UPPERCUT
-- magicDmg3: 28
+- magicDmg3: 38
 - physical_resistance: 40
 - magical_resistance: 15
+
 - width: 20
 - height: 64
+- top: 27
+- side: 27
+- entryWidth: 17
+- entryHeight: 60
+- entryTop: 30
+- entrySide: 27
+- defendWidth: 25
+- defendHeight: 72
+- defendTop: 21
+- defendSide: 31
+- loseWidth: 39
+- loseHeight: 46
+- loseTop: 47
+- loseSide: 19
+
 - atkSpeed: 1880
 - atkWidth: 38
 - atkHeight: 64
+- atkTop: 26
+- atkSide: 31
 - sp1Speed: 4050
-- sp1Width: 48
-- sp1Height: 66
+- sp1Width: 59
+- sp1Height: 69
+- sp1Top: 24
+- sp1Side: 13
 - sp2Speed: 1280
-- sp2Width: 39
+- sp2Width: 43
 - sp2Height: 84
+- sp2Top: 9
+- sp2Side: 30
 - sp3Speed: 3600
-- sp3Width: 54
-- sp3Height: 95
-- entrySpeed: 5500
-- entryWidth: 17
-- entryHeight: 60
-- loseWidth: 36
-- loseHeight: 47
+- sp3Width: 63
+- sp3Height: 99
+- sp3Top: -5
+- sp3Side: 21
 
-AKUMA
+---------------- AKUMA ----------------
 - name: Akuma
 - price: 5600
 - life: 75
-- attack: 30
+- attack: 18
 - magicName1: GOHADOKEN EX
-- magicDmg1: 20
+- magicDmg1: 24
 - magicName2: ASHURA SENKU
 - magicDmg2: 32
 - magicName3: KURETSUHA
-- magicDmg3: 60
+- magicDmg3: 55
 - physical_resistance: 11
 - magical_resistance: 4
-- width: 17
-- height: 54
-- atkSpeed: 1200
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 1350
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 1260
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 5390
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 840
-- entryWidth: 
-- entryHeight:
-- loseWidth: 
-- loseHeight:
 
-BALROG
+- width: 18
+- height: 57
+- top: 32
+- side: 25
+- entryWidth: 18
+- entryHeight: 61
+- entryTop: 28
+- entrySide: 26
+- defendWidth: 18
+- defendHeight: 57
+- defendTop: 32
+- defendSide: 31
+- loseWidth: 36
+- loseHeight: 58
+- loseTop: 33
+- loseSide: 17
+
+- atkSpeed: 1200
+- atkWidth: 36
+- atkHeight: 111
+- atkTop: -20
+- atkSide: 42
+- sp1Speed: 1350
+- sp1Width: 29
+- sp1Height: 94
+- sp1Top: -1
+- sp1Side: 23
+- sp2Speed: 1260
+- sp2Width: 66
+- sp2Height: 62
+- sp2Top: 28
+- sp2Side: 20
+- sp3Speed: 5390
+- sp3Width: 63
+- sp3Height: 167
+- sp3Top: -68
+- sp3Side: 19
+
+---------------- BALROG ----------------
 - name: Balrog
 - price: 4700
 - life: 110
-- attack: 32
+- attack: 12
 - magicName1: SCREW SMASH
-- magicDmg1: 12
+- magicDmg1: 20
 - magicName2: BURST BUFFALO
-- magicDmg2: 16
+- magicDmg2: 30
 - magicName3: GIGATON BLOW
-- magicDmg3: 22
+- magicDmg3: 40
 - physical_resistance: 68
 - magical_resistance: 19
-- width: 18
-- height: 57
-- atkSpeed: 1480
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 1260
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 1450
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 7100
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 300
-- entryWidth: 
-- entryHeight:
-- loseWidth: 
-- loseHeight:
 
-CHUN-LI
+- width: 20
+- height: 61
+- top: 29
+- side: 26
+- entryWidth: 24
+- entryHeight: 62
+- entryTop: 30
+- entrySide: 26
+- defendWidth: 22
+- defendHeight: 64
+- defendTop: 29
+- defendSide: 33
+- loseWidth: 41
+- loseHeight: 37
+- loseTop: 56
+- loseSide: 18
+
+- atkSpeed: 1480
+- atkWidth: 42
+- atkHeight: 60
+- atkTop: 30
+- atkSide: 28
+- sp1Speed: 1260
+- sp1Width: 67
+- sp1Height: 61
+- sp1Top: 31
+- sp1Side: 7
+- sp2Speed: 1450
+- sp2Width: 67
+- sp2Height: 61
+- sp2Top: 32
+- sp2Side: 13
+- sp3Speed: 7100
+- sp3Width: 80
+- sp3Height: 81 
+- sp3Top: 11
+- sp3Side: 8
+
+---------------- CHUN-LI ----------------
 - name: Chun-Li
 - price: 4700
-- life: 125
-- attack: 27
+- life: 130
+- attack: 10
 - magicName1: KIKOKEN
-- magicDmg1: 28
+- magicDmg1: 24
 - magicName2: HYAKURETSUKYAKU
-- magicDmg2: 30
+- magicDmg2: 31
 - magicName3: HOYOKUSEN
-- magicDmg3: 38
+- magicDmg3: 47
 - physical_resistance: 16
 - magical_resistance: 47
-- width: 20
-- height: 55 
-- atkSpeed: 2500
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 1070
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 3180
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 5160
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 2950
-- entryWidth: 
-- entryHeight:
-- loseWidth: 
-- loseHeight:
 
-DHALSIM
+- width: 18
+- height: 50
+- top: 41
+- side: 27
+- entryWidth: 23
+- entryHeight: 53
+- entryTop: 38
+- entrySide: 24
+- defendWidth: 18 
+- defendHeight: 50
+- defendTop: 41
+- defendSide: 32
+- loseWidth: 33
+- loseHeight: 49
+- loseTop: 42
+- loseSide: 18
+
+- atkSpeed: 2500
+- atkWidth: 34
+- atkHeight: 65
+- atkTop: 26
+- atkSide: 38
+- sp1Speed: 1070
+- sp1Width: 60
+- sp1Height: 56
+- sp1Top: 35
+- sp1Side: 19
+- sp2Speed: 3180
+- sp2Width: 88
+- sp2Height: 132
+- sp2Top: -33
+- sp2Side: 32
+- sp3Speed: 5160
+- sp3Width: 71
+- sp3Height: 117
+- sp3Top: -18
+- sp3Side: 24
+
+---------------- DHALSIM ----------------
 - name: Dhalsim
 - price: 3500
-- life: 122
-- attack: 13
+- life: 120
+- attack: 9
 - magicName1: YOGA FIRE
-- magicDmg1: 21
+- magicDmg1: 25
 - magicName2: YOGA FLAME
-- magicDmg2: 32
+- magicDmg2: 35
 - magicName3: YOGA SUNBURST
-- magicDmg3: 43
+- magicDmg3: 50
 - physical_resistance: 8
 - magical_resistance: 52
-- width: 20
-- height: 46
-- atkSpeed: 
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 
-- entryWidth: 
-- entryHeight:
-- loseSpeed: 
-- loseWidth: 
-- loseHeight:
 
-M.BISON
+- width: 20
+- height: 60
+- top: 31
+- side: 29
+- entryWidth: 17
+- entryHeight: 51
+- entryTop: 30
+- entrySide: 26
+- defendWidth: 21
+- defendHeight: 57
+- defendTop: 25
+- defendSide: 31
+- loseWidth: 30
+- loseHeight: 25
+- loseTop: 68
+- loseSide: 22
+
+- atkSpeed: 1700
+- atkWidth: 56
+- atkHeight: 66
+- atkTop: 25
+- atkSide: 26
+- sp1Speed: 1600
+- sp1Width: 56
+- sp1Height: 68
+- sp1Top: 26
+- sp1Side: 22
+- sp2Speed: 2160
+- sp2Width: 61
+- sp2Height: 68
+- sp2Top: 25
+- sp2Side: 15
+- sp3Speed: 6700
+- sp3Width: 47
+- sp3Height: 93
+- sp3Top: 2
+- sp3Side: 30
+
+---------------- M.BISON ----------------
 - name: M.Bison
 - price: 5600
 - life: 135
-- attack: 22
+- attack: 18
 - magicName1: PSYCHO BLAST
-- magicDmg1: 16
+- magicDmg1: 21
 - magicName2: DEVIL REVERSE
-- magicDmg2: 24
+- magicDmg2: 31
 - magicName3: PSYCHO CRUSHER
-- magicDmg3: 50
+- magicDmg3: 54
 - physical_resistance: 42
 - magical_resistance: 38
-- width: 26
-- height: 68
-- atkSpeed: 
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 
-- entryWidth: 
-- entryHeight:
-- loseSpeed: 
-- loseWidth: 
-- loseHeight:
 
-GUILE
+- width: 27
+- height: 61
+- top: 31
+- side: 19
+- entryWidth: 28
+- entryHeight: 76
+- entryTop: 14
+- entrySide: 15
+- defendWidth: 35
+- defendHeight: 105
+- defendTop: -10
+- defendSide: 22
+- loseWidth: 43
+- loseHeight: 45
+- loseTop: 51
+- loseSide: 20
+
+- atkSpeed: 1800
+- atkWidth: 65
+- atkHeight: 89
+- atkTop: 4
+- atkSide: 37
+- sp1Speed: 1740
+- sp1Width: 54
+- sp1Height: 84
+- sp1Top: 8
+- sp1Side: 19
+- sp2Speed: 7000
+- sp2Width: 78
+- sp2Height: 144
+- sp2Top: -42
+- sp2Side: 8
+- sp3Speed: 5900
+- sp3Width: 100
+- sp3Height: 124
+- sp3Top: -24
+- sp3Side: 0
+
+---------------- GUILE ----------------
 - name: Guile
 - price: 2800
 - life: 112
-- attack: 21
+- attack: 15
 - magicName1: SONIC BOOM EX
-- magicDmg1: 24
+- magicDmg1: 17
 - magicName2: FLASH KICK
-- magicDmg2: 19
+- magicDmg2: 28
 - magicName3: SONIC TEMPEST
-- magicDmg3: 34
+- magicDmg3: 39
 - physical_resistance: 28
 - magical_resistance: 24
-- width: 18
-- height: 52
-- atkSpeed: 
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 
-- entryWidth: 
-- entryHeight:
-- loseSpeed: 
-- loseWidth: 
-- loseHeight:
 
-VEGA
+- width: 20
+- height: 60
+- top: 32
+- side: 27
+- entryWidth: 20
+- entryHeight: 61
+- entryTop: 30
+- entrySide: 26
+- defendWidth: 22
+- defendHeight: 74
+- defendTop: 22
+- defendSide: 33
+- loseWidth: 33
+- loseHeight: 62
+- loseTop: 29
+- loseSide: 21
+
+- atkSpeed: 800
+- atkWidth: 38
+- atkHeight: 71
+- atkTop: 20
+- atkSide: 30
+- sp1Speed: 700
+- sp1Width: 53
+- sp1Height: 58
+- sp1Top: 33
+- sp1Side: 18
+- sp2Speed: 1820
+- sp2Width: 56
+- sp2Height: 113
+- sp2Top: -20
+- sp2Side: 16
+- sp3Speed: 4280
+- sp3Width: 78
+- sp3Height: 64
+- sp3Top: 28
+- sp3Side: 9
+
+---------------- VEGA ----------------
 - name: Vega
 - price: 3500
-- life: 91
-- attack: 18
+- life: 90
+- attack: 13
 - magicName1: FLYING BARCELONA
-- magicDmg1: 8
+- magicDmg1: 21
 - magicName2: CRIMSON TERROR
-- magicDmg2: 26
+- magicDmg2: 30
 - magicName3: BLOODY RAIN
-- magicDmg3: 39
+- magicDmg3: 44
 - physical_resistance: 17
 - magical_resistance: 17
-- width: 19
-- height: 58
-- atkSpeed: 
-- atkWidth: 
-- atkHeight: 
-- sp1Speed: 
-- sp1Width: 
-- sp1Height: 
-- sp2Speed: 
-- sp2Width: 
-- sp2Height: 
-- sp3Speed: 
-- sp3Width: 
-- sp3Height:  
-- entrySpeed: 
-- entryWidth: 
-- entryHeight:
-- loseSpeed: 
-- loseWidth: 
-- loseHeight:
+
+- width: 22
+- height: 63
+- top: 28
+- side: 25
+- entryWidth: 24
+- entryHeight: 68
+- entryTop: 25
+- entrySide: 30
+- defendWidth: 18
+- defendHeight: 58
+- defendTop: 35
+- defendSide: 36
+- loseWidth: 38
+- loseHeight: 41
+- loseTop: 58
+- loseSide: 16
+
+- atkSpeed: 1700
+- atkWidth: 57
+- atkHeight: 70
+- atkTop: 24
+- atkSide: 17
+- sp1Speed: 2640
+- sp1Width: 70
+- sp1Height: 108
+- sp1Top: -15
+- sp1Side: 11
+- sp2Speed: 2100
+- sp2Width: 43
+- sp2Height: 97
+- sp2Top: -3
+- sp2Side: 35
+- sp3Speed: 2300
+- sp3Width: 58
+- sp3Height: 83
+- sp3Top: 17
+- sp3Side: 26

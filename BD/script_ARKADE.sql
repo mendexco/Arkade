@@ -23,33 +23,55 @@ magicDmg2 INT,
 magicName3 VARCHAR(25),
 magicDmg3 INT,
 physical_resistance INT,
-magical_resistance INT
+magical_resistance INT,
+fkBasic INT,
+FOREIGN KEY (fkBasic) REFERENCES BasicMetrics(idBasic),
+fkAdvanced INT,
+FOREIGN KEY (fkAdvanced) REFERENCES AdvancedMetrics(idAdvanced)
 );
 
-CREATE TABLE CharactersMetrics (
+CREATE TABLE BasicMetrics (
 idMetric INT PRIMARY KEY AUTO_INCREMENT,
-fkChar INT,
-FOREIGN KEY (fkChar) REFERENCES Characters(idChar),
 width INT,
 height INT,
+top INT,
+side INT,
+entryWidth INT,
+entryHeight INT,
+entryTop INT,
+entrySide INT,
+defendWidth INT,
+defendHeight INT,
+defendTop INT,
+defendSide INT,
+loseWidth INT,
+loseHeight INT,
+loseTop INT,
+loseSide INT
+);
+
+CREATE TABLE AdvancedMetrics (
+idAdvanced INT PRIMARY KEY AUTO_INCREMENT,
 atkSpeed INT,	
 atkWidth INT,
 atkHeight INT,
+atkTop INT,
+atkSide INT,
 sp1Speed INT,
-sp1kWidth INT,
+sp1Width INT,
 sp1Height INT,
+sp1Top INT,
+sp1Side INT,
 sp2Speed INT,
 sp2Width INT,
 sp2Height INT,
+sp2Top INT,
+sp2Side INT,
 sp3Speed INT,
 sp3Width INT,
 sp3Height INT,
-entrySpeed INT,
-entryWidth INT,
-entryHeight INT,
-loseSpeed INT,
-loseWidth INT,
-loseHeight INT
+sp3Top INT,
+sp3Side INT
 );
 
 CREATE TABLE Stages (
@@ -74,7 +96,8 @@ PRIMARY KEY (idItem, fkPlayer)
 -- INDIVIDUAL SELECTS
 SELECT * FROM Player;
 SELECT * FROM Characters;
-SELECT * FROM CharactersMetrics;
+SELECT * FROM BasicMetrics;
+SELECT * FROM AdvancedMetrics;
 SELECT * FROM Stages;
 SELECT * FROM Items;
 
@@ -84,38 +107,64 @@ SELECT idPlayer, namePlayer, idChar, nameChar FROM Player
 		RIGHT JOIN Characters ON idChar = fkChar
 			WHERE idPlayer = 1;
 -- list stages acquired by player ---------------------------
-SELECT idStage, nameStage, nameChar FROM Items
-	JOIN Stages ON Stages.idStage = Items.fkStage
-		JOIN Characters ON Characters.idChar = Stages.fkChar;
+SELECT idStage, nameStage FROM Items
+	JOIN Stages ON Stages.idStage = Items.fkStage		
+		JOIN Characters ON Characters.idChar = Stages.fkChar
+			WHERE fkPlayer = 2;			
 -- set chars to battle --------------------------------------
 SELECT * FROM Characters 
-	JOIN CharactersMetrics ON idChar = fkChar
-		WHERE idChar = 1;
+	JOIN BasicMetrics ON idBasic = fkBasic
+		JOIN AdvancedMetrics ON idAdvanced = fkAdvanced
+			WHERE idChar = 1;
 
 -- PLAYER INSERTS
 INSERT INTO Player VALUES
 (NULL, 'Vitor', 'vitormendesco@gmail.com', '123456', 0, DEFAULT),
 (NULL, 'Vinicius', 'viniciuscosta@outlook.com', '123456', 0, DEFAULT);
 
+update Characters set magicName2 = 'YOGA SUNBURST' where idChar = 7;
 -- CHARACTERS INSERTS
 INSERT INTO Characters VALUES
-(NULL, 'Ryu', 1800, 100, 22, 'SHORYUKEN', 17, 'TATSUMAKI', 20, 'HADOKEN EX', 37, 35, 30),
-(NULL, 'Ken', 1800, 98, 24, 'TATSUMAKI', 16, 'HADOKEN', 20, 'SHORYUKEN EX', 32, 32, 21),
-(NULL, 'Sagat', 2800, 95, 22, 'TIGER SHOT', 12, 'TIGER KNEE', 18, 'TIGER UPPERCUT', 28, 40, 15),
-(NULL, 'Akuma', 5600, 75, 30, 'GOHADOKEN EX', 20, 'ASHURA SENKU', 32, 'KURETSUHA', 60, 11, 4),
-(NULL, 'Balrog', 4700, 110, 32, 'SCREW SMASH', 12, 'BURSTING BUFFALO', 16, 'GIGATON BLOW', 22, 68, 19),
-(NULL, 'Chun-Li', 4700, 125, 27, 'KIKOKEN', 28, 'HYAKURETSUKYAKU', 30, 'HOYOKUSEN', 38, 16, 47),
-(NULL, 'Dhalsim', 3500, 122, 13, 'YOGA FIRE', 21, 'YOGA FLAME', 32, 'YOGA SUNBURST', 43, 8, 52),
-(NULL, 'M.Bison', 5600, 135, 22, 'PSYCHO BLAST', 16, 'DEVIL REVERSE', 24, 'PSYCHO CRUSHER ULTIMATE', 50, 42, 38),
-(NULL, 'Guile', 2800, 112, 21, 'SONIC BOOM EX', 24, 'SOMERSAULT KICK', 19, 'SONIC TEMPEST', 34, 28, 24),
-(NULL, 'Vega', 3500, 91, 18, 'FLYING BARCELONA', 8, 'CRIMSON TERROR', 26, 'BLOODY RAIN', 39, 17, 17);
+(NULL, 'Ryu', 1800, 100, 12, 'SHORYUKEN', 20, 'TATSUMAKI', 30, 'HADOKEN EX', 45, 35, 30, 1, 1),
+(NULL, 'Ken', 1800, 96, 14, 'TATSUMAKI', 18, 'HADOKEN', 28, 'SHORYUKEN EX', 45, 32, 21, 2, 2),
+(NULL, 'Sagat', 2800, 97, 13, 'TIGER SHOT', 16, 'TIGER KNEE', 22, 'TIGER UPPERCUT', 38, 40, 15, 3, 3),
+(NULL, 'Akuma', 5600, 75, 18, 'GOHADOKEN EX', 24, 'ASHURA SENKU', 32, 'KURETSUHA', 55, 11, 4, 4, 4),
+(NULL, 'Balrog', 4700, 110, 12, 'SCREW SMASH', 20, 'BURSTING BUFFALO', 30, 'GIGATON BLOW', 40, 68, 19, 5, 5),
+(NULL, 'Chun-Li', 4700, 130, 10, 'KIKOKEN', 24, 'HYAKURETSUKYAKU', 31, 'HOYOKUSEN', 47, 16, 47, 6, 6),
+(NULL, 'Dhalsim', 3500, 120, 9, 'YOGA FIRE', 25, 'YOGA SUNBURST', 35, 'YOGA FLAME', 50, 8, 52, 7, 7),
+(NULL, 'M.Bison', 5600, 135, 18, 'PSYCHO BLAST', 21, 'DEVIL REVERSE', 31, 'PSYCHO CRUSHER ULTIMATE', 54, 42, 38, 8, 8),
+(NULL, 'Guile', 2800, 112, 16, 'SONIC BOOM EX', 17, 'SOMERSAULT KICK', 28, 'SONIC TEMPEST', 39, 28, 24, 9, 9),
+(NULL, 'Vega', 3500, 90, 13, 'FLYING BARCELONA', 21, 'CRIMSON TERROR', 30, 'BLOODY RAIN', 44, 17, 17, 10, 10);
 
--- METRICS INSERTS
-INSERT INTO CharactersMetrics VALUES
-(NULL, 1, 17, 52, 640, 26, 52, 1190, 20, 100, 1620, 30, 72, 3540, 34, 55, null, null, null, null, null, null),
-(NULL, 2, 17, 52, 1050, 33, 58, 1920, 34, 68, 820, 66, 57, 1620, 46, 114, null, null, null, null, null, null);
+-- BASIC METRICS INSERTS
+INSERT INTO BasicMetrics VALUES
+(NULL, 17, 52, 39, 26, 18, 52, 38, 26, 18, 52, 38, 30, 35, 53, 38, 20),
+(NULL, 17, 52, 38, 26, 24, 52, 38, 26, 18, 52, 38, 30, 34, 52, 39, 18),
+(NULL, 20, 64, 27, 27, 17, 60, 30, 27, 25, 72, 21, 31, 39, 46, 47, 19),
+(NULL, 18, 57, 32, 25, 18, 61, 28, 26, 18, 57, 32, 31, 36, 58, 33, 17),
+(NULL, 20, 61, 29, 26, 24, 62, 30, 26, 22, 64, 29, 33, 41, 37, 56, 18),
+(NULL, 18, 50, 41, 27, 23, 53, 38, 24, 18, 50, 41, 32, 33, 49, 42, 18),
+(NULL, 20, 60, 31, 29, 17, 51, 30, 26, 21, 57, 25, 31, 30, 25, 68, 22),
+(NULL, 27, 61, 31, 19, 28, 76, 14, 15, 35, 105, -10, 22, 43, 45, 51, 20),
+(NULL, 20, 60, 32, 27, 20, 61, 30, 26, 22, 74, 22, 33, 33, 62, 29, 21),
+(NULL, 22, 63, 28, 25, 24, 68, 25, 30, 18, 58, 35, 36, 38, 41, 58, 16);
 
-SELECT * FROM Characters JOIN CharactersMetrics ON idChar = fkChar;
+-- ADVANCED METRICS INSERTS
+INSERT INTO AdvancedMetrics VALUES
+(NULL, 640, 26, 52, 39, 39, 1190, 22, 100, -9, 47, 1620, 36, 72, 19, 40, 3540, 41, 57, 34, 26),
+(NULL, 1050, 40, 59, 31, 31, 1920, 37, 68, 23, 38, 820, 64, 56, 35, 19, 1620, 50, 127, -32, 32),
+(NULL, 1880, 38, 64, 26, 31, 4050, 59, 69, 24, 13, 1280, 43, 84, 9, 30, 3600, 63, 99, -5, 21),
+(NULL, 1200, 36, 111, -20, 42, 1350, 29, 94, -1, 23, 1260, 66, 62, 28, 20, 5390, 63, 167, -68, 19),
+(NULL, 1480, 42, 60, 30, 28, 1260, 67, 61, 31, 7, 1450, 67, 61, 32, 13, 7100, 80, 81, 11, 8),
+(NULL, 2500, 34, 65, 26, 38, 1070, 60, 56, 35, 19, 3180, 88, 132, -33, 32, 5160, 71, 117, -18, 24),
+(NULL, 1700, 56, 66, 25, 26, 1600, 56, 68, 26, 22, 2160, 61, 68, 25, 15, 6700, 47, 93, 2 ,30),
+(NULL, 1800, 65, 89, 4, 37, 1740, 54, 84, 8, 19, 7000, 78, 144, -42, 8, 5900, 100, 124, -24, 0),
+(NULL, 800, 38, 71, 20, 30, 700, 53, 58, 33, 18, 1820, 56, 113, -20, 16, 4280, 78, 64, 28, 9),
+(NULL, 1700, 57, 70, 24, 17, 2640, 70, 108, -15, 11, 2100, 43, 97, -3, 35, 2300, 58, 83, 17, 26);
+
+SELECT * FROM Characters 
+	JOIN BasicMetrics ON idBasic = fkBasic
+		JOIN AdvancedMetrics ON idAdvanced = fkAdvanced;
 
 -- STAGES INSERTS
 INSERT INTO Stages VALUES
@@ -130,10 +179,7 @@ INSERT INTO Stages VALUES
 (NULL, 9, 'Air Forece Base', 2500),
 (NULL, 10, 'Flamenco Tavern', 2500);
 
-
-alter table charactersmetrics rename column sp1kWidth to sp1Width;
-update stages set nameStage = 'Kings Court' where idStage = 3;
--- ITEMS INSERTS
+-- ITEMS INSERTS (MAIN)
 INSERT INTO Items VALUES
 (NULL, 1, 1, 1),
 (NULL, 1, 2, 2),
@@ -145,5 +191,9 @@ INSERT INTO Items VALUES
 (NULL, 1, 8, 8),
 (NULL, 1, 9, 9),
 (NULL, 1, 10, 10);
+-- ITEMS INSERTS (SECONDARY)
+INSERT INTO Items VALUES
+(NULL, 2, 1, NULL),
+(NULL, 2, NULL, 1);
 
 TRUNCATE ITEMS;
