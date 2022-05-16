@@ -258,7 +258,8 @@ function setupEssencials() {
   // setting stage
   div_stage.style.backgroundImage = `url(../assets/imgs/stages/stage_${sessionStorage.STAGE}.gif)`;
   // setting sfx
-  audio_music.src = `assets/audios/musics/${sessionStorage.STAGE}Theme.mp3`;
+  stage_music.src = `assets/audios/musics/${sessionStorage.STAGE}Theme.mp3`;
+  stage_music.volume = 0.05;
   // gif of each fighter
   player_sprite.style.backgroundImage = `url(assets/imgs/chars/${playerName}/Idle.gif)`;
   player_sprite.style.width = `${playerWidth}vw`;
@@ -285,19 +286,19 @@ function setupEssencials() {
   div_actions.style.display = "flex";
   div_magicks.style.display = "none";
 
-  // disableButtons();
-  // screenMessage("Round1");
-  // setTimeout(function() {
-  //   fillGauge();
-  //   turnTimer();
-  //   if (randomizeRoll(2) == 1) {
-  //     turnOwner = "enemy";
-  //     changeTurn();
-  //   } else {
-  //     turnOwner = "player";
-  //     changeTurn();
-  //   }
-  // }, 3000);
+  disableButtons();
+  screenMessage(`Round${roundNow}`);
+  setTimeout(function() {
+    fillGauge();
+    turnTimer();
+    if (randomizeRoll(2) == 1) {
+      turnOwner = "enemy";
+      changeTurn();
+    } else {
+      turnOwner = "player";
+      changeTurn();
+    }
+  }, 3000);
 }
 
 function screenMessage(gifName) {
@@ -313,11 +314,11 @@ function screenMessage(gifName) {
   }, 2700);
 }
 
-var turnSeconds = 5;
+var turnSeconds = 3;
 var turnInterval;
 function turnTimer() {
   clearInterval(turnInterval);
-  turnSeconds = 5;
+  turnSeconds = 3;
   turnInterval = setInterval(function() {
     // console.log(turnSeconds);
     if (turnSeconds < 0) {
@@ -342,7 +343,7 @@ function changeTurn() {
   turnTimer();
   if (turnOwner == "player") {
     // next turn is opponent's one
-    timer = randomizeRoll(5) * 1000;
+    timer = randomizeRoll(3) * 1000;
     console.log(timer);
     setTimeout(function () {
       turnOwner = "enemy";
@@ -1120,7 +1121,6 @@ var intervalRound;
 var gameState = "continue";
 function endRound(roundWinner, attackType) {
   updateMenu();
-  roundNow++;
   if (roundWinner == "player") {
     if (playerRounds < 1) {
       animateAction(roundWinner, attackType, true);
@@ -1226,7 +1226,7 @@ function verifyEnd(gameState, roundWinner) {
       enemyDefending = 0;
       defending = false;
       turnCounter = 0;
-      roundSeconds = 99;
+      roundNow++;
       screenMessage(`Round${roundNow}`);
       setTimeout(function () {
         changeTurn();

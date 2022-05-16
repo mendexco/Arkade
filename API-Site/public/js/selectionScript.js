@@ -1,14 +1,19 @@
 /* LOAD CHARACTERS */
-sessionStorage.PLAYER_ID = 2;
+sessionStorage.PLAYER_ID = 1;
 var randomizeLength = 9;
 var charsArray = [];
 var stagesArray = [];
 var stageName = [];
 
 bgAudio();
+select_music.volume = 0.05;
 function bgAudio() {
   var randomSong = Math.floor(Math.random() * 4) + 1;
   select_music.src = `assets/audios/musics/SelectionTheme${randomSong}.mp3`;
+  select_music.play();
+  select_music.onended = function () {
+    bgAudio();
+  };
 }
 
 loadStages();
@@ -16,6 +21,7 @@ function loadStages() {
   div_characters.style.display = "none";
   div_stages.style.display = "flex";
   stage_name.style.width = "40%";
+  back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectStage.gif)`;
   fetch(`/chars/listStages/${sessionStorage.PLAYER_ID}`)
     .then(function (resposta) {
       if (resposta.ok) {
@@ -284,11 +290,10 @@ var enemyID = 0;
 function setCard(btnType, idChar, nameChar) {
   if (btnType == "stage") {
     var cardSelected = document.getElementById(`stage_${nameChar}`);
-    back_stage.style.backgroundImage = `url(../assets/imgs/stages/stage_${nameChar}.gif)`;
-    back_stage.style.filter = `blur(0.5vw) brightness(0.4)`;
+    back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectChar.gif)`;
+    back_stage.style.filter = `blur(0vw) brightness(1)`;
     sessionStorage.STAGE = nameChar;
     player_name.innerHTML = "";
-
     loadChars();
   } else {
     var cardSelected = document.getElementById(`btn_${nameChar}`);
@@ -298,12 +303,16 @@ function setCard(btnType, idChar, nameChar) {
       cardSelected.style.filter = "saturate(1)";
       cardSelected.style.backgroundColor = "#ed145b";
       playerID = idChar;
+      img_player.src = `assets/imgs/chars/selection/${nameChar}FULL.png`;
+      console.log(nameChar);
       battleStorage(playerID, "player");
     } else {
       cardSelected.classList.remove("unselected");
       cardSelected.style.filter = "saturate(1)";
       cardSelected.style.backgroundColor = "#ed145b";
       enemyID = idChar;
+      img_enemy.src = `assets/imgs/chars/selection/${nameChar}FULL.png`;
+      console.log(nameChar);
       battleStorage(enemyID, "enemy");
 
       var disabledButtons = document.getElementsByClassName("unselected");
@@ -320,7 +329,6 @@ function setCard(btnType, idChar, nameChar) {
 
 function battleStorage(idChar, charSelected) {
   var idVar = idChar;
-
   console.log("ID CHARACTER: ", idVar);
 
   fetch("/chars/setChar", {
@@ -353,7 +361,7 @@ function battleStorage(idChar, charSelected) {
             sessionStorage.PLAYER_NAME_M3 = json.magicName3;
             sessionStorage.PLAYER_DMG_M3 = json.magicDmg3;
             sessionStorage.PLAYER_PR = json.physical_resistance;
-            sessionStorage.PLAYER_MR = json.magical_resistance; 
+            sessionStorage.PLAYER_MR = json.magical_resistance;
             // BASIC
             sessionStorage.PLAYER_WIDTH = json.width;
             sessionStorage.PLAYER_HEIGHT = json.height;
@@ -366,7 +374,7 @@ function battleStorage(idChar, charSelected) {
             sessionStorage.PLAYER_DEFEND_WIDTH = json.defendWidth;
             sessionStorage.PLAYER_DEFEND_HEIGHT = json.defendHeight;
             sessionStorage.PLAYER_DEFEND_TOP = json.defendTop;
-            sessionStorage.PLAYER_DEFEND_SIDE = json.defendSide;            
+            sessionStorage.PLAYER_DEFEND_SIDE = json.defendSide;
             sessionStorage.PLAYER_LOSE_WIDTH = json.loseWidth;
             sessionStorage.PLAYER_LOSE_HEIGHT = json.loseHeight;
             sessionStorage.PLAYER_LOSE_TOP = json.loseTop;
@@ -404,7 +412,7 @@ function battleStorage(idChar, charSelected) {
             sessionStorage.ENEMY_NAME_M3 = json.magicName3;
             sessionStorage.ENEMY_DMG_M3 = json.magicDmg3;
             sessionStorage.ENEMY_PR = json.physical_resistance;
-            sessionStorage.ENEMY_MR = json.magical_resistance; 
+            sessionStorage.ENEMY_MR = json.magical_resistance;
             // BASIC
             sessionStorage.ENEMY_WIDTH = json.width;
             sessionStorage.ENEMY_HEIGHT = json.height;
@@ -417,7 +425,7 @@ function battleStorage(idChar, charSelected) {
             sessionStorage.ENEMY_DEFEND_WIDTH = json.defendWidth;
             sessionStorage.ENEMY_DEFEND_HEIGHT = json.defendHeight;
             sessionStorage.ENEMY_DEFEND_TOP = json.defendTop;
-            sessionStorage.ENEMY_DEFEND_SIDE = json.defendSide;            
+            sessionStorage.ENEMY_DEFEND_SIDE = json.defendSide;
             sessionStorage.ENEMY_LOSE_WIDTH = json.loseWidth;
             sessionStorage.ENEMY_LOSE_HEIGHT = json.loseHeight;
             sessionStorage.ENEMY_LOSE_TOP = json.loseTop;
@@ -465,9 +473,9 @@ function randomizeSet() {
   var idChar = Math.floor(Math.random() * randomizeLength);
   if (div_stages.style.display == "flex") {
     setCard("stage", idChar + 1, saveCard);
-  }else {
-    idChar = Math.floor(Math.random() * 2);
-    setCard("character", idChar + 1, saveCard);
+  } else {
+    idChar = Math.floor(Math.random() * randomizeLength);
+    setCard("character", idChar, saveCard);
   }
 }
 
@@ -479,7 +487,7 @@ function randomizePreview(status) {
       hoverCard(status, "stage", stagesArray[idChar], stageName[idChar]);
       saveCard = stagesArray[idChar];
     } else {
-      hoverCard(status, "stage", saveCard, stagesArray[idChar]);      
+      hoverCard(status, "stage", saveCard, stagesArray[idChar]);
     }
   }
 }

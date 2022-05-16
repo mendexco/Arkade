@@ -107,10 +107,10 @@ SELECT idPlayer, namePlayer, idChar, nameChar FROM Player
 		RIGHT JOIN Characters ON idChar = fkChar
 			WHERE idPlayer = 1;
 -- list stages acquired by player ---------------------------
-SELECT idStage, nameStage FROM Items
+SELECT idStage, nameStage, nameChar FROM Items
 	JOIN Stages ON Stages.idStage = Items.fkStage		
 		JOIN Characters ON Characters.idChar = Stages.fkChar
-			WHERE fkPlayer = 2;			
+			WHERE fkPlayer = 1;
 -- set chars to battle --------------------------------------
 SELECT * FROM Characters 
 	JOIN BasicMetrics ON idBasic = fkBasic
@@ -176,7 +176,7 @@ INSERT INTO Stages VALUES
 (NULL, 6, 'Taiping Road', 2500),
 (NULL, 7, 'Maharaja Palace', 2500),
 (NULL, 8, 'Shadaloo Fortress', 2500),
-(NULL, 9, 'Air Forece Base', 2500),
+(NULL, 9, 'Air Force Base', 2500),
 (NULL, 10, 'Flamenco Tavern', 2500);
 
 -- ITEMS INSERTS (MAIN)
