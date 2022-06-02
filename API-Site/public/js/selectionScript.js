@@ -1,5 +1,4 @@
 /* LOAD CHARACTERS */
-sessionStorage.PLAYER_ID = 1;
 var randomizeLength = 9;
 var charsArray = [];
 var stagesArray = [];
@@ -38,7 +37,7 @@ function loadStages() {
           console.log("Stages created: ", JSON.stringify(resposta));
           var stageCounter = 0;
           while (stageCounter < resposta.length) {
-            randomizeLength = resposta.length + 1;
+            randomizeLength = resposta.length;
             var stage = resposta[stageCounter];
             stageCounter++;
             stagesArray.push(stage.nameChar);
@@ -109,7 +108,7 @@ function loadChars() {
           console.log("Chars created: ", JSON.stringify(resposta));
           var charsCounter = 0;
           while (charsCounter < resposta.length) {
-            randomizeLength = resposta.length + 1;
+            randomizeLength = resposta.length;
             var character = resposta[charsCounter];
             charsCounter++;
             charsArray.push(character.nameChar);
@@ -290,6 +289,7 @@ var enemyID = 0;
 function setCard(btnType, idChar, nameChar) {
   if (btnType == "stage") {
     var cardSelected = document.getElementById(`stage_${nameChar}`);
+    console.log(cardSelected);
     back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectChar.gif)`;
     back_stage.style.filter = `blur(0vw) brightness(1)`;
     sessionStorage.STAGE = nameChar;
@@ -297,6 +297,7 @@ function setCard(btnType, idChar, nameChar) {
     loadChars();
   } else {
     var cardSelected = document.getElementById(`btn_${nameChar}`);
+    console.log(cardSelected);
     if (playerChoose == false) {
       playerChoose = true;
       cardSelected.classList.remove("unselected");
@@ -327,6 +328,9 @@ function setCard(btnType, idChar, nameChar) {
   }
 }
 
+sessionStorage.PLAYER_CHAR = "";
+sessionStorage.ENEMY_CHAR = "";
+// var player;
 function battleStorage(idChar, charSelected) {
   var idVar = idChar;
   console.log("ID CHARACTER: ", idVar);
@@ -346,117 +350,13 @@ function battleStorage(idChar, charSelected) {
         console.log(resposta);
 
         resposta.json().then((json) => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-
+          console.log(sessionStorage.CHARS);
           if (charSelected == "player") {
-            // CHARACTERS
-            sessionStorage.PLAYER_NAME = json.nameChar;
-            sessionStorage.PLAYER_LIFE = json.life;
-            sessionStorage.PLAYER_ATTACK = json.attack;
-            sessionStorage.PLAYER_NAME_M1 = json.magicName1;
-            sessionStorage.PLAYER_DMG_M1 = json.magicDmg1;
-            sessionStorage.PLAYER_NAME_M2 = json.magicName2;
-            sessionStorage.PLAYER_DMG_M2 = json.magicDmg2;
-            sessionStorage.PLAYER_NAME_M3 = json.magicName3;
-            sessionStorage.PLAYER_DMG_M3 = json.magicDmg3;
-            sessionStorage.PLAYER_PR = json.physical_resistance;
-            sessionStorage.PLAYER_MR = json.magical_resistance;
-            // BASIC
-            sessionStorage.PLAYER_WIDTH = json.width;
-            sessionStorage.PLAYER_HEIGHT = json.height;
-            sessionStorage.PLAYER_IDLE_TOP = json.top;
-            sessionStorage.PLAYER_IDLE_SIDE = json.side;
-            sessionStorage.PLAYER_ENTRY_WIDTH = json.entryWidth;
-            sessionStorage.PLAYER_ENTRY_HEIGHT = json.entryHeight;
-            sessionStorage.PLAYER_ENTRY_TOP = json.entryTop;
-            sessionStorage.PLAYER_ENTRY_SIDE = json.entrySide;
-            sessionStorage.PLAYER_DEFEND_WIDTH = json.defendWidth;
-            sessionStorage.PLAYER_DEFEND_HEIGHT = json.defendHeight;
-            sessionStorage.PLAYER_DEFEND_TOP = json.defendTop;
-            sessionStorage.PLAYER_DEFEND_SIDE = json.defendSide;
-            sessionStorage.PLAYER_LOSE_WIDTH = json.loseWidth;
-            sessionStorage.PLAYER_LOSE_HEIGHT = json.loseHeight;
-            sessionStorage.PLAYER_LOSE_TOP = json.loseTop;
-            sessionStorage.PLAYER_LOSE_SIDE = json.loseSide;
-            // ADVANCED
-            sessionStorage.PLAYER_ATK_SPEED = json.atkSpeed;
-            sessionStorage.PLAYER_ATK_WIDTH = json.atkWidth;
-            sessionStorage.PLAYER_ATK_HEIGHT = json.atkHeight;
-            sessionStorage.PLAYER_SP1_SPEED = json.sp1Speed;
-            sessionStorage.PLAYER_SP1_WIDTH = json.sp1Width;
-            sessionStorage.PLAYER_SP1_HEIGHT = json.sp1Height;
-            sessionStorage.PLAYER_SP2_SPEED = json.sp2Speed;
-            sessionStorage.PLAYER_SP2_WIDTH = json.sp2Width;
-            sessionStorage.PLAYER_SP2_HEIGHT = json.sp2Height;
-            sessionStorage.PLAYER_SP3_SPEED = json.sp3Speed;
-            sessionStorage.PLAYER_SP3_WIDTH = json.sp3Width;
-            sessionStorage.PLAYER_SP3_HEIGHT = json.sp3Height;
-            sessionStorage.PLAYER_ATK_TOP = json.atkTop;
-            sessionStorage.PLAYER_ATK_SIDE = json.atkSide;
-            sessionStorage.PLAYER_SP1_TOP = json.sp1Top;
-            sessionStorage.PLAYER_SP1_SIDE = json.sp1Side;
-            sessionStorage.PLAYER_SP2_TOP = json.sp2Top;
-            sessionStorage.PLAYER_SP2_SIDE = json.sp2Side;
-            sessionStorage.PLAYER_SP3_TOP = json.sp3Top;
-            sessionStorage.PLAYER_SP3_SIDE = json.sp3Side;
+            sessionStorage.PLAYER_CHAR = JSON.stringify(json);
           } else {
-            // CHARACTERS
-            sessionStorage.ENEMY_NAME = json.nameChar;
-            sessionStorage.ENEMY_LIFE = json.life;
-            sessionStorage.ENEMY_ATTACK = json.attack;
-            sessionStorage.ENEMY_NAME_M1 = json.magicName1;
-            sessionStorage.ENEMY_DMG_M1 = json.magicDmg1;
-            sessionStorage.ENEMY_NAME_M2 = json.magicName2;
-            sessionStorage.ENEMY_DMG_M2 = json.magicDmg2;
-            sessionStorage.ENEMY_NAME_M3 = json.magicName3;
-            sessionStorage.ENEMY_DMG_M3 = json.magicDmg3;
-            sessionStorage.ENEMY_PR = json.physical_resistance;
-            sessionStorage.ENEMY_MR = json.magical_resistance;
-            // BASIC
-            sessionStorage.ENEMY_WIDTH = json.width;
-            sessionStorage.ENEMY_HEIGHT = json.height;
-            sessionStorage.ENEMY_IDLE_TOP = json.top;
-            sessionStorage.ENEMY_IDLE_SIDE = json.side;
-            sessionStorage.ENEMY_ENTRY_WIDTH = json.entryWidth;
-            sessionStorage.ENEMY_ENTRY_HEIGHT = json.entryHeight;
-            sessionStorage.ENEMY_ENTRY_TOP = json.entryTop;
-            sessionStorage.ENEMY_ENTRY_SIDE = json.entrySide;
-            sessionStorage.ENEMY_DEFEND_WIDTH = json.defendWidth;
-            sessionStorage.ENEMY_DEFEND_HEIGHT = json.defendHeight;
-            sessionStorage.ENEMY_DEFEND_TOP = json.defendTop;
-            sessionStorage.ENEMY_DEFEND_SIDE = json.defendSide;
-            sessionStorage.ENEMY_LOSE_WIDTH = json.loseWidth;
-            sessionStorage.ENEMY_LOSE_HEIGHT = json.loseHeight;
-            sessionStorage.ENEMY_LOSE_TOP = json.loseTop;
-            sessionStorage.ENEMY_LOSE_SIDE = json.loseSide;
-            // ADVANCED
-            sessionStorage.ENEMY_ATK_SPEED = json.atkSpeed;
-            sessionStorage.ENEMY_ATK_WIDTH = json.atkWidth;
-            sessionStorage.ENEMY_ATK_HEIGHT = json.atkHeight;
-            sessionStorage.ENEMY_SP1_SPEED = json.sp1Speed;
-            sessionStorage.ENEMY_SP1_WIDTH = json.sp1Width;
-            sessionStorage.ENEMY_SP1_HEIGHT = json.sp1Height;
-            sessionStorage.ENEMY_SP2_SPEED = json.sp2Speed;
-            sessionStorage.ENEMY_SP2_WIDTH = json.sp2Width;
-            sessionStorage.ENEMY_SP2_HEIGHT = json.sp2Height;
-            sessionStorage.ENEMY_SP3_SPEED = json.sp3Speed;
-            sessionStorage.ENEMY_SP3_WIDTH = json.sp3Width;
-            sessionStorage.ENEMY_SP3_HEIGHT = json.sp3Height;
-            sessionStorage.ENEMY_ATK_TOP = json.atkTop;
-            sessionStorage.ENEMY_ATK_SIDE = json.atkSide;
-            sessionStorage.ENEMY_SP1_TOP = json.sp1Top;
-            sessionStorage.ENEMY_SP1_SIDE = json.sp1Side;
-            sessionStorage.ENEMY_SP2_TOP = json.sp2Top;
-            sessionStorage.ENEMY_SP2_SIDE = json.sp2Side;
-            sessionStorage.ENEMY_SP3_TOP = json.sp3Top;
-            sessionStorage.ENEMY_SP3_SIDE = json.sp3Side;
+            sessionStorage.ENEMY_CHAR = JSON.stringify(json);
             window.location = "battle.html";
           }
-
-          // setTimeout(function () {
-          //   window.location = "./dashboard/cards.html";
-          // }, 1000); // apenas para exibir o loading
         });
       } else {
         console.log("Houve um erro ao tentar realizar o login!");
@@ -470,18 +370,18 @@ function battleStorage(idChar, charSelected) {
 }
 
 function randomizeSet() {
-  var idChar = Math.floor(Math.random() * randomizeLength);
+  var idChar = Math.floor(Math.random() * randomizeLength) + 1;
   if (div_stages.style.display == "flex") {
-    setCard("stage", idChar + 1, saveCard);
+    setCard("stage", idChar, saveCard);
   } else {
-    idChar = Math.floor(Math.random() * randomizeLength);
+    idChar = Math.floor(Math.random() * randomizeLength) + 1;
     setCard("character", idChar, saveCard);
   }
 }
 
 var saveCard = 0;
 function randomizePreview(status) {
-  var idChar = Math.floor(Math.random() * randomizeLength);
+  var idChar = Math.floor(Math.random() * randomizeLength) + 1;
   if (div_stages.style.display == "flex") {
     if (status == "enter") {
       hoverCard(status, "stage", stagesArray[idChar], stageName[idChar]);

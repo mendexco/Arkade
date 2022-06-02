@@ -6,7 +6,7 @@ idPlayer INT PRIMARY KEY AUTO_INCREMENT,
 namePlayer VARCHAR(30),
 emailPlayer VARCHAR(60),
 password VARCHAR(30),
-arkScore INT,
+arkScore INT DEFAULT 0,
 register TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -121,8 +121,9 @@ SELECT * FROM Characters
 INSERT INTO Player VALUES
 (NULL, 'Vitor', 'vitormendesco@gmail.com', '123456', 0, DEFAULT),
 (NULL, 'Vinicius', 'viniciuscosta@outlook.com', '123456', 0, DEFAULT);
+SELECT * FROM Player;
+-- UPDATE Player SET column = '' WHERE idPlayer = X;
 
-update Characters set magicName2 = 'YOGA SUNBURST' where idChar = 7;
 -- CHARACTERS INSERTS
 INSERT INTO Characters VALUES
 (NULL, 'Ryu', 1800, 100, 12, 'SHORYUKEN', 20, 'TATSUMAKI', 30, 'HADOKEN EX', 45, 35, 30, 1, 1),
@@ -135,6 +136,8 @@ INSERT INTO Characters VALUES
 (NULL, 'M.Bison', 5600, 135, 18, 'PSYCHO BLAST', 21, 'DEVIL REVERSE', 31, 'PSYCHO CRUSHER ULTIMATE', 54, 42, 38, 8, 8),
 (NULL, 'Guile', 2800, 112, 16, 'SONIC BOOM EX', 17, 'SOMERSAULT KICK', 28, 'SONIC TEMPEST', 39, 28, 24, 9, 9),
 (NULL, 'Vega', 3500, 90, 13, 'FLYING BARCELONA', 21, 'CRIMSON TERROR', 30, 'BLOODY RAIN', 44, 17, 17, 10, 10);
+SELECT * FROM Characters;
+-- UPDATE Characters SET column = '' WHERE idChar = X;
 
 -- BASIC METRICS INSERTS
 INSERT INTO BasicMetrics VALUES
@@ -148,6 +151,8 @@ INSERT INTO BasicMetrics VALUES
 (NULL, 27, 61, 31, 19, 28, 76, 14, 15, 35, 105, -10, 22, 43, 45, 51, 20),
 (NULL, 20, 60, 32, 27, 20, 61, 30, 26, 22, 74, 22, 33, 33, 62, 29, 21),
 (NULL, 22, 63, 28, 25, 24, 68, 25, 30, 18, 58, 35, 36, 38, 41, 58, 16);
+SELECT * FROM BasicMetrics;
+-- UPDATE BasicMetrics SET column = '' WHERE idBasic = X;
 
 -- ADVANCED METRICS INSERTS
 INSERT INTO AdvancedMetrics VALUES
@@ -161,10 +166,8 @@ INSERT INTO AdvancedMetrics VALUES
 (NULL, 1800, 65, 89, 4, 37, 1740, 54, 84, 8, 19, 7000, 78, 144, -42, 8, 5900, 100, 124, -24, 0),
 (NULL, 800, 38, 71, 20, 30, 700, 53, 58, 33, 18, 1820, 56, 113, -20, 16, 4280, 78, 64, 28, 9),
 (NULL, 1700, 57, 70, 24, 17, 2640, 70, 108, -15, 11, 2100, 43, 97, -3, 35, 2300, 58, 83, 17, 26);
-
-SELECT * FROM Characters 
-	JOIN BasicMetrics ON idBasic = fkBasic
-		JOIN AdvancedMetrics ON idAdvanced = fkAdvanced;
+SELECT * FROM AdvancedMetrics;
+-- UPDATE AdvancedMetrics SET column = '' WHERE idAdvanced = X;
 
 -- STAGES INSERTS
 INSERT INTO Stages VALUES
@@ -178,6 +181,8 @@ INSERT INTO Stages VALUES
 (NULL, 8, 'Shadaloo Fortress', 2500),
 (NULL, 9, 'Air Force Base', 2500),
 (NULL, 10, 'Flamenco Tavern', 2500);
+SELECT * FROM Stages;
+-- UPDATE Stages SET column = '' WHERE idStage = X;
 
 -- ITEMS INSERTS (MAIN)
 INSERT INTO Items VALUES
@@ -195,5 +200,5 @@ INSERT INTO Items VALUES
 INSERT INTO Items VALUES
 (NULL, 2, 1, NULL),
 (NULL, 2, NULL, 1);
-
-TRUNCATE ITEMS;
+SELECT * FROM Items;
+-- UPDATE Items SET column = '' WHERE idItem = X;

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/imgs/ark-logoRED.png" />
+    <link rel="stylesheet" href="css/main_style.css" />
+    <link rel="stylesheet" href="css/selection_style.css" />
+    <title>Character Select | ARKADE</title>
+  </head>
+
+  <body draggable="false">
+    <!-- LOADING SCREEN -->
+    <div id="div_loading" class="div-loading">
+      <img src="assets/loading_logo.gif" />
+    </div>
+    
+    <audio id="select_music" type="audio/mp3" autoplay></audio>
+    
+    <div id="back_stage"></div>
+
+    <div class="div-mid">
+      <div id="player_preview" class="div-preview">
+        <img id="img_player" class="img-preview" />
+      </div>
+      <div id="enemy_preview" class="div-preview" style="transform: scaleX(-1)">
+        <img id="img_enemy" class="img-preview" />
+      </div>
+    </div>
+
+    <!-- CHARACTERS SELECTION -->
+    <div class="div-bottom">
+      <!-- names -->
+      <div class="div-names">
+        <div id="player_name" class="char-name" style="text-align: end"></div>
+        <div
+          id="stage_name"
+          class="char-name"
+          style="width: 20%; text-align: center; margin-top: -2vh"
+        ></div>
+        <div id="enemy_name" class="char-name"></div>
+      </div>
+      <!-- stages -->
+      <div id="div_stages" class="div-selection">
+        <div id="stages_subgroup" class="group-selections left-group">
+          <button
+            id="stage_Chun-Li"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Chun-Li.gif)"
+          ></button>
+          <button
+            id="stage_Dhalsim"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Dhalsim.gif)"
+          ></button>
+          <button
+            id="stage_Ryu"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Ryu.gif)"
+          ></button>
+          <button
+            id="stage_Guile"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Guile.gif)"
+          ></button>
+          <button
+            id="stage_Ken"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/stages/stage_Ken.gif);
+              margin-right: -2vw;
+            "
+          ></button>
+        </div>
+        <div id="stages_subgroup" class="group-selections right-group">
+          <button
+            id="stage_Akuma"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/stages/stage_Akuma.gif);
+              margin-left: -2vw;
+            "
+          ></button>
+          <button
+            id="stage_Sagat"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Sagat.gif)"
+          ></button>
+          <button
+            id="stage_Balrog"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Balrog.gif)"
+          ></button>
+          <button
+            id="stage_M.Bison"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_M.Bison.gif)"
+          ></button>
+          <button
+            id="stage_Vega"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/stages/stage_Vega.gif)"
+          ></button>
+        </div>
+      </div>
+      <!-- characters -->
+      <div id="div_characters" class="div-selection">
+        <div id="left_group" class="group-selections left-group">
+          <button
+            id="btn_Chun-Li"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/chars/Chun-Li/PORTRAIT.png);
+            "
+          ></button>
+          <button
+            id="btn_Dhalsim"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/chars/Dhalsim/PORTRAIT.png);
+            "
+          ></button>
+          <button
+            id="btn_Ryu"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Ryu/PORTRAIT.png)"
+          ></button>
+          <button
+            id="btn_Guile"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Guile/PORTRAIT.png)"
+          ></button>
+          <button
+            id="btn_Ken"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/chars/Ken/PORTRAIT.png);
+              margin-right: -3.2vw;
+            "
+          ></button>
+        </div>
+        <div id="right_group" class="group-selections right-group">
+          <button
+            id="btn_Akuma"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Akuma/PORTRAIT.png)"
+          ></button>
+          <button
+            id="btn_Sagat"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Sagat/PORTRAIT.png)"
+          ></button>
+          <button
+            id="btn_Balrog"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Balrog/PORTRAIT.png)"
+          ></button>
+          <button
+            id="btn_M.Bison"
+            class="btn-char inate"
+            style="
+              background-image: url(assets/imgs/chars/M.Bison/PORTRAIT.png);
+              margin-left: -3.2vw;
+            "
+          ></button>
+          <button
+            id="btn_Vega"
+            class="btn-char inate"
+            style="background-image: url(assets/imgs/chars/Vega/PORTRAIT.png)"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <span
+      id="random_symbol"
+      onclick="randomizeSet()"
+      onfocus="randomizePreview('enter')"
+      onblur="randomizePreview('leave')"
+      onmouseenter="randomizePreview('enter')"
+      onmouseleave="randomizePreview('leave')"
+      >?</span
+    >
+    <div class="random-shape"></div>
+  </body>
+</html>
+
+<script src="js/globalSettings.js"></script>
+<script src="js/selectionScript.js"></script>

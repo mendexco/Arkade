@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/imgs/ark-logoRED.png" />
     <link rel="stylesheet" href="css/main_style.css" />
     <link rel="stylesheet" href="css/battle_style.css" />
-    <link rel="icon" href="assets/imgs/ark-logo1.png" />
     <title>FIGHT</title>
   </head>
-  <body>
+  <body class="body-battle">
     <!-- LOADING SCREEN -->
     <div id="div_loading" class="div-loading">
       <img src="assets/loading_logo.gif" />
@@ -68,17 +68,24 @@
           </div>
           <div class="div-under-hp">
             <!-- char name -->
-            <p id="name_player" class="name-char"></p>
-            <!-- round -->
-            <div class="div-rounds">
-              <img
+            <p id="name_player" class="name-char"></p>            
+            <!-- other bars -->
+            <div class="sub-bars">
+              <!-- defense broke bar -->
+              <div class="back-defense-bar" style="justify-content: flex-end;">
+                <div id="player_defenseBAR" class="front-defense-bar"></div>
+              </div>
+              <!-- round -->
+              <div class="div-rounds">
+                <img
                 src="assets/imgs/battle/roundBoxOFF.png"
                 id="player_roundBOX2"
-              />
-              <img
+                />
+                <img
                 src="assets/imgs/battle/roundBoxOFF.png"
                 id="player_roundBOX1"
-              />
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -105,16 +112,23 @@
           <div class="div-under-hp reverse-enemy">
             <!-- char name -->
             <p id="name_enemy" class="name-char"></p>
-            <!-- round -->
-            <div class="div-rounds">
-              <img
-                src="assets/imgs/battle/roundBoxOFF.png"
-                id="enemy_roundBOX1"
-              />
-              <img
+            <!-- other bars -->
+            <div class="sub-bars sub-reverse">
+              <!-- defense broke bar -->
+              <div class="back-defense-bar">
+                <div id="enemy_defenseBAR" class="front-defense-bar" style="justify-content: flex-start; background-image: linear-gradient(45deg, #ebd300ea, #eb9c0b);"></div>
+              </div>
+              <!-- round -->
+              <div class="div-rounds" style="flex-direction: row-reverse">
+                <img
                 src="assets/imgs/battle/roundBoxOFF.png"
                 id="enemy_roundBOX2"
-              />
+                />
+                <img
+                src="assets/imgs/battle/roundBoxOFF.png"
+                id="enemy_roundBOX1"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -125,6 +139,7 @@
     <!-- CHARACTERS -->
     <div class="div-chars">
       <div id="player_group" class="div-char-group" style="margin-right: 5vw">
+        <img src="assets/imgs/battle/turnArrow.png" id="player_arrow" class="turn-arrow">
         <!-- PLAYER MENU -->
         <div id="div_choices" class="div-choices">
           <div id="div_actions" class="div-choices actions">
@@ -163,10 +178,11 @@
           </div>
         </div>
         <!-- END OF PLAYER MENU -->
-        <div id="player_sprite" class="div-sprite"></div>
+        <img id="player_sprite" src="" class="div-sprite" draggable="false"></img>
       </div>
       <div id="enemy_group" class="div-char-group">
-        <div id="enemy_sprite" class="div-sprite"></div>
+        <img src="assets/imgs/battle/turnArrow.png" id="enemy_arrow" class="turn-arrow">
+        <img id="enemy_sprite" src="" class="div-sprite" draggable="false"></img>
       </div>
     </div>
     <!-- END OF CHARACTERS -->

@@ -1,11 +1,12 @@
 body {
   /* spacing */
   margin: 0;
-  /* others */
+  /* misc */
   overflow: hidden;
   display: flex;
   justify-content: center;
   background-color: black;
+  cursor: url(../assets/imgs/arrowDefault.png), default;
 }
 
 #back_stage {
@@ -18,7 +19,7 @@ body {
   position: fixed;
   z-index: -1;
   background-size: 100% 100%;
-  /* other */
+  /* misc */
   filter: blur(0vw) brightness(1);
   transition: 0.4s;
 }
@@ -47,7 +48,7 @@ body {
   height: 100vh;
   /* position */
   position: absolute;
-  /* other */
+  /* misc */
   user-select: none;
   image-rendering: pixelated;
   transition: 2s;
@@ -168,7 +169,7 @@ body {
   padding-right: 6vw;
 }
 .left-group button {
-  /* other */
+  /* misc */
   transform: skew(23deg);
 }
 .right-group {
@@ -177,7 +178,7 @@ body {
   padding-left: 6vw;
 }
 .right-group button {
-  /* other */
+  /* misc */
   transform: skew(-23deg) scaleX(-1);
 }
 .stage-char {
@@ -185,6 +186,7 @@ body {
   margin: 0.15vw;
   /* animation */
   transition: 0.3s;
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
 }
 .btn-char {
   /* size */
@@ -207,8 +209,8 @@ body {
   border-left: 0.2vw solid #ed145b;
   border-bottom: 0.2vw solid #ed145b;
   /* border: 0.2vw solid #ed145b; */
-  /* other */
-  cursor: pointer;
+  /* misc */
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
   transition: 0.2s;
 }
 .acquired:hover {
@@ -270,8 +272,8 @@ body {
   color: white;
   font-size: 4vw;
   font-family: Squids;
-  /* other */
-  cursor: pointer;
+  /* misc */
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
   /* animation */
   transition: 1s;
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <link rel="icon" href="assets/imgs/ark-logoRED.png" />
+    <link rel="stylesheet" href="css/main_style.css" />
+    <title>LOBBY</title>
+  </head>
+  <body class="body-ark body-lobby">
+    <!-- LOADING SCREEN -->
+    <div id="div_loading" class="div-loading">
+      <img src="assets/loading_logo.gif" />
+    </div>
+    <!-- SIDE MENU -->
+    <div id="side_menu" class="side-menu"></div>
+    <div id="container_sec" class="container-sec">
+      <!-- PLAY SECTION -->
+      <section id="sec_play">
+        <div id="card_arcade" class="card-lobby">ARCADE</div>
+        <div id="card_versus" class="card-lobby">VERSUS</div>
+      </section>
+      <!-- SHOP SECTION -->
+      <section id="sec_shop">
+        <!-- FIGHTERS -->
+        <div id="card_fighters" class="card-lobby">FIGHTERS</div>
+        <div id="market_fighters" class="market" style="display: flex">
+          <!-- SEARCH HEADER -->
+          <div class="market-header">
+            <input
+              type="text"
+              id="ipt_searchF"
+              class="ipt-search"
+              spellcheck="false"
+            />
+            <button
+              class="btn-search"
+              onclick="searchList('fighters')"
+            ></button>
+          </div>
+          <!-- ITEMS LIST -->
+          <div id="fighters_items" class="market-list">
+            <!-- INSERT CHARS ITEMS HERE -->
+          </div>
+        </div>
+        <!-- STAGES -->
+        <div id="card_stages" class="card-lobby">STAGES</div>
+        <div id="market_stages" class="market">
+          <div class="market-header">
+            <input
+              type="text"
+              id="ipt_searchS"
+              class="ipt-search"
+              spellcheck="false"
+            />
+            <button class="btn-search" onclick="searchList('stages')"></button>
+          </div>
+          <div id="stages_items" class="market-list">
+            <!-- INSERT STAGES ITEMS HERE -->
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- ITEMS DETAILS -->
+    <div class="back-front">
+      <div id="char_stats">
+        <div class="btn-close close-stats" onclick="showStats('hide')">X</div>
+        <div class="statsGraph">
+          <canvas id="radarStats"></canvas>
+        </div>
+        <div class="statText">
+          <div id="statTitle"></div>
+          <div id="statDesc">
+            Having premiered in the first Street Fighter in 1987, Ryu appears as
+            the game's lead character alongside his best friend Ken Masters. He
+            is the longest running fighting game character. Other games in the
+            series show Ryu to be highly focused on his training, aiming to
+            become the strongest he can.
+          </div>
+          <div id="statNumber"></div>
+          <button id="button_purchase" onclick="purchase()"></button>
+        </div>
+        <img id="statStage" />
+        <div id="statMask"></div>
+        <img id="statCharacter" src="" />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="js/globalSettings.js"></script>
+<script src="js/lobby.js"></script>

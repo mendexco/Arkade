@@ -1,25 +1,3 @@
-// color theme
-// insert theme icon here
-if (sessionStorage.theme == undefined) {
-    sessionStorage.theme == "dark";
-    link_themeID.href = "css/darkTheme.css"; 
-} else if (sessionStorage.theme == "light") {
-    link_themeID.href = "css/lightTheme.css";
-} else {
-    link_themeID.href = "css/darkTheme.css"; 
-}
-
-function changeTheme() {
-    if (sessionStorage.theme == "dark") {
-        sessionStorage.theme = "light";
-        link_themeID.href = "css/lightTheme.css";
-    } else {
-        sessionStorage.theme = "dark";
-        link_themeID.href = "css/darkTheme.css"; 
-    }
-}
-// END THEME
-
 // sessão
 function validarSessao() {
     // aguardar();
@@ -47,12 +25,6 @@ function limparSessao() {
     sessionStorage.clear();
     // finalizarAguardar();
     window.location = "../login.html";
-}
-
-// carregamento (loading)
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
 }
 
 function finalizarAguardar(texto) {

@@ -1,14 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=], initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button onclick="window.location = 'select_screen.html'" style="width: 100vw; height: 100vh;">
-        select
-    </button>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="icon" href="assets/imgs/ark-logoRED.png" />
+    <link rel="stylesheet" href="css/main_style.css" />
+    <title>ARKADE</title>
+  </head>
+  <body id="body_index" class="body-ark">
+    <!-- LOADING SCREEN -->
+    <div id="div_loading" class="div-loading">
+      <img src="assets/loading_logo.gif" />
+    </div>
+    <!-- HEADER -->
+    <header id="page_header" class="page-header">
+      <div class="container">
+        <ul>
+          <li>ABOUT</li>
+          <li>SOURCE</li>
+          <li onclick="ab()" id="ipt_aaa">RANKING</li>
+        </ul>
+        <li id="li_login" onclick="hiddenCard('open')">LOGIN</li>
+      </div>
+    </header>
+
+    <!-- BANNER -->
+    <div class="banner">
+      <!-- PRESENTATION -->
+      <section class="section sec1">
+        <div class="div-title">
+          <video
+            id="video_title"
+            src="assets/videos/menu_video.mp4"
+            loop
+            muted
+            preload
+          ></video>
+          <h1 id="text_title" class="video-text">ARKADE</h1>
+        </div>
+        <img
+          id="img_arrow"
+          class="img-arrow"
+          src="assets/imgs/pages/home/sec1Arrow.png"
+          onclick="nextSection('sec2')"
+          alt="banner arrow"
+        />
+      </section>
+      <!-- INFO SECTION 1 -->
+      <section id="sec2" class="section sec-default1 sec2">
+        <div class="container">
+          <div class="text-group">
+            <h1>rEvivE thE strEEt</h1>
+            <p>
+              <b>ARKADE</b> is a fan-made <b>Street Fighter</b> turn-based game,
+              focused on strategy and odds, offering a modern and nostalgic
+              experience for fighting game lovers, mixing old school visuals
+              with newest <b>SFV</b> soundtrack
+            </p>
+          </div>
+          <img
+            src="assets/imgs/pages/home/ryu.png"
+            class="img_secdefault1"
+            id="img_sec1"
+            alt="Ryu Image"
+          />
+        </div>
+      </section>
+      <!-- INFO SECTION 2 -->
+      <section id="sec3" class="section sec-default1 sec3">
+        <div class="container">
+          <div class="text-group">
+            <h1>bE thE fightEr</h1>
+            <p>
+              Enter <b>classic</b> sceneries and battle until triumph or
+              disaster. Play with classic characters of the
+              <b>Street Fighter</b> series, each one with classic and unique
+              <b>powers</b>
+            </p>
+          </div>
+          <img
+            src="assets/imgs/pages/home/chunli.png"
+            class="img_secdefault1"
+            id="img_sec2"
+            alt="Chun-Li Image"
+          />
+        </div>
+      </section>
+      <!-- FOOTER -->
+      <footer id="page_footer" class="page-footer">
+        <section class="section sec-default1">
+          <div class="container"></div>
+        </section>
+      </footer>
+    </div>
+    <!-- HIDDEN -->
+    <div id="card_group" class="background-card">
+      <div class="hidden-card">
+        <div class="btn-close" onclick="hiddenCard('close')">X</div>
+        <!-- LOGIN -->
+        <div class="div-card div-login">
+          <div class="card-header">
+            <img
+              id="img_load_login"
+              src="assets/imgs/ark-logoWHITE.png"
+              alt="Arkade Logo"
+              draggable="false"
+            />
+            <p>Log into your Arkade account</p>
+          </div>
+          <form id="form_login" class="form">
+            <div class="div-inputs login-inputs">
+              <label id="lbl_email_login" for="ipt_email_login"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                spellcheck="false"
+                id="ipt_email_login"
+                onkeyup="buttonStatus('login')"
+                onfocus="animateLabel('lbl_email_login', 'ipt_email_login', 'focus')"
+                onblur="animateLabel('lbl_email_login', 'ipt_email_login', 'blur')"
+                tabindex="1"
+              />
+              <label id="lbl_password_login" for="ipt_password_login"
+                >Password</label
+              >
+              <input
+                type="password"
+                spellcheck="false"
+                id="ipt_password_login"
+                onkeyup="buttonStatus('login')"
+                onfocus="animateLabel('lbl_password_login', 'ipt_password_login', 'focus')"
+                onblur="animateLabel('lbl_password_login', 'ipt_password_login', 'blur')"
+                tabindex="2"
+              />
+              <button
+                id="check_password_login"
+                class="check-password check-login"
+                onclick="passwordVisible('ipt_password_login', 'check_password_login')"
+                type="button"
+                tabindex="3"
+              ></button>
+            </div>
+          </form>
+          <div class="card-footer">
+            <button
+              id="btn_login"
+              onclick="login()"
+              class="btn-ark"
+              type="button"
+              disabled
+              tabindex="4"
+            >
+              FIGHT
+            </button>
+            <p>
+              Don't have an Arkade account?
+              <u onclick="changeCard('signup')" tabindex="5">Register</u>
+            </p>
+          </div>
+        </div>
+        <!-- SIGNUP -->
+        <div class="div-card div-signup">
+          <div class="card-header">
+            <img
+              id="img_load_signup"
+              src="assets/imgs/ark-logoWHITE.png"
+              alt="Arkade Logo"
+              draggable="false"
+            />
+            <p>Sign up at Arkade</p>
+          </div>
+          <form id="form_signup" class="form">
+            <div class="div-inputs signup-inputs">
+              <label id="lbl_username_signup" for="ipt_username_signup"
+                >Username</label
+              >
+              <input
+                type="text"
+                spellcheck="false"
+                id="ipt_username_signup"
+                onkeyup="buttonStatus('signup')"
+                onfocus="animateLabel('lbl_username_signup', 'ipt_username_signup', 'focus')"
+                onblur="animateLabel('lbl_username_signup', 'ipt_username_signup', 'blur')"
+                tabindex="1"
+              />
+              <label id="lbl_email_signup" for="ipt_email_signup"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                spellcheck="false"
+                id="ipt_email_signup"
+                onkeyup="buttonStatus('signup')"
+                onfocus="animateLabel('lbl_email_signup', 'ipt_email_signup', 'focus')"
+                onblur="animateLabel('lbl_email_signup', 'ipt_email_signup', 'blur')"
+                tabindex="2"
+              />
+              <label id="lbl_password_signup" for="ipt_password_signup"
+                >Password</label
+              >
+              <input
+                type="password"
+                spellcheck="false"
+                id="ipt_password_signup"
+                onkeyup="buttonStatus('signup')"
+                onfocus="animateLabel('lbl_password_signup', 'ipt_password_signup', 'focus')"
+                onblur="animateLabel('lbl_password_signup', 'ipt_password_signup', 'blur')"
+                tabindex="3"
+              />
+              <label id="lbl_confirm" for="ipt_confirm">Confirm Password</label>
+              <input
+                type="password"
+                spellcheck="false"
+                id="ipt_confirm"
+                onkeyup="buttonStatus('signup')"
+                onfocus="animateLabel('lbl_confirm', 'ipt_confirm', 'focus')"
+                onblur="animateLabel('lbl_confirm', 'ipt_confirm', 'blur')"
+                tabindex="5"
+              />
+              <button
+                id="check_password_signup"
+                class="check-password check-signup"
+                onclick="passwordVisible('ipt_password_signup', 'check_password_signup')"
+                type="button"
+                tabindex="4"
+              ></button>
+            </div>
+          </form>
+          <div class="card-footer">
+            <button
+              id="btn_signup"
+              onclick="signup()"
+              class="btn-ark"
+              type="button"
+              disabled
+              tabindex="6"
+            >
+              SIGN UP
+            </button>
+            <p>
+              Already have an Arkade account?
+              <u onclick="changeCard('login')" tabindex="7">Log in</u>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+
+<script src="js/globalSettings.js"></script>
+<script src="js/index.js"></script>

@@ -32,13 +32,16 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var idCharacter = req.body.idServer;
+    let email = req.body.emailServer;
+    let password = req.body.passwordServer;
 
-    if (idCharacter == undefined) {
-        res.status(400).send("idChar is undefined!");
+    if (email == undefined) {
+        res.status(400).send("Email is undefined!");
+    } else if (password == undefined) {
+        res.status(400).send("Password is undefined!");
     } else {
         
-        usuarioModel.entrar(idCharacter)
+        usuarioModel.entrar(email, password)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -65,28 +68,19 @@ function entrar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-    var cargo = req.body.cargoServer;
-    var fkEmpresa = req.body.empresaServer;
-    var fkAdmin = req.body.adminServer;
+    let name = req.body.nameServer;
+    let email = req.body.emailServer;
+    let password = req.body.passwordServer;
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+    if (name == undefined) {
+        res.status(400).send("Seu name está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (cargo == undefined) {
-        res.status(400).send("Seu cargo está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa está undefined!");
-    } else if (fkAdmin == undefined) {
-        res.status(400).send("Seu admin está undefined!");
+    } else if (password == undefined) {
+        res.status(400).send("Sua password está undefined!");
     } else {
         
-        usuarioModel.cadastrar(nome, email, senha, cargo, fkEmpresa, fkAdmin)
+        usuarioModel.cadastrar(name, email, password)
             .then(
                 function (resultado) {
                     res.json(resultado);

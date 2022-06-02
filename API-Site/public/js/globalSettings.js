@@ -5,17 +5,6 @@ window.onload = function (event) {
   }, 500);
 };
 
-window.addEventListener("resize", () => {
-  var pageZoom = Math.round(window.devicePixelRatio * 100);
-  // console.log(`PAGE ZOOM: ${pageZoom}`);
-  if (pageZoom > 100) {
-    pageZoom = 100 - (pageZoom - 100);
-  } else {
-    pageZoom = 100 + (100 - pageZoom);
-  }
-  sessionStorage.PAGE_ZOOM = pageZoom;
-});
-
 function loadingFade(fadeType, durationTime) {
   if (fadeType == "fade-in") {
     div_loading.animate([{ opacity: 0 }, { opacity: 1 }], {
@@ -48,4 +37,22 @@ function changeDisplay(id, seconds, displayType) {
       idElement.style.display = "none";
     }
   }, seconds);
+}
+
+// loading function
+function loadingIcon(idElement, status) {
+  let imgLogo = document.querySelector(`#${idElement}`);
+  if (status == "gif") {
+    imgLogo.src = "";
+    imgLogo.src = "./assets/loading_logo.gif";
+  } else {
+    imgLogo.src = "";
+    imgLogo.src = "./assets/imgs/ark-logoWHITE.png";
+  }
+}
+
+// clear sessionStorage
+function clearSession() {
+  console.log("Cleaning session...");
+  sessionStorage.clear();
 }
