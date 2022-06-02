@@ -36,6 +36,8 @@ function sideMenu(status) {
   }
 }
 
+
+
 function charDetails(character) {
   let charNameVar = character;
   console.log("NAME CHARACTER: ", charNameVar);
@@ -124,4 +126,3 @@ function showStats(item, name, desc, life, attack, special, pr, mr, overall, pri
     char_stats.style.marginRight = "10vw";
   }
 }
-

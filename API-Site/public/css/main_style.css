@@ -731,10 +731,52 @@ p u:hover {
   /* flex */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   /* color */
   background-color: #ed145b90;
   /* misc */
   transition: all 0.5s;
+}
+.side-menu button {
+  /* size */
+  width: 100%;
+  height: 6vh;
+  /* color */
+  background-color: transparent;
+  border: 0;
+  /* misc */
+  transition: all .5s;
+}
+.side-menu button:hover {
+  background-color: #4f071e;
+}
+.side-header {
+  border: 0.1vh solid red;
+  /* size */
+  width: 100%;
+  height: 30%;
+}
+.side-body {
+  border: 0.1vh solid blue;
+  /* size */
+  width: 100%;
+  height: 30%;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.side-footer {
+  border: 0.1vh solid green;
+  /* size */
+  width: 100%;
+  height: 30%;
+}
+.side-hr {
+  /* size */
+  width: 90%;
 }
 /* SECTIONS */
 .container-sec {
@@ -753,34 +795,94 @@ p u:hover {
   transition: all 1s;
 }
 .card-lobby {
-  background-color: #fff;
-  display: none;
+  /* background-color: #fff; */
+  display: flex;
   /* size */
   width: 35vw;
   height: 40vh;
   /* font */
   font-family: Squids;
-  font-size: 2vh;
-  color: #ed145b;
+  font-size: 8vh;
+  color: #fff;
+  line-height: 5;
+  display: inline-grid;
+  text-align: center;
+  /* misc */
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
+  transition: all 0.5s;
+  border-radius: 0.4vh;
+}
+.card-lobby::before {
+  content: "";
+  background-size: 100% 100%;
+  /* size */
+  width: 35vw;
+  height: 40vh;
+  /* position */
+  position: absolute;
+  z-index: -2;
+  /* misc */
+  filter: grayscale(1);
+  transition: all 0.5s;
+  border-radius: 0.4vh;
+}
+.card-lobby::after {
+  content: "";
+  background-size: 100% 100%;
+  background-color: #ed145b;
+  mix-blend-mode: multiply;
+  /* size */
+  width: 35vw;
+  height: 40vh;
+  /* position */
+  position: absolute;
+  z-index: -1;
+  /* misc */
+  transition: all 0.5s;
+  border-radius: 0.4vh;
+}
+.clArcade::before {
+  background-image: url(../assets/imgs/pages/lobby/Arcade.png);
+}
+.clVersus::before {
+  background-position-x: center;
+  background-position-y: bottom;
+  background-size: cover;
+  background-image: url(../assets/imgs/pages/lobby/Versus.png);
+}
+.clCharacters::before {
+  background-image: url(../assets/imgs/pages/lobby/Characters.png);
+}
+.clStages::before {
+  background-position-x: right;
+  background-size: cover;
+  background-image: url(../assets/imgs/pages/lobby/Stages.png);
+}
+.card-lobby:hover::before {
+  /* size */
+  width: 36vw;
+  height: 42vh;
+  /* misc */
+  filter: grayscale(1) brightness(0.6);
+}
+.card-lobby:hover {
+  /* size */
+  width: 36vw;
+  height: 42vh;
+  /* font */
+  font-size: 11vh;
+  text-shadow: 0 0 1.4vh #fff;
+  line-height: 3.8;
+  /* color */
+  box-shadow: 0.2vw 0.4vh 1vh #ed145b;
+}
+.card-lobby:hover::after {
+  /* size */
+  width: 36vw;
+  height: 42vh;
 }
 /* section play */
 #sec_play {
-  /* border: 0.3vh solid red; */
-  /* size */
-  width: 100%;
-  height: 100%;
-  /* flex */
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-#card_arcade {
-}
-#card_versus {
-}
-/* section shop */
-#sec_shop {
   /* border: 0.3vh solid red; */
   /* size */
   width: 100%;
@@ -791,9 +893,33 @@ p u:hover {
   align-items: center;
   justify-content: space-around;
 }
+#card_arcade {
+  margin-left: 10vh;
+  align-self: flex-start;
+}
+#card_versus {
+  margin-right: 10vh;
+  align-self: flex-end;
+}
+/* section shop */
+#sec_shop {
+  /* border: 0.3vh solid red; */
+  /* size */
+  width: 100%;
+  height: 100%;
+  /* flex */
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
 #card_fighters {
+  margin-right: 7vh;
+  align-self: flex-end;
 }
 #card_stages {
+  margin-left: 7vw;
+  align-self: flex-start;
 }
 .market {
   /* border: 0.3vh solid green; */
@@ -1097,7 +1223,7 @@ p u:hover {
   height: 28%;
   /* font */
   font-size: 2vh;
-  color: #FFF;
+  color: #fff;
 }
 .statGroup h4 {
   font-weight: 1000;
