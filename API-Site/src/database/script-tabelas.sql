@@ -10,7 +10,7 @@ CREATE TABLE Player (
 idPlayer INT PRIMARY KEY AUTO_INCREMENT,
 namePlayer VARCHAR(30),
 emailPlayer VARCHAR(60),
-password VARCHAR(30),
+password VARBINARY(150),
 arkScore INT DEFAULT 0,
 register TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -99,6 +99,7 @@ FOREIGN KEY (fkStage) REFERENCES Stages(idStage),
 PRIMARY KEY (idItem, fkPlayer)
 );
 
+-- SELECTS
 -- INDIVIDUAL SELECTS
 SELECT * FROM Player;
 SELECT * FROM Characters;
@@ -123,10 +124,11 @@ SELECT * FROM Characters
 		JOIN AdvancedMetrics ON idAdvanced = fkAdvanced
 			WHERE idChar = 1;
 
+-- INSERTS
 -- PLAYER INSERTS
 INSERT INTO Player VALUES
-(NULL, 'Vitor', 'vitormendesco@gmail.com', '123456', 0, DEFAULT),
-(NULL, 'Vinicius', 'viniciuscosta@outlook.com', '123456', 0, DEFAULT);
+(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 0, DEFAULT),
+(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), 0, DEFAULT);
 SELECT * FROM Player;
 -- UPDATE Player SET column = '' WHERE idPlayer = X;
 

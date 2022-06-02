@@ -874,6 +874,10 @@ p u:hover {
   display: flex;
   flex-flow: row wrap;
   overflow-y: auto;
+  /* border */
+  border-bottom: 1vh solid #212121;
+  border-bottom-left-radius: 1vh;
+  border-bottom-right-radius: 1vh;
 }
 .market-list::-webkit-scrollbar {
   width: 0.9vw;
@@ -970,12 +974,13 @@ p u:hover {
 #button_purchase img {
   height: 4vh;
   margin-right: 1vh;
+  transition: 1s;
 }
 #button_purchase:hover {
   background-color: #ed145b;
 }
 #button_purchase:hover img {
-  filter: drop-shadow(0 0 1vh #ffc843);
+  filter: drop-shadow(0 0 3vh #ffc843);
 }
 #statStage {
   /* size */
@@ -1095,6 +1100,7 @@ p u:hover {
   color: #FFF;
 }
 .statGroup h4 {
+  font-weight: 1000;
   color: #ed145b;
-  font-weight: 1000 ;
+  text-shadow: 0 0 1vh #ed145b;
 }

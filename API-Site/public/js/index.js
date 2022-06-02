@@ -74,11 +74,6 @@ window.addEventListener("scroll", () => {
   } else {
     headerVar.classList.remove("header-scroll");
   }
-
-  // let value = window.scrollY;
-  // headerVar.style.boxShadow = `0vw -0.3vw ${value * 0.002}vw #ed145b`;
-  // img_sec1.style.margin = `${value * 0.05}px`;
-  // img_sec2.style.margin = `${value * 0.05}px`;
 });
 
 //------------------------------------------------------------------------------------------------
@@ -147,7 +142,7 @@ function formReset() {
   ];
   for (let i = 0; i < arrayInputs.length; i++) {
     let inputIndex = arrayInputs[i];
-    console.log(inputIndex);
+    // console.log(inputIndex);
     let inputVar = document.querySelector(`#${inputIndex}`);
     inputVar.value = null;
     inputVar.focus();
