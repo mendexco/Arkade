@@ -103,16 +103,16 @@ function showStats(item, name, desc, life, attack, special, pr, mr, overall, pri
     char_stats.style.marginTop = "0vh";
     char_stats.style.marginRight = "0vw";
     statTitle.innerHTML = `${name}`;
-    statDesc.innerHTML = `${desc}`;
-    statNumber.innerHTML = `
-    Special: ${special} - Attack: ${attack}<br />
-    Physical Resist: ${pr} - Magical Resist: ${mr}<br />
-    Life: ${life} - Overall: ${overall}
-    `;
+    // statDesc.innerHTML = `${desc}`;
+    h_attack.innerHTML = `${attack}`;
+    h_special.innerHTML = `${special}`;
+    h_pr.innerHTML = `${pr}`;
+    h_mr.innerHTML = `${mr}`;
+    h_life.innerHTML = `${life}`;
+    h_overall.innerHTML = `${overall}`;
     button_purchase.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
     statStage.src = `assets/imgs/stages/stage_${name}.gif`;
     statCharacter.src = `assets/imgs/chars/${name}/SplashFULL.png`;
-    plotGraph();
   } else if (item == "stage") {
     stage_stats.style.opacity = "1";
     stage_stats.style.marginTop = "0vh";
@@ -125,152 +125,3 @@ function showStats(item, name, desc, life, attack, special, pr, mr, overall, pri
   }
 }
 
-function plotGraph() {
-  // GRÁFICO DE BARRA
-  const stats = ["life", "attack", "special"];
-
-  let dataBars = [100, 12, 28];
-
-  const dataBAR = {
-    labels: stats,
-    datasets: [
-      {
-        // MEDIDAS DO SENSOR
-        data: dataBars,
-        // label: 'MÉDIA',
-        backgroundColor: "#ed145b50",
-        borderColor: "#ed145b",
-        borderWidth: 4,
-        pointBorderWidth: 8,
-        pointHoverBorderWidth: 10,
-      },
-    ],
-  };
-
-  let delayed;
-  // const settingsRADAR = {
-  // maintainAspectRatio: false,
-  // responsive: true,
-
-  //   // ANIMAÇÃO (RETIRAR)
-  //   animation: {
-  //     onComplete: () => {
-  //       delayed = true;
-  //     },
-  //     delay: (context) => {
-  //       let delay = 0;
-  //       if (context.type === "data" && context.mode === "default" && !delayed) {
-  //         delay = context.dataIndex * 200 + context.datasetIndex * 100;
-  //       }
-  //       return delay;
-  //     },
-  //   },
-  //   // PARTE SUPERIOR
-  //   plugins: {
-  //     // TÍTULO NO GRÁFICO
-  //     title: {
-  //       display: true,
-  //       padding: 10,
-  //       text: "| SEMANAL |",
-  //       color: "#5E2D92",
-  //       font: {
-  //         size: 15,
-  //         family: "Quicksand_Bold",
-  //       },
-  //     },
-  //     // LEGENDA DOS DATASETS
-  //     legend: {
-  //       display: true,
-  //       labels: {
-  //         boxHeight: 4,
-  //         boxWidth: 25,
-  //         color: "#5E2D92",
-  //         font: {
-  //           size: 15,
-  //           family: "Quicksand_Bold",
-  //         },
-  //       },
-  //     },
-  //     // TOOLTIP
-  //     tooltip: {
-  //       enabled: true,
-  //       displayColors: false,
-  //       backgroundColor: "rgba(67, 27, 109, 0.9)",
-  //       caretSize: 12,
-  //       caretPadding: 15,
-  //       padding: 20,
-  //       cornerRadius: 20,
-  //       titleAlign: "center",
-  //       titleColor: "#e2c6ff",
-  //       titleFont: {
-  //         size: 15,
-  //         family: "Quicksand_Book",
-  //         style: "italic",
-  //       },
-  //       titleMarginBottom: 10,
-  //       bodyAlign: "center",
-  //       bodyColor: "white",
-  //       bodyFont: {
-  //         size: 15,
-  //         family: "Quicksand_Bold",
-  //       },
-  //     },
-  //     // SCALES
-  //     scales: {
-  //       display: true,
-  //       gridLines: {
-  //         color: "red",
-  //       },
-  //       angleLines: {
-  //         color: "red",
-  //       },
-  //     },
-  //   },
-  // };
-
-  const settingsRADAR = {
-    maintainAspectRatio: false,
-    responsive: true,
-    animation: {
-      duration: 2000,
-    },
-    // HEADER
-    plugins: {
-      // TÍTULO NO GRÁFICO
-      title: {
-        display: false,
-      },
-      // LEGENDA DOS DATASETS
-      legend: {
-        display: false,
-      },
-    },
-    // TOOLTIP
-    tooltip: {
-      enabled: false,
-    },
-    // LINES
-    scales: {
-      display: true,
-      r: {
-        angleLines: {
-          color: "#920d39",
-        },
-        grid: {
-          color: "#920d39",
-        },
-      },
-    },
-  };
-
-  const configRADAR = {
-    type: "radar",
-    data: dataBAR,
-    options: settingsRADAR,
-  };
-
-  let ChartRADAR = new Chart(
-    document.getElementById("radarStats"),
-    configRADAR
-  );
-}

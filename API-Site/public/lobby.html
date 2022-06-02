@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
     <link rel="icon" href="assets/imgs/ark-logoRED.png" />
     <link rel="stylesheet" href="css/main_style.css" />
     <title>LOBBY</title>
@@ -68,9 +67,6 @@
     <div class="back-front">
       <div id="char_stats">
         <div class="btn-close close-stats" onclick="showStats('hide')">X</div>
-        <div class="statsGraph">
-          <canvas id="radarStats"></canvas>
-        </div>
         <div class="statText">
           <div id="statTitle"></div>
           <div id="statDesc">
@@ -80,7 +76,32 @@
             series show Ryu to be highly focused on his training, aiming to
             become the strongest he can.
           </div>
-          <div id="statNumber"></div>
+          <div id="statPack">
+            <div class="statGroup">
+              <h6>Attack</h6>
+              <h4 id="h_attack"></h4>
+            </div>
+            <div class="statGroup">
+              <h6>Special</h6>
+              <h4 id="h_special"></h4>
+            </div>
+            <div class="statGroup">
+              <h6>Physical Res.</h6>
+              <h4 id="h_pr"></h4>
+            </div>
+            <div class="statGroup">
+              <h6>Magical Res.</h6>
+              <h4 id="h_mr"></h4>
+            </div>
+            <div class="statGroup">
+              <h6>Life</h6>
+              <h4 id="h_life"></h4>
+            </div>
+            <div class="statGroup">
+              <h6>Overall</h6>
+              <h4 id="h_overall"></h4>
+            </div>
+          </div>
           <button id="button_purchase" onclick="purchase()"></button>
         </div>
         <img id="statStage" />

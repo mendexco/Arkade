@@ -908,12 +908,15 @@ p u:hover {
 }
 .statText {
   /* border: 0.2vw solid red; */
+  background-color: #191919;
+  border-radius: 0.3vw;
   /* size */
   width: 32vw;
   height: 67vh;
   /* position */
   margin-left: 1vw;
   margin-top: 6vh;
+  padding: 2vh;
   /* flex */
   display: flex;
   flex-direction: column;
@@ -933,7 +936,7 @@ p u:hover {
 }
 #statDesc {
   /* size */
-  width: 100%;
+  width: 80%;
   height: fit-content;
   /* font */
   font-family: Banks;
@@ -978,7 +981,7 @@ p u:hover {
   /* size */
   width: 60vw;
   height: 80vh;
-  margin-left: -33vw;
+  margin-left: -35vw;
   /* misc */
   clip-path: polygon(66% 0, 100% 0%, 100% 100%, 43% 100%);
   filter: blur(0.1vh) grayscale(1);
@@ -995,11 +998,11 @@ p u:hover {
 }
 #statCharacter {
   /* size */
-  height: 38vw;
+  height: 80vh;
   /* position */
   position: absolute;
-  right: 21vw;
-  margin-top: 2.1vh;
+  right: 20vw;
+  bottom: 10vh;
   /* misc */
   filter: drop-shadow(0 0 0.5vh #ed145b);
 }
@@ -1072,30 +1075,26 @@ p u:hover {
   transition: 1s;
   box-shadow: 0 0 0.5vh #ed145b;
 }
-.statsGraph {
+#statPack {
+  /* border: 0.3vh solid red; */
   /* size */
-  width: 55%;
-  height: 85%;
-  padding: 2%;
-  /* flex */
-  display: none;
-  justify-content: space-around;
-  align-items: center;
-  /* border */
-  border-radius: 15px;
-  border-left: 10px solid;
-  border-bottom: 10px solid;
-  /* color */
-  background-color: #212121;
-  border-color: #f00;
-}
-#radarGraph {
-  /* size */
-  width: 40%;
-  height: 99%;
+  width: 80%;
+  height: 17vh;
   /* flex */
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+.statGroup {
+  /* size */
+  width: 34%;
+  height: 28%;
+  /* font */
+  font-size: 2vh;
+  color: #FFF;
+}
+.statGroup h4 {
+  color: #ed145b;
+  font-weight: 1000 ;
 }
