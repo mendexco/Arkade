@@ -57,7 +57,7 @@ function charDetails(character) {
         resposta.json().then((json) => {
           console.log(json);
           const nameConst = json.nameChar;
-          const descConst = "";
+          const descConst = json.charDesc;
           const lifeConst = json.life;
           const attackConst = json.attack;
           const specialConst = (
@@ -103,7 +103,7 @@ function showStats(item, name, desc, life, attack, special, pr, mr, overall, pri
     char_stats.style.marginTop = "0vh";
     char_stats.style.marginRight = "0vw";
     statTitle.innerHTML = `${name}`;
-    // statDesc.innerHTML = `${desc}`;
+    statDesc.innerHTML = `${desc}`;
     h_attack.innerHTML = `${attack}`;
     h_special.innerHTML = `${special}`;
     h_pr.innerHTML = `${pr}`;

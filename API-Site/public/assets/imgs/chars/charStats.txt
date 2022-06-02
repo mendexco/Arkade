@@ -50,6 +50,8 @@
 - sp3Top: 34
 - sp3Side: 26
 
+DESC: Ryu is usually a silent, serious individual whose severity is often juxtaposed against the light-hearted, fiery persona of his best friend, Ken. He travels the globe with a stern nature, often appearing to others as boring or detached. In rare occasions, Ryu shows a very bad sense of humor. Ryu's overarching goal in Street Fighter is to become a total master of his fighting style. To this end, Ryu plays the part of the wandering warrior, and takes both his travels and his training very seriously.
+
 ---------------- KEN ----------------
 - name: Ken
 - price: 1800
@@ -101,6 +103,8 @@
 - sp3Height: 127
 - sp3Top: -32
 - sp3Side: 32
+
+DESC: While Ryu is the serious, nice and stoic of the two, Ken is the complete opposite. He is flashy, unorthodox, and unpredictable. He can also be very egotistical and short tempered at times. But he is actually a good person who tries to help people with problems and very easy going. He never backs down from a fight no matter how difficult it is.
 
 ---------------- SAGAT ----------------
 - name: Sagat
@@ -154,265 +158,7 @@
 - sp3Top: -5
 - sp3Side: 21
 
----------------- AKUMA ----------------
-- name: Akuma
-- price: 5600
-- life: 75
-- attack: 18
-- magicName1: GOHADOKEN EX
-- magicDmg1: 24
-- magicName2: ASHURA SENKU
-- magicDmg2: 32
-- magicName3: KURETSUHA
-- magicDmg3: 55
-- physical_resistance: 11
-- magical_resistance: 4
-
-- width: 18
-- height: 57
-- top: 32
-- side: 25
-- entryWidth: 18
-- entryHeight: 61
-- entryTop: 28
-- entrySide: 26
-- defendWidth: 18
-- defendHeight: 57
-- defendTop: 32
-- defendSide: 31
-- loseWidth: 36
-- loseHeight: 58
-- loseTop: 33
-- loseSide: 17
-
-- atkSpeed: 1200
-- atkWidth: 36
-- atkHeight: 111
-- atkTop: -20
-- atkSide: 42
-- sp1Speed: 1350
-- sp1Width: 29
-- sp1Height: 94
-- sp1Top: -1
-- sp1Side: 23
-- sp2Speed: 1260
-- sp2Width: 66
-- sp2Height: 62
-- sp2Top: 28
-- sp2Side: 20
-- sp3Speed: 5390
-- sp3Width: 63
-- sp3Height: 167
-- sp3Top: -68
-- sp3Side: 19
-
----------------- BALROG ----------------
-- name: Balrog
-- price: 4700
-- life: 110
-- attack: 12
-- magicName1: SCREW SMASH
-- magicDmg1: 20
-- magicName2: BURST BUFFALO
-- magicDmg2: 30
-- magicName3: GIGATON BLOW
-- magicDmg3: 40
-- physical_resistance: 68
-- magical_resistance: 19
-
-- width: 20
-- height: 61
-- top: 29
-- side: 26
-- entryWidth: 24
-- entryHeight: 62
-- entryTop: 30
-- entrySide: 26
-- defendWidth: 22
-- defendHeight: 64
-- defendTop: 29
-- defendSide: 33
-- loseWidth: 41
-- loseHeight: 37
-- loseTop: 56
-- loseSide: 18
-
-- atkSpeed: 1480
-- atkWidth: 42
-- atkHeight: 60
-- atkTop: 30
-- atkSide: 28
-- sp1Speed: 1260
-- sp1Width: 67
-- sp1Height: 61
-- sp1Top: 31
-- sp1Side: 7
-- sp2Speed: 1450
-- sp2Width: 67
-- sp2Height: 61
-- sp2Top: 32
-- sp2Side: 13
-- sp3Speed: 7100
-- sp3Width: 80
-- sp3Height: 81 
-- sp3Top: 11
-- sp3Side: 8
-
----------------- CHUN-LI ----------------
-- name: Chun-Li
-- price: 4700
-- life: 130
-- attack: 10
-- magicName1: KIKOKEN
-- magicDmg1: 24
-- magicName2: HYAKURETSUKYAKU
-- magicDmg2: 31
-- magicName3: HOYOKUSEN
-- magicDmg3: 47
-- physical_resistance: 16
-- magical_resistance: 47
-
-- width: 18
-- height: 50
-- top: 41
-- side: 27
-- entryWidth: 23
-- entryHeight: 53
-- entryTop: 38
-- entrySide: 24
-- defendWidth: 18 
-- defendHeight: 50
-- defendTop: 41
-- defendSide: 32
-- loseWidth: 33
-- loseHeight: 49
-- loseTop: 42
-- loseSide: 18
-
-- atkSpeed: 2500
-- atkWidth: 34
-- atkHeight: 65
-- atkTop: 26
-- atkSide: 38
-- sp1Speed: 1070
-- sp1Width: 60
-- sp1Height: 56
-- sp1Top: 35
-- sp1Side: 19
-- sp2Speed: 3180
-- sp2Width: 88
-- sp2Height: 132
-- sp2Top: -33
-- sp2Side: 32
-- sp3Speed: 5160
-- sp3Width: 71
-- sp3Height: 117
-- sp3Top: -18
-- sp3Side: 24
-
----------------- DHALSIM ----------------
-- name: Dhalsim
-- price: 3500
-- life: 120
-- attack: 9
-- magicName1: YOGA FIRE
-- magicDmg1: 25
-- magicName2: YOGA FLAME
-- magicDmg2: 35
-- magicName3: YOGA SUNBURST
-- magicDmg3: 50
-- physical_resistance: 8
-- magical_resistance: 52
-
-- width: 20
-- height: 60
-- top: 31
-- side: 29
-- entryWidth: 17
-- entryHeight: 51
-- entryTop: 30
-- entrySide: 26
-- defendWidth: 21
-- defendHeight: 57
-- defendTop: 25
-- defendSide: 31
-- loseWidth: 30
-- loseHeight: 25
-- loseTop: 68
-- loseSide: 22
-
-- atkSpeed: 1700
-- atkWidth: 56
-- atkHeight: 66
-- atkTop: 25
-- atkSide: 26
-- sp1Speed: 1600
-- sp1Width: 56
-- sp1Height: 68
-- sp1Top: 26
-- sp1Side: 22
-- sp2Speed: 2160
-- sp2Width: 61
-- sp2Height: 68
-- sp2Top: 25
-- sp2Side: 15
-- sp3Speed: 6700
-- sp3Width: 47
-- sp3Height: 93
-- sp3Top: 2
-- sp3Side: 30
-
----------------- M.BISON ----------------
-- name: M.Bison
-- price: 5600
-- life: 135
-- attack: 18
-- magicName1: PSYCHO BLAST
-- magicDmg1: 21
-- magicName2: DEVIL REVERSE
-- magicDmg2: 31
-- magicName3: PSYCHO CRUSHER
-- magicDmg3: 54
-- physical_resistance: 42
-- magical_resistance: 38
-
-- width: 27
-- height: 61
-- top: 31
-- side: 19
-- entryWidth: 28
-- entryHeight: 76
-- entryTop: 14
-- entrySide: 15
-- defendWidth: 35
-- defendHeight: 105
-- defendTop: -10
-- defendSide: 22
-- loseWidth: 43
-- loseHeight: 45
-- loseTop: 51
-- loseSide: 20
-
-- atkSpeed: 1800
-- atkWidth: 65
-- atkHeight: 89
-- atkTop: 4
-- atkSide: 37
-- sp1Speed: 1740
-- sp1Width: 54
-- sp1Height: 84
-- sp1Top: 8
-- sp1Side: 19
-- sp2Speed: 7000
-- sp2Width: 78
-- sp2Height: 144
-- sp2Top: -42
-- sp2Side: 8
-- sp3Speed: 5900
-- sp3Width: 100
-- sp3Height: 124
-- sp3Top: -24
-- sp3Side: 0
+DESC: Sagat encompasses a stereotypical 'proud fighter' personality, since he is very powerful, prideful and strong-willed as well as hard working and dedicated in body and spirit to martial arts life. His uncommon physical appearance makes him menacing, hideous and downright unfriendly at first glance.
 
 ---------------- GUILE ----------------
 - name: Guile
@@ -466,6 +212,62 @@
 - sp3Top: 28
 - sp3Side: 9
 
+DESC: Guile is a tough man, both physically and mentally, who takes pride in family, and is a loving husband and father to his family. A stoic man at heart, Guile's calm and emotionless exterior actually hides intense feelings, especially his fury after Charlie's death. Although loyal to the Air Force and the United States, Guile is extremely persistent.
+
+---------------- DHALSIM ----------------
+- name: Dhalsim
+- price: 3500
+- life: 120
+- attack: 9
+- magicName1: YOGA FIRE
+- magicDmg1: 25
+- magicName2: YOGA FLAME
+- magicDmg2: 35
+- magicName3: YOGA SUNBURST
+- magicDmg3: 50
+- physical_resistance: 8
+- magical_resistance: 52
+
+- width: 20
+- height: 60
+- top: 31
+- side: 29
+- entryWidth: 17
+- entryHeight: 51
+- entryTop: 30
+- entrySide: 26
+- defendWidth: 21
+- defendHeight: 57
+- defendTop: 25
+- defendSide: 31
+- loseWidth: 30
+- loseHeight: 25
+- loseTop: 68
+- loseSide: 22
+
+- atkSpeed: 1700
+- atkWidth: 56
+- atkHeight: 66
+- atkTop: 25
+- atkSide: 26
+- sp1Speed: 1600
+- sp1Width: 56
+- sp1Height: 68
+- sp1Top: 26
+- sp1Side: 22
+- sp2Speed: 2160
+- sp2Width: 61
+- sp2Height: 68
+- sp2Top: 25
+- sp2Side: 15
+- sp3Speed: 6700
+- sp3Width: 47
+- sp3Height: 93
+- sp3Top: 2
+- sp3Side: 30
+
+DESC: Dhalsim is quite stoic, serious, self-disciplined, humble, and also very stern when needed. Being a pacifist, he will never hurt a person more than necessary, or kill an adversary, even the most evil ones such as M. Bison. His pacifistic beliefs also allow him to be a greatly loving father and husband towards his family.
+
 ---------------- VEGA ----------------
 - name: Vega
 - price: 3500
@@ -517,3 +319,221 @@
 - sp3Height: 83
 - sp3Top: 17
 - sp3Side: 26
+
+DESC: Vega is vain, overconfident, and highly convinced of his own abilities, almost to the point of megalomania. He is also incredibly sadistic and takes great pleasure in seeing the ugly murdered, and preferably mutilated.
+
+---------------- BALROG ----------------
+- name: Balrog
+- price: 4700
+- life: 110
+- attack: 12
+- magicName1: SCREW SMASH
+- magicDmg1: 20
+- magicName2: BURST BUFFALO
+- magicDmg2: 30
+- magicName3: GIGATON BLOW
+- magicDmg3: 40
+- physical_resistance: 68
+- magical_resistance: 19
+
+- width: 20
+- height: 61
+- top: 29
+- side: 26
+- entryWidth: 24
+- entryHeight: 62
+- entryTop: 30
+- entrySide: 26
+- defendWidth: 22
+- defendHeight: 64
+- defendTop: 29
+- defendSide: 33
+- loseWidth: 41
+- loseHeight: 37
+- loseTop: 56
+- loseSide: 18
+
+- atkSpeed: 1480
+- atkWidth: 42
+- atkHeight: 60
+- atkTop: 30
+- atkSide: 28
+- sp1Speed: 1260
+- sp1Width: 67
+- sp1Height: 61
+- sp1Top: 31
+- sp1Side: 7
+- sp2Speed: 1450
+- sp2Width: 67
+- sp2Height: 61
+- sp2Top: 32
+- sp2Side: 13
+- sp3Speed: 7100
+- sp3Width: 80
+- sp3Height: 81 
+- sp3Top: 11
+- sp3Side: 8
+
+DESC: Balrog is usually, hot-tempered, arrogant and sadistic. He is a belligerent pugilist who possesses an insatiable urge for money and a vicious, bullying mean streak, often refusing to take responsibility for his actions. Despite being a once great prize boxer, he intentionally cheated in his fights whenever he felt like it, and has even killed one of his opponents.
+
+---------------- CHUN-LI ----------------
+- name: Chun-Li
+- price: 4700
+- life: 130
+- attack: 10
+- magicName1: KIKOKEN
+- magicDmg1: 24
+- magicName2: HYAKURETSUKYAKU
+- magicDmg2: 31
+- magicName3: HOYOKUSEN
+- magicDmg3: 47
+- physical_resistance: 16
+- magical_resistance: 47
+
+- width: 18
+- height: 50
+- top: 41
+- side: 27
+- entryWidth: 23
+- entryHeight: 53
+- entryTop: 38
+- entrySide: 24
+- defendWidth: 18 
+- defendHeight: 50
+- defendTop: 41
+- defendSide: 32
+- loseWidth: 33
+- loseHeight: 49
+- loseTop: 42
+- loseSide: 18
+
+- atkSpeed: 2500
+- atkWidth: 34
+- atkHeight: 65
+- atkTop: 26
+- atkSide: 38
+- sp1Speed: 1070
+- sp1Width: 60
+- sp1Height: 56
+- sp1Top: 35
+- sp1Side: 19
+- sp2Speed: 3180
+- sp2Width: 88
+- sp2Height: 132
+- sp2Top: -33
+- sp2Side: 32
+- sp3Speed: 5160
+- sp3Width: 71
+- sp3Height: 117
+- sp3Top: -18
+- sp3Side: 24
+
+DESC: Chun-Li is a resourceful and dedicated officer of the law with a strong sense of justice that rivals that of her father, as she strongly believes in protecting the innocent and saving the lives of others. She is a highly disciplined, seasoned, and courageous woman, and is often the voice of reason. As an official of Interpol, she takes her work as a cop with pride (showing pride at what she does when she saves another), outside of her duty as a cop, she has an elegant, sweet, and feminine personality.
+
+---------------- AKUMA ----------------
+- name: Akuma
+- price: 5600
+- life: 75
+- attack: 18
+- magicName1: GOHADOKEN EX
+- magicDmg1: 24
+- magicName2: ASHURA SENKU
+- magicDmg2: 32
+- magicName3: KURETSUHA
+- magicDmg3: 55
+- physical_resistance: 11
+- magical_resistance: 4
+
+- width: 18
+- height: 57
+- top: 32
+- side: 25
+- entryWidth: 18
+- entryHeight: 61
+- entryTop: 28
+- entrySide: 26
+- defendWidth: 18
+- defendHeight: 57
+- defendTop: 32
+- defendSide: 31
+- loseWidth: 36
+- loseHeight: 58
+- loseTop: 33
+- loseSide: 17
+
+- atkSpeed: 1200
+- atkWidth: 36
+- atkHeight: 111
+- atkTop: -20
+- atkSide: 42
+- sp1Speed: 1350
+- sp1Width: 29
+- sp1Height: 94
+- sp1Top: -1
+- sp1Side: 23
+- sp2Speed: 1260
+- sp2Width: 66
+- sp2Height: 62
+- sp2Top: 28
+- sp2Side: 20
+- sp3Speed: 5390
+- sp3Width: 63
+- sp3Height: 167
+- sp3Top: -68
+- sp3Side: 19
+
+DESC: Akuma is a cold and extremely powerful warrior whose sole reason for being is to hone his fighting skills by battling and destroying strong foes. He rarely displays any sign of emotions or humanity, aside from occasional bursts of anger, and rarely smiles. He, however, will not engage in battle towards helpless people and in some cases may even defend them, either as a righteous calling or an afterthought of conquering major adversary. The only instance of humanity he has displayed after being drenched in the Satsui no Hado is with Kazumi Mishima, whom he respects, even in battle.
+
+---------------- M.BISON ----------------
+- name: M.Bison
+- price: 5600
+- life: 135
+- attack: 18
+- magicName1: PSYCHO BLAST
+- magicDmg1: 21
+- magicName2: DEVIL REVERSE
+- magicDmg2: 31
+- magicName3: PSYCHO CRUSHER
+- magicDmg3: 54
+- physical_resistance: 42
+- magical_resistance: 38
+
+- width: 27
+- height: 61
+- top: 31
+- side: 19
+- entryWidth: 28
+- entryHeight: 76
+- entryTop: 14
+- entrySide: 15
+- defendWidth: 35
+- defendHeight: 105
+- defendTop: -10
+- defendSide: 22
+- loseWidth: 43
+- loseHeight: 45
+- loseTop: 51
+- loseSide: 20
+
+- atkSpeed: 1800
+- atkWidth: 65
+- atkHeight: 89
+- atkTop: 4
+- atkSide: 37
+- sp1Speed: 1740
+- sp1Width: 54
+- sp1Height: 84
+- sp1Top: 8
+- sp1Side: 19
+- sp2Speed: 7000
+- sp2Width: 78
+- sp2Height: 144
+- sp2Top: -42
+- sp2Side: 8
+- sp3Speed: 5900
+- sp3Width: 100
+- sp3Height: 124
+- sp3Top: -24
+- sp3Side: 0
+
+DESC: Possessing a vast ego and a god complex, Bison is physically incapable of feeling empathy for others and even takes pleasure in watching people suffer at his hands, never feeling a shred of regret or remorse for the numerous atrocities that he has committed. In many ways, Bison's characterization is comparable to the clinical diagnosis of a real-life psychopath or sociopath. 
