@@ -43,15 +43,15 @@ function plotPortraits(plot, search) {
       if (plot == "fighter") {
         fighters_items.innerHTML += `
         <div onclick="searchDetails('${char}', 'fighter')" class="fighter-item">
-        <img src="assets/imgs/chars/${char}/SplashMIN.png">
-        <p>${char.toUpperCase()}</p>
+        <img class="fighter-img" src="assets/imgs/chars/${char}/SplashMIN.png">
+        <p class="fighter-p">${char.toUpperCase()}</p>
       </div>
       `;
       } else {
         stages_items.innerHTML += `
       <div onclick="searchDetails('${char}', 'stage')" class="stage-item">
-      <img src="assets/imgs/stages/stage_${char}.gif">
-      <p>${stagesArray[i].toUpperCase()}</p>
+      <img class="stage-img" src="assets/imgs/stages/stage_${char}.png">
+      <p class="stage-p">${stagesArray[i].toUpperCase()}</p>
       </div>
       `;
       }
@@ -175,7 +175,7 @@ function searchDetails(character, type) {
 
         resposta.json().then((json) => {
           console.log(json);
-          const nameConst = json.nameChar;
+          let nameConst = json.nameChar;
           const descConst = json.charDesc;
           const lifeConst = json.life;
           const attackConst = json.attack;
@@ -187,9 +187,13 @@ function searchDetails(character, type) {
           const mrConst = json.magical_resistance;
           const overallConst =
             lifeConst + attackConst + Number(specialConst) + prConst + mrConst;
-          const priceConst = json.priceChar;
+          let priceConst = json.priceChar;
+          if (type == "stage") {
+            nameConst = json.nameStage;
+            priceConst = json.priceStage;
+          }
           showStats(
-            "fighter",
+            type,
             nameConst,
             descConst,
             lifeConst,
@@ -230,6 +234,9 @@ function showStats(
   backFront.style.pointerEvents = "all";
   // statStage.src = ``;
   if (item == "fighter") {
+    char_stats.style.display = "flex";
+    stage_stats.style.opacity = "0";
+    stage_stats.style.display = "none";
     char_stats.style.opacity = "1";
     char_stats.style.marginTop = "0vh";
     char_stats.style.marginRight = "0vw";
@@ -245,6 +252,9 @@ function showStats(
     statStage.src = `assets/imgs/stages/stage_${name}.gif`;
     statCharacter.src = `assets/imgs/chars/${name}/SplashFULL.png`;
   } else if (item == "stage") {
+    stage_stats.style.display = "flex";
+    char_stats.style.opacity = "0";
+    char_stats.style.display = "none";
     stage_stats.style.opacity = "1";
     stage_stats.style.marginTop = "0vh";
     stage_stats.style.marginRight = "0vw";
@@ -253,5 +263,7 @@ function showStats(
     backFront.style.pointerEvents = "none";
     char_stats.style.marginTop = "10vh";
     char_stats.style.marginRight = "10vw";
+    stage_stats.style.marginTop = "10vh";
+    stage_stats.style.marginRight = "10vw";
   }
 }

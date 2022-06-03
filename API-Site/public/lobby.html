@@ -60,10 +60,6 @@
               spellcheck="false"
               onkeyup="plotPortraits('fighter')"
             />
-            <button
-              class="btn-search"
-              onclick="plotPortraits('fighter')"
-            ></button>
           </div>
           <!-- ITEMS LIST -->
           <div id="fighters_items" class="market-list">
@@ -87,10 +83,6 @@
               spellcheck="false"
               onkeyup="plotPortraits('stage')"
             />
-            <button
-              class="btn-search"
-              onclick="plotPortraits('stage')"
-            ></button>
           </div>
           <div id="stages_items" class="market-list">
             <!-- INSERT STAGES ITEMS HERE -->
@@ -136,6 +128,10 @@
         <img id="statStage" />
         <div id="statMask"></div>
         <img id="statCharacter" src="" />
+      </div>
+       <div id="stage_stats">
+        <div class="btn-close close-stats" onclick="showStats('hide')"></div>
+
       </div>
     </div>
   </body>

@@ -1217,21 +1217,26 @@ p u:hover {
   transition: 0.5s;
   user-select: none;
 }
-.fighter-item img:hover {
+.fighter-item:hover .fighter-img {
   /* size */
-  width: 71%;
-  height: 71%;
+  width: 73%;
+  height: 73%;
   border-top-right-radius: 0vh;
   /* color */
   background-color: #ed145b;
   box-shadow: 0 0 1vh #ed145b;
   filter: saturate(1);
 }
-.fighter-item p {
+.fighter-p {
   /* font */
   font-family: Squids;
   font-size: 2vw;
   user-select: none;
+  /* misc */
+  transition: all .4s;
+}
+.fighter-item:hover .fighter-p {
+  letter-spacing: .3vw;
 }
 #char_stats {
   /* size */
@@ -1241,7 +1246,7 @@ p u:hover {
   margin-top: 10vh;
   margin-right: 10vw;
   /* flex */
-  display: flex;
+  display: none;
   /* misc */
   background-color: #212121;
   opacity: 0;
@@ -1275,8 +1280,8 @@ p u:hover {
 /* stage's shop */
 .stage-item {
   /* size */
-  width: 17vw;
-  height: 35vh;
+  width: 36vw;
+  height: 34vh;
   /* spacing   */
   margin: 2vh;
   margin-left: 3.3vh;
@@ -1288,12 +1293,54 @@ p u:hover {
   justify-content: center;
   /* color */
   color: #cecece;
+  background-color: #191919;
   /* misc */
   border-radius: 0.8vh;
   transition: 1s;
 }
-.stage-item img {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
+.stage-item:hover {
+  background-color: #000000;
+}
+.stage-img {
+  /* size */
+  width: 80%;
+  height: 80%;
+  /* misc */
+  transition: all .4s;
+  filter: grayscale(0.8);
+  border-radius: 0.4vh;
+  background-size: 100% 100% !important;
+}
+.stage-item:hover .stage-img {
+  /* size */
+  width: 83%;
+  height: 83%;
+  /* misc */
+  filter: grayscale(0) drop-shadow(0 0 1vh #ed145b);
+}
+.stage-p {
+  /* font */
+  font-family: Squids;
+  font-size: 1.3vw;
+  user-select: none;
+  /* misc */
+  transition: all .4s;
+}
+.stage-item:hover .stage-p {
+  letter-spacing: .3vw;
+}
+#stage_stats {
+    /* size */
+    width: 60vw;
+    height: 80vh;
+    /* position */
+    margin-top: 10vh;
+    margin-right: 10vw;
+    /* flex */
+    display: none;
+    /* misc */
+    background-color: #212121;
+    opacity: 0;
+    transition: 1s;
+    box-shadow: 0 0 0.5vh #ed145b;
 }
