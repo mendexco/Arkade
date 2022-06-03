@@ -31,13 +31,25 @@
     <div id="container_sec" class="container-sec">
       <!-- PLAY SECTION -->
       <section id="sec_play">
-        <div id="card_arcade" class="card-lobby clArcade" onclick="lobbyOnClik('arcade')">ARCADE</div>
+        <div
+          id="card_arcade"
+          class="card-lobby clArcade"
+          onclick="lobbyOnClik('arcade')"
+        >
+          ARCADE
+        </div>
         <div id="card_versus" class="card-lobby clVersus">VERSUS</div>
       </section>
       <!-- SHOP SECTION -->
       <section id="sec_shop">
         <!-- FIGHTERS -->
-        <div id="card_fighters" class="card-lobby clFighters" onclick="lobbyOnClik('fighters')">FIGHTERS</div>
+        <div
+          id="card_fighters"
+          class="card-lobby clFighters"
+          onclick="plotPortraits('fighter'), lobbyOnClik('fighters')"
+        >
+          FIGHTERS
+        </div>
         <div id="market_fighters" class="market">
           <!-- SEARCH HEADER -->
           <div class="market-header">
@@ -46,10 +58,11 @@
               id="ipt_searchF"
               class="ipt-search"
               spellcheck="false"
+              onkeyup="plotPortraits('fighter')"
             />
             <button
               class="btn-search"
-              onclick="searchList('fighters')"
+              onclick="plotPortraits('fighter')"
             ></button>
           </div>
           <!-- ITEMS LIST -->
@@ -58,7 +71,13 @@
           </div>
         </div>
         <!-- STAGES -->
-        <div id="card_stages" class="card-lobby clStages" onclick="lobbyOnClik('stages')">STAGES</div>
+        <div
+          id="card_stages"
+          class="card-lobby clStages"
+          onclick="plotPortraits('stage'), lobbyOnClik('stages')"
+        >
+          STAGES
+        </div>
         <div id="market_stages" class="market">
           <div class="market-header">
             <input
@@ -66,14 +85,15 @@
               id="ipt_searchS"
               class="ipt-search"
               spellcheck="false"
+              onkeyup="plotPortraits('stage')"
             />
-            <button class="btn-search" onclick="searchList('stages')"></button>
+            <button
+              class="btn-search"
+              onclick="plotPortraits('stage')"
+            ></button>
           </div>
           <div id="stages_items" class="market-list">
             <!-- INSERT STAGES ITEMS HERE -->
-            <div class="">
-
-            </div>
           </div>
         </div>
       </section>

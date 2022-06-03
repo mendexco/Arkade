@@ -1,5 +1,6 @@
-fighters_items.addEventListener("load", plotPortraits());
-function plotPortraits() {
+// fighters_items.addEventListener("load", plotPortraits("fighter"));
+// stages_items.addEventListener("load", plotPortraits("stage"));
+function plotPortraits(plot, search) {
   const charsArray = [
     "Ryu",
     "Ken",
@@ -12,15 +13,49 @@ function plotPortraits() {
     "Akuma",
     "M.Bison",
   ];
+  const stagesArray = [
+    "Suzaku Castle",
+    "Battle Harbor",
+    "Ayutthaya Ruins",
+    "Air Force Base",
+    "Maharaja Palace",
+    "Flamenco Tavern",
+    "World Warrior",
+    "Taiping Road",
+    "Ruined Dojo",
+    "Shadaloo Fortress",
+  ];
   let char = "";
+  let searchArray;
+  if (plot == "fighter") {
+    search = ipt_searchF.value;
+    fighters_items.innerHTML = "";
+    searchArray = charsArray;
+  } else {
+    search = ipt_searchS.value;
+    stages_items.innerHTML = "";
+    searchArray = stagesArray;
+  }
+  console.log(searchArray);
   for (let i = 0; i < charsArray.length; i++) {
     char = charsArray[i];
-    fighters_items.innerHTML += `
-        <div onclick="charDetails('${char}')" class="fighter-item">
+    if (searchArray[i].toUpperCase().indexOf(search.toUpperCase()) != -1) {
+      if (plot == "fighter") {
+        fighters_items.innerHTML += `
+        <div onclick="searchDetails('${char}', 'fighter')" class="fighter-item">
         <img src="assets/imgs/chars/${char}/SplashMIN.png">
         <p>${char.toUpperCase()}</p>
       </div>
-        `;
+      `;
+      } else {
+        stages_items.innerHTML += `
+      <div onclick="searchDetails('${char}', 'stage')" class="stage-item">
+      <img src="assets/imgs/stages/stage_${char}.gif">
+      <p>${stagesArray[i].toUpperCase()}</p>
+      </div>
+      `;
+      }
+    }
   }
 }
 
@@ -46,13 +81,15 @@ function sideMenu(status) {
   }
 }
 
-sec_shop.style.opacity = 1;
-container_sec.addEventListener("load", changeSections("play"));
+sec_play.style.opacity = 1;
+container_sec.addEventListener("load", changeSections("shop"));
+// sec_shop.style.opacity = 1;
+// container_sec.addEventListener("load", changeSections("play"));
 function changeSections(section) {
   const cardsLobby = document.querySelectorAll(".card-lobby");
   for (let i = 0; i < cardsLobby.length; i++) {
     cardsLobby[i].style.display = "inline-grid";
-  } 
+  }
   if (section == "play" && sec_shop.style.opacity == 1) {
     market_fighters.style.display = "none";
     market_stages.style.display = "none";
@@ -99,6 +136,7 @@ function changeSections(section) {
   }
 }
 
+lobbyOnClik("stages");
 function lobbyOnClik(card) {
   const cardsLobby = document.querySelectorAll(".card-lobby");
   if (card == "arcade") {
@@ -111,13 +149,13 @@ function lobbyOnClik(card) {
     setTimeout(() => {
       for (let i = 0; i < cardsLobby.length; i++) {
         cardsLobby[i].style.display = "none";
-      } 
+      }
       market.style.display = "flex";
     }, 800);
   }
 }
 
-function charDetails(character) {
+function searchDetails(character, type) {
   let charNameVar = character;
   console.log("NAME CHARACTER: ", charNameVar);
 
