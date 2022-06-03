@@ -467,6 +467,10 @@ p b {
   color: #fff;
   /* misc */
   background-color: #212121;
+  background-image: url(../assets/imgs/close.png);
+  background-size: 40% 40%;
+  background-repeat: no-repeat;
+  background-position: center;
   border-top-right-radius: 0.7vh;
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
   transition: 0.2s;
@@ -738,27 +742,52 @@ p u:hover {
   /* misc */
   transition: all 0.5s;
 }
+.close-menu {
+  /* size */
+  width: 6vh;
+  /* font */
+  font-size: 2.5vh;
+  line-height: 2.4;
+  /* misc */
+  align-self: flex-end !important;
+  border-radius: 0;
+  background-color: transparent;
+  transition: .4s;
+}
+.close-menu:hover {
+  background-color: #4f071e; 
+}
 .side-menu button {
   /* size */
   width: 100%;
   height: 6vh;
+  /* font */
+  font-family: Banks;
+  font-size: 2vh;
+  font-weight: 1000;
+  color: #FFF;
   /* color */
   background-color: transparent;
   border: 0;
   /* misc */
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
+  outline: none;
   transition: all .5s;
 }
 .side-menu button:hover {
   background-color: #4f071e;
 }
+.side-menu button:active {
+  background-color: #350514;
+}
 .side-header {
-  border: 0.1vh solid red;
+  /* border: 0.1vh solid red; */
   /* size */
   width: 100%;
   height: 30%;
 }
 .side-body {
-  border: 0.1vh solid blue;
+  /* border: 0.1vh solid blue; */
   /* size */
   width: 100%;
   height: 30%;
@@ -769,14 +798,19 @@ p u:hover {
   align-items: center;
 }
 .side-footer {
-  border: 0.1vh solid green;
+  /* border: 0.1vh solid green; */
   /* size */
   width: 100%;
   height: 30%;
+  /* flex */
+  display: flex;
+  align-items: flex-end;
 }
 .side-hr {
   /* size */
   width: 90%;
+  border-radius: 0;
+  border: 0.1vh solid #be5376;
 }
 /* SECTIONS */
 .container-sec {
@@ -809,8 +843,9 @@ p u:hover {
   text-align: center;
   /* misc */
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
-  transition: all 0.5s;
+  transition: all 0.5s ease-out;
   border-radius: 0.4vh;
+  user-select: none;
 }
 .card-lobby::before {
   content: "";
@@ -850,7 +885,7 @@ p u:hover {
   background-size: cover;
   background-image: url(../assets/imgs/pages/lobby/Versus.png);
 }
-.clCharacters::before {
+.clFighters::before {
   background-image: url(../assets/imgs/pages/lobby/Characters.png);
 }
 .clStages::before {
@@ -888,17 +923,19 @@ p u:hover {
   width: 100%;
   height: 100%;
   /* flex */
-  display: flex;
+  /* display: none; */
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  /* misc */
+  transition: opacity .5s;
 }
 #card_arcade {
-  margin-left: 10vh;
+  margin-left: 30vh;
   align-self: flex-start;
 }
 #card_versus {
-  margin-right: 10vh;
+  margin-right: 30vh;
   align-self: flex-end;
 }
 /* section shop */
@@ -908,17 +945,20 @@ p u:hover {
   width: 100%;
   height: 100%;
   /* flex */
-  display: none;
+  /* display: none; */
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  /* misc */
+  opacity: 1;
+  transition: opacity .5s;  
 }
 #card_fighters {
-  margin-right: 7vh;
+  margin-right: 30vh;
   align-self: flex-end;
 }
 #card_stages {
-  margin-left: 7vw;
+  margin-left: 30vw;
   align-self: flex-start;
 }
 .market {
@@ -931,6 +971,8 @@ p u:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* misc */
+  transition: .5s;
 }
 .market-header {
   background-color: #141414;
@@ -1230,3 +1272,4 @@ p u:hover {
   color: #ed145b;
   text-shadow: 0 0 1vh #ed145b;
 }
+/* stage's shop */

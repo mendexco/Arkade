@@ -16,11 +16,12 @@
     </div>
     <!-- SIDE MENU -->
     <div id="side_menu" class="side-menu">
+      <div id="btn_closeMenu" class="btn-close close-menu"></div>
       <div class="side-header"></div>
       <hr class="side-hr" />
       <div class="side-body">
-        <button>PLAY</button>
-        <button>SHOP</button>
+        <button onclick="changeSections('play')">PLAY</button>
+        <button onclick="changeSections('shop')">SHOP</button>
       </div>
       <hr class="side-hr" />
       <div class="side-footer">
@@ -30,13 +31,13 @@
     <div id="container_sec" class="container-sec">
       <!-- PLAY SECTION -->
       <section id="sec_play">
-        <div id="card_arcade" class="card-lobby clArcade">ARCADE</div>
+        <div id="card_arcade" class="card-lobby clArcade" onclick="lobbyOnClik('arcade')">ARCADE</div>
         <div id="card_versus" class="card-lobby clVersus">VERSUS</div>
       </section>
       <!-- SHOP SECTION -->
       <section id="sec_shop">
         <!-- FIGHTERS -->
-        <div id="card_fighters" class="card-lobby clCharacters">FIGHTERS</div>
+        <div id="card_fighters" class="card-lobby clFighters" onclick="lobbyOnClik('fighters')">FIGHTERS</div>
         <div id="market_fighters" class="market">
           <!-- SEARCH HEADER -->
           <div class="market-header">
@@ -57,7 +58,7 @@
           </div>
         </div>
         <!-- STAGES -->
-        <div id="card_stages" class="card-lobby clStages">STAGES</div>
+        <div id="card_stages" class="card-lobby clStages" onclick="lobbyOnClik('stages')">STAGES</div>
         <div id="market_stages" class="market">
           <div class="market-header">
             <input
@@ -70,6 +71,9 @@
           </div>
           <div id="stages_items" class="market-list">
             <!-- INSERT STAGES ITEMS HERE -->
+            <div class="">
+
+            </div>
           </div>
         </div>
       </section>
@@ -77,7 +81,7 @@
     <!-- ITEMS DETAILS -->
     <div class="back-front">
       <div id="char_stats">
-        <div class="btn-close close-stats" onclick="showStats('hide')">X</div>
+        <div class="btn-close close-stats" onclick="showStats('hide')"></div>
         <div class="statText">
           <div id="statTitle"></div>
           <div id="statDesc"></div>

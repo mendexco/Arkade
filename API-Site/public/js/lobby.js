@@ -24,19 +24,98 @@ function plotPortraits() {
   }
 }
 
+side_menu.addEventListener("load", sideMenu("show"));
 function sideMenu(status) {
   const menu = document.querySelector("#side_menu");
   const container = document.querySelector("#container_sec");
+  const btnClose = document.querySelector("#btn_closeMenu");
   if (status == "show") {
     menu.style.left = "0vh";
     container.style.left = "16.5vw";
+    btnClose.style.marginRight = "0%";
+    btnClose.style.backgroundImage = "url(../assets/imgs/close.png)";
+    btnClose.style.backgroundSize = "40% 40%";
+    btnClose.setAttribute("onclick", "sideMenu('hide')");
   } else {
     menu.style.left = "-25vh";
     container.style.left = "10vw";
+    btnClose.style.marginRight = "-24%";
+    btnClose.style.backgroundImage = "url(../assets/imgs/menu.png)";
+    btnClose.style.backgroundSize = "60% 60%";
+    btnClose.setAttribute("onclick", "sideMenu('show')");
   }
 }
 
+sec_shop.style.opacity = 1;
+container_sec.addEventListener("load", changeSections("play"));
+function changeSections(section) {
+  const cardsLobby = document.querySelectorAll(".card-lobby");
+  for (let i = 0; i < cardsLobby.length; i++) {
+    cardsLobby[i].style.display = "inline-grid";
+  } 
+  if (section == "play" && sec_shop.style.opacity == 1) {
+    market_fighters.style.display = "none";
+    market_stages.style.display = "none";
+    sec_play.style.opacity = "0";
+    sec_shop.style.opacity = "0";
+    setTimeout(() => {
+      sec_play.style.display = "flex";
+      sec_shop.style.display = "none";
+      setTimeout(() => {
+        sec_play.style.opacity = "1";
+        for (let i = 0; i < cardsLobby.length; i++) {
+          cardsLobby[i].style.opacity = "1";
+        }
+        card_arcade.style.marginLeft = "16vh";
+        card_versus.style.marginRight = "16vh";
+        card_fighters.style.marginRight = "30vh";
+        card_stages.style.marginLeft = "30vh";
+      }, 250);
+    }, 500);
+  } else if (
+    (section == "shop" && sec_play.style.opacity == 1) ||
+    (section == "shop" &&
+      (market_fighters.style.display == "flex" ||
+        market_stages.style.display == "flex"))
+  ) {
+    market_fighters.style.display = "none";
+    market_stages.style.display = "none";
+    sec_shop.style.opacity = "0";
+    sec_play.style.opacity = "0";
+    setTimeout(() => {
+      sec_shop.style.display = "flex";
+      sec_play.style.display = "none";
+      setTimeout(() => {
+        sec_shop.style.opacity = "1";
+        for (let i = 0; i < cardsLobby.length; i++) {
+          cardsLobby[i].style.opacity = "1";
+        }
+        card_fighters.style.marginRight = "16vh";
+        card_stages.style.marginLeft = "16vh";
+        card_arcade.style.marginLeft = "30vh";
+        card_versus.style.marginRight = "30vh";
+      }, 250);
+    }, 500);
+  }
+}
 
+function lobbyOnClik(card) {
+  const cardsLobby = document.querySelectorAll(".card-lobby");
+  if (card == "arcade") {
+    window.location = "../selection.html";
+  } else if (card == "fighters" || card == "stages") {
+    const market = document.querySelector(`#market_${card}`);
+    for (let i = 0; i < cardsLobby.length; i++) {
+      cardsLobby[i].style.opacity = "0";
+    }
+    setTimeout(() => {
+      for (let i = 0; i < cardsLobby.length; i++) {
+        cardsLobby[i].style.display = "none";
+      } 
+      market.style.display = "flex";
+    }, 800);
+  }
+}
 
 function charDetails(character) {
   let charNameVar = character;
@@ -68,7 +147,8 @@ function charDetails(character) {
           ).toFixed(0);
           const prConst = json.physical_resistance;
           const mrConst = json.magical_resistance;
-          const overallConst = lifeConst + attackConst + Number(specialConst) + prConst + mrConst;
+          const overallConst =
+            lifeConst + attackConst + Number(specialConst) + prConst + mrConst;
           const priceConst = json.priceChar;
           showStats(
             "fighter",
@@ -95,7 +175,18 @@ function charDetails(character) {
 }
 
 const backFront = document.querySelector(".back-front");
-function showStats(item, name, desc, life, attack, special, pr, mr, overall, price) {
+function showStats(
+  item,
+  name,
+  desc,
+  life,
+  attack,
+  special,
+  pr,
+  mr,
+  overall,
+  price
+) {
   sideMenu("hide");
   backFront.style.opacity = "1";
   backFront.style.pointerEvents = "all";
