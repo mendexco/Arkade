@@ -176,7 +176,7 @@ function searchDetails(character, type) {
         resposta.json().then((json) => {
           console.log(json);
           let nameConst = json.nameChar;
-          const descConst = json.charDesc;
+          let descConst = json.charDesc;
           const lifeConst = json.life;
           const attackConst = json.attack;
           const specialConst = (
@@ -189,6 +189,7 @@ function searchDetails(character, type) {
             lifeConst + attackConst + Number(specialConst) + prConst + mrConst;
           let priceConst = json.priceChar;
           if (type == "stage") {
+            descConst = nameConst;
             nameConst = json.nameStage;
             priceConst = json.priceStage;
           }
@@ -248,7 +249,7 @@ function showStats(
     h_mr.innerHTML = `${mr}`;
     h_life.innerHTML = `${life}`;
     h_overall.innerHTML = `${overall}`;
-    button_purchase.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
+    button_purchase_char.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
     statStage.src = `assets/imgs/stages/stage_${name}.gif`;
     statCharacter.src = `assets/imgs/chars/${name}/SplashFULL.png`;
   } else if (item == "stage") {
@@ -258,6 +259,9 @@ function showStats(
     stage_stats.style.opacity = "1";
     stage_stats.style.marginTop = "0vh";
     stage_stats.style.marginRight = "0vw";
+    stageTitle.innerHTML = `${name.toUpperCase()}`;
+    stageImg.src = `assets/imgs/stages/stage_${desc}.gif`;
+    button_purchase_stage.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
   } else {
     backFront.style.opacity = "0";
     backFront.style.pointerEvents = "none";

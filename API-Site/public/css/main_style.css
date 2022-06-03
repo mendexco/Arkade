@@ -752,10 +752,10 @@ p u:hover {
   align-self: flex-end !important;
   border-radius: 0;
   background-color: transparent;
-  transition: .4s;
+  transition: 0.4s;
 }
 .close-menu:hover {
-  background-color: #4f071e; 
+  background-color: #4f071e;
 }
 .side-menu button {
   /* size */
@@ -765,14 +765,14 @@ p u:hover {
   font-family: Banks;
   font-size: 2vh;
   font-weight: 1000;
-  color: #FFF;
+  color: #fff;
   /* color */
   background-color: transparent;
   border: 0;
   /* misc */
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
   outline: none;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .side-menu button:hover {
   background-color: #4f071e;
@@ -928,7 +928,7 @@ p u:hover {
   align-items: center;
   justify-content: space-around;
   /* misc */
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 #card_arcade {
   margin-left: 30vh;
@@ -951,7 +951,7 @@ p u:hover {
   justify-content: space-around;
   /* misc */
   opacity: 1;
-  transition: opacity .5s;  
+  transition: opacity 0.5s;
 }
 #card_fighters {
   margin-right: 30vh;
@@ -972,7 +972,7 @@ p u:hover {
   align-items: center;
   justify-content: center;
   /* misc */
-  transition: .5s;
+  transition: 0.5s;
 }
 .market-header {
   background-color: #141414;
@@ -1075,6 +1075,7 @@ p u:hover {
 }
 .close-stats {
   align-self: flex-start !important;
+  margin-bottom: 74vh;
   border-radius: 0;
   border-top-left-radius: 0.7vh;
 }
@@ -1111,6 +1112,7 @@ p u:hover {
   width: 80%;
   height: fit-content;
   /* font */
+  text-align: left;
   font-family: Banks;
   font-size: 1.8vh;
   color: #fff;
@@ -1120,7 +1122,7 @@ p u:hover {
 #statNumber {
   color: #fff;
 }
-#button_purchase {
+.button-purchase {
   /* size */
   width: 14vw;
   height: 7vh;
@@ -1139,15 +1141,15 @@ p u:hover {
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
   transition: all 0.6s;
 }
-#button_purchase img {
+.button-purchase img {
   height: 4vh;
   margin-right: 1vh;
   transition: 1s;
 }
-#button_purchase:hover {
+.button-purchase:hover {
   background-color: #ed145b;
 }
-#button_purchase:hover img {
+.button-purchase:hover img {
   filter: drop-shadow(0 0 3vh #ffc843);
 }
 #statStage {
@@ -1233,10 +1235,10 @@ p u:hover {
   font-size: 2vw;
   user-select: none;
   /* misc */
-  transition: all .4s;
+  transition: all 0.4s;
 }
 .fighter-item:hover .fighter-p {
-  letter-spacing: .3vw;
+  letter-spacing: 0.3vw;
 }
 #char_stats {
   /* size */
@@ -1263,6 +1265,8 @@ p u:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* misc */
+  user-select: none;
 }
 .statGroup {
   /* size */
@@ -1306,7 +1310,7 @@ p u:hover {
   width: 80%;
   height: 80%;
   /* misc */
-  transition: all .4s;
+  transition: all 0.4s;
   filter: grayscale(0.8);
   border-radius: 0.4vh;
   background-size: 100% 100% !important;
@@ -1324,23 +1328,57 @@ p u:hover {
   font-size: 1.3vw;
   user-select: none;
   /* misc */
-  transition: all .4s;
+  transition: all 0.4s;
 }
 .stage-item:hover .stage-p {
-  letter-spacing: .3vw;
+  letter-spacing: 0.3vw;
 }
 #stage_stats {
-    /* size */
-    width: 60vw;
-    height: 80vh;
-    /* position */
-    margin-top: 10vh;
-    margin-right: 10vw;
-    /* flex */
-    display: none;
-    /* misc */
-    background-color: #212121;
-    opacity: 0;
-    transition: 1s;
-    box-shadow: 0 0 0.5vh #ed145b;
+  /* size */
+  width: 60vw;
+  height: 80vh;
+  /* position */
+  margin-top: 10vh;
+  margin-right: 10vw;
+  /* flex */
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* misc */
+  background-color: #212121;
+  opacity: 0;
+  transition: 1s;
+  box-shadow: 0 0 0.5vh #ed145b;
+}
+#stageBox {
+  /* size */
+  width: 90%;
+  height: 92%;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* misc */
+  background-color: #191919;
+  border-radius: 1vh;
+}
+#stageTitle {
+  /* size */
+  width: 100%;
+  height: 9vh;
+  /* font */
+  font-family: Squids;
+  font-size: 8vh;
+  color: #ed145b;
+  line-height: 1.2;
+  text-align: center;
+}
+#stageImg {
+  /* size */
+  width: 85%;
+  height: 60%;
+  /* misc */
+  box-shadow: 0.3vw 0.6vh 1vh #ed145b;
 }

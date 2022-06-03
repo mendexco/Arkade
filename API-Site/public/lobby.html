@@ -25,7 +25,7 @@
       </div>
       <hr class="side-hr" />
       <div class="side-footer">
-        <button>EXIT</button>
+        <button onclick="logoutAccount()">LOGOUT</button>
       </div>
     </div>
     <div id="container_sec" class="container-sec">
@@ -123,15 +123,19 @@
               <h4 id="h_overall"></h4>
             </div>
           </div>
-          <button id="button_purchase" onclick="purchase()"></button>
+          <button id="button_purchase_char" class="button-purchase" onclick="purchase()"></button>
         </div>
         <img id="statStage" />
         <div id="statMask"></div>
         <img id="statCharacter" src="" />
       </div>
-       <div id="stage_stats">
+      <div id="stage_stats">
         <div class="btn-close close-stats" onclick="showStats('hide')"></div>
-
+        <div id="stageBox">
+          <div id="stageTitle">Shadaloo Fortress</div>
+          <img id="stageImg" src="assets/imgs/stages/stage_Akuma.gif" alt="Stage Gif" />
+          <button id="button_purchase_stage" class="button-purchase" onclick="purchase()"><img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />2500</button>
+        </div>
       </div>
     </div>
   </body>

@@ -1160,5 +1160,5 @@ function endGame(winner) {
   disableButtons();
   console.log("desabling buttons...");
   console.log(`${winner} is the winner`);
-  window.location = `selection.html`;
+  window.location = `lobby.html`;
 }

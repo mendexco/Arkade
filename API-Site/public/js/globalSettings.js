@@ -56,3 +56,9 @@ function clearSession() {
   console.log("Cleaning session...");
   sessionStorage.clear();
 }
+
+function logoutAccount() {
+  console.log("Cleaning session...");
+  sessionStorage.clear();
+  window.location = "index.html"; 
+}
