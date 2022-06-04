@@ -175,8 +175,9 @@ function searchDetails(character, type) {
 
         resposta.json().then((json) => {
           console.log(json);
-          let nameConst = json.nameChar;
-          let descConst = json.charDesc;
+          let idItemVar = json.idChar;
+          let nameVar = json.nameChar;
+          let descVar = json.charDesc;
           const lifeConst = json.life;
           const attackConst = json.attack;
           const specialConst = (
@@ -189,21 +190,23 @@ function searchDetails(character, type) {
             lifeConst + attackConst + Number(specialConst) + prConst + mrConst;
           let priceConst = json.priceChar;
           if (type == "stage") {
-            descConst = nameConst;
-            nameConst = json.nameStage;
+            idItemVar = json.idStage;
+            descVar = nameVar;
+            nameVar = json.nameStage;
             priceConst = json.priceStage;
           }
           showStats(
             type,
-            nameConst,
-            descConst,
+            nameVar,
+            descVar,
             lifeConst,
             attackConst,
             specialConst,
             prConst,
             mrConst,
             overallConst,
-            priceConst
+            priceConst,
+            idItemVar
           );
         });
       } else {
@@ -228,12 +231,13 @@ function showStats(
   pr,
   mr,
   overall,
-  price
+  price,
+  idItem
 ) {
   sideMenu("hide");
   backFront.style.opacity = "1";
   backFront.style.pointerEvents = "all";
-  // statStage.src = ``;
+  price = Number(price);
   if (item == "fighter") {
     char_stats.style.display = "flex";
     stage_stats.style.opacity = "0";
@@ -249,7 +253,7 @@ function showStats(
     h_mr.innerHTML = `${mr}`;
     h_life.innerHTML = `${life}`;
     h_overall.innerHTML = `${overall}`;
-    button_purchase_char.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
+    button_purchase_fighter.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />${price}`;
     statStage.src = `assets/imgs/stages/stage_${name}.gif`;
     statCharacter.src = `assets/imgs/chars/${name}/SplashFULL.png`;
   } else if (item == "stage") {
@@ -270,4 +274,64 @@ function showStats(
     stage_stats.style.marginTop = "10vh";
     stage_stats.style.marginRight = "10vw";
   }
+
+  let route = "";
+  if (item == "fighter") {
+    route = "listChars";
+  } else {
+    route = "listStages";
+  }
+  if (item == "fighter" || item == "stage") {
+    fetch(`/chars/${route}/${sessionStorage.PLAYER_ID}`)
+      .then(function (resposta) {
+        if (resposta.ok) {
+          resposta.json().then(function (resposta) {
+            console.log(resposta);
+            let purchased = false;
+            for (let i = 0; i < resposta.length; i++) {
+              let nameColumn = "";
+              if (item == "fighter") {
+                nameColumn = resposta[i].nameChar;
+              } else if (item == "stage") {
+                nameColumn = resposta[i].nameStage;
+              }
+              if (nameColumn == name) {
+                purchased = true;
+              }
+            }
+            let button = document.querySelector(`#button_purchase_${item}`);
+            if (purchased) {
+              console.log("Item already bought");
+              button.innerHTML = "PURCHASED";
+              button.disabled = true;
+              button.setAttribute("onclick", "");
+            } else if ((Number(sessionStorage.PLAYER_ARKCOIN) - price) < 0) {
+              console.log("Not enough ArkCoins");
+              button.disabled = true;
+              button.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" style="filter: grayscale(1)" />${price}`;
+              button.setAttribute("onclick", "");
+            } else {
+              console.log("Able to buy the item");
+              button.disabled = false;
+              button.setAttribute("onclick", `buyItem(${sessionStorage.PLAYER_ID}, ${price}, '${item}', ${idItem})`);              
+            }
+          });
+        } else {
+          throw "There's an error in the API!";
+        }
+      })
+      .catch(function (resposta) {
+        console.error(resposta);
+      });
+  }
+}
+
+function buyItem(playerID, arkcoins, itemType, itemID) {  
+  let newArkcoins = Number(sessionStorage.PLAYER_ARKCOIN) - arkcoins;
+  
+
+  let button = document.querySelector(`#button_purchase_${itemType}`);
+  button.innerHTML = "PURCHASED";
+  button.disabled = true;
+  button.setAttribute("onclick", "");
 }

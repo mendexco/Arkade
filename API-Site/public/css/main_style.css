@@ -839,7 +839,7 @@ p u:hover {
   font-size: 8vh;
   color: #fff;
   line-height: 5;
-  display: inline-grid;
+  display: none;
   text-align: center;
   /* misc */
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
@@ -1106,6 +1106,7 @@ p u:hover {
   font-size: 10vh;
   color: #ed145b;
   line-height: 1;
+  user-select: none;
 }
 #statDesc {
   /* size */
@@ -1140,6 +1141,7 @@ p u:hover {
   border-radius: 2.4vh;
   cursor: url(../assets/imgs/arrowPointer.png), pointer;
   transition: all 0.6s;
+  user-select: none;
 }
 .button-purchase img {
   height: 4vh;
@@ -1151,6 +1153,14 @@ p u:hover {
 }
 .button-purchase:hover img {
   filter: drop-shadow(0 0 3vh #ffc843);
+}
+.button-purchase:disabled {
+  color: #ed145b;
+  background-color: #410016;
+  cursor:url(../assets/imgs/arrowBlock.png), not-allowed;
+}
+.button-purchase:disabled:hover {
+  background-color: #22000b;
 }
 #statStage {
   /* size */

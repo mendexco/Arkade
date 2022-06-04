@@ -335,6 +335,8 @@ function login() {
           sessionStorage.PLAYER_ID = json.idPlayer;
           sessionStorage.PLAYER_USERNAME = json.namePlayer;
           sessionStorage.PLAYER_EMAIL = json.emailPlayer;
+          sessionStorage.PLAYER_ARKSCORE = json.arkScore;
+          sessionStorage.PLAYER_ARKCOIN = json.arkCoin;
           setTimeout(function () {
             loadingIcon("img_load_signup", "gif");
             window.location = "./lobby.html";

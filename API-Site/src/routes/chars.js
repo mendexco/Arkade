@@ -15,10 +15,6 @@ router.post("/setChar", function (req, res) {
     charController.setCharacter(req, res);
 });
 
-router.get("/editarList/:idUsuario", function (req, res) {
-    avisoController.editarList(req, res);
-});
-
 router.put("/editarUpdate/:idUsuario", function (req, res) {
     avisoController.editarUpdate(req, res);
 });
