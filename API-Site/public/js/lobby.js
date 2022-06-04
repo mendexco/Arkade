@@ -81,11 +81,12 @@ function sideMenu(status) {
   }
 }
 
-sec_play.style.opacity = 1;
-container_sec.addEventListener("load", changeSections("shop"));
-// sec_shop.style.opacity = 1;
+sec_shop.style.opacity = 1;
+container_sec.addEventListener("load", changeSections("play"));
 // container_sec.addEventListener("load", changeSections("play"));
+// sec_shop.style.display = "none;"
 function changeSections(section) {
+  console.log("Changing section...");
   const cardsLobby = document.querySelectorAll(".card-lobby");
   for (let i = 0; i < cardsLobby.length; i++) {
     cardsLobby[i].style.display = "inline-grid";
@@ -133,10 +134,12 @@ function changeSections(section) {
         card_versus.style.marginRight = "30vh";
       }, 250);
     }, 500);
+  } else {
+    console.log("CREATE SECTION");
   }
 }
 
-lobbyOnClik("stages");
+// lobbyOnClik("stages");
 function lobbyOnClik(card) {
   const cardsLobby = document.querySelectorAll(".card-lobby");
   if (card == "arcade") {
@@ -305,7 +308,7 @@ function showStats(
               button.innerHTML = "PURCHASED";
               button.disabled = true;
               button.setAttribute("onclick", "");
-            } else if ((Number(sessionStorage.PLAYER_ARKCOIN) - price) < 0) {
+            } else if (Number(sessionStorage.PLAYER_ARKCOIN) - price < 0) {
               console.log("Not enough ArkCoins");
               button.disabled = true;
               button.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" style="filter: grayscale(1)" />${price}`;
@@ -313,7 +316,10 @@ function showStats(
             } else {
               console.log("Able to buy the item");
               button.disabled = false;
-              button.setAttribute("onclick", `buyItem(${sessionStorage.PLAYER_ID}, ${price}, '${item}', ${idItem})`);              
+              button.setAttribute(
+                "onclick",
+                `buyItem(${sessionStorage.PLAYER_ID}, ${price}, 'arkCoin', '${item}', ${idItem})`
+              );
             }
           });
         } else {
@@ -326,12 +332,67 @@ function showStats(
   }
 }
 
-function buyItem(playerID, arkcoins, itemType, itemID) {  
-  let newArkcoins = Number(sessionStorage.PLAYER_ARKCOIN) - arkcoins;
-  
+function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
+  // ARKCOINS UPDATE
+  let newArkVar = Number(sessionStorage.PLAYER_ARKCOIN) - arkCoins;
+  let arkTypeVar = arkType;
+  fetch(`/usuarios/updatePlayer/${playerID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      arkServer: newArkVar,
+      typeServer: arkTypeVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+      if (resposta.ok) {
+        console.log(`Past ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
+        sessionStorage.PLAYER_ARKCOIN = newArkVar;
+        console.log(`New ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
+
+        setItem(playerID, itemType, itemID);
+      } else {
+        throw "There was an error changing the ArkCoin value!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
 
   let button = document.querySelector(`#button_purchase_${itemType}`);
   button.innerHTML = "PURCHASED";
   button.disabled = true;
   button.setAttribute("onclick", "");
+}
+
+function setItem(playerID, itemType, itemID) {
+  let playerIDVar = playerID;
+  let itemTypeVar = itemType;
+  let itemIDVar = itemID;
+  fetch("/usuarios/setItem", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      playerIDServer: playerIDVar,
+      itemTypeServer: itemTypeVar,
+      itemIDServer: itemIDVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        console.log("Item registered");
+      } else {
+        throw "There was an error registering the item!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
 }

@@ -19,4 +19,16 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.put("/updatePlayer/:idPlayer", function (req, res) {
+    usuarioController.updatePlayerArk(req, res);
+});
+
+router.post("/setItem", function (req, res) {
+    usuarioController.registerItem(req, res);
+})
+
+router.post("/setItem", function (req, res) {
+    usuarioController.setCharacter(req, res);
+});
+
 module.exports = router;

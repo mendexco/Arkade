@@ -262,17 +262,18 @@ function signup() {
     }),
   })
     .then(function (resposta) {
-      console.log("resposta: ", resposta);
-
       if (resposta.ok) {
-        loadingIcon("img_load_signup", "png");
-        changeCard("login");
-        // cardErro.style.display = "block";
-        // mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-        // window.location = "login.html";
-        // limparFormulario();
+        console.log("resposta: ", resposta);
+        resposta.json().then((json) => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          let idJson = json;
+          initialItems(idJson.insertId, 'initial', 1);
+          loadingIcon("img_load_signup", "png");
+          changeCard("login");
+        });
       } else {
-        throw "Houve um erro ao tentar realizar o cadastro!";
+        throw "There was an error while Signing Up!";
       }
     })
     .catch(function (resposta) {
@@ -282,6 +283,35 @@ function signup() {
 
   return false;
 }
+function initialItems(playerID, itemType, itemID) {
+  let playerIDVar = playerID;
+  let itemTypeVar = itemType;
+  let itemIDVar = itemID;
+  fetch("/usuarios/setItem", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      playerIDServer: playerIDVar,
+      itemTypeServer: itemTypeVar,
+      itemIDServer: itemIDVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        console.log("Item registered");
+      } else {
+        throw "There was an error registering the item!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+}
+
 function login() {
   loadingIcon("img_load_login", "gif");
 
@@ -344,14 +374,7 @@ function login() {
           }, 1000); // apenas para exibir o loading
         });
       } else {
-        console.log("Houve um erro ao tentar realizar o login!");
-
-        // resposta.text().then(texto => {
-        //     console.error(texto);
-        //     loadingIcon("img_load_signup", "gif");(texto);
-        // });
-        // cardErro.style.display = "block";
-        // mensagem_erro.innerHTML = "E-mail e/ou senha errados!";
+        console.log("There was an error while login!");
         loadingIcon("img_load_signup", "gif");
         return false;
       }
