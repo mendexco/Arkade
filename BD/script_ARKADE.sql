@@ -7,6 +7,7 @@ namePlayer VARCHAR(30),
 emailPlayer VARCHAR(60),
 password VARBINARY(150),
 arkScore INT DEFAULT 0,
+arkCoin INT DEFAULT 1000,
 register TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -122,8 +123,8 @@ SELECT * FROM Characters
 -- INSERTS
 -- PLAYER INSERTS
 INSERT INTO Player VALUES
-(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 0, DEFAULT),
-(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), 0, DEFAULT);
+(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), DEFAULT, DEFAULT, DEFAULT),
+(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), DEFAULT, DEFAULT, DEFAULT);
 SELECT * FROM Player;
 -- UPDATE Player SET column = '' WHERE idPlayer = X;
 
@@ -176,15 +177,15 @@ SELECT * FROM AdvancedMetrics;
 INSERT INTO Stages VALUES
 (NULL, 1, 'Suzaku Castle', 2500),
 (NULL, 2, 'Battle Harbor', 2500),
-(NULL, 3, 'Ala', 2500),
-(NULL, 4, 'Ruined Dojo', 2500),
-(NULL, 5, 'World Warrior', 2500),
-(NULL, 6, 'Taiping Road', 2500),
-(NULL, 7, 'Maharaja Palace', 2500),
-(NULL, 8, 'Shadaloo Fortress', 2500),
-(NULL, 9, 'Air Force Base', 2500),
-(NULL, 10, 'Flamenco Tavern', 2500);
-SELECT * FROM Stages;
+(NULL, 3, 'Ayutthaya Ruins', 2500),
+(NULL, 4, 'Air Force Base', 2500),
+(NULL, 5, 'Maharaja Palace', 2500),
+(NULL, 6, 'Flamenco Tavern', 2500),
+(NULL, 7, 'World Warrior', 2500),
+(NULL, 8, 'Taiping Road', 2500),
+(NULL, 9, 'Ruined Dojo', 2500),
+(NULL, 10, 'Shadaloo Fortress', 2500);
+SELECT * FROM Stages JOIN characters ON idChar = fkChar;
 -- UPDATE Stages SET column = '' WHERE idStage = X;
 
 -- ITEMS INSERTS (MAIN)

@@ -15,7 +15,19 @@ function bgAudio() {
   };
 }
 
-loadStages();
+const gamemode = sessionStorage.GAMEMODE;
+verifyMode();
+function verifyMode() {
+  if (gamemode == "arcade") {
+    back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectChar.gif)`;
+    back_stage.style.filter = `blur(0vw) brightness(1)`;
+    player_name.innerHTML = "";
+    loadChars();
+  } else {
+    loadStages();
+  }
+}
+
 function loadStages() {
   div_characters.style.display = "none";
   div_stages.style.display = "flex";
@@ -142,98 +154,7 @@ function loadChars() {
               "onblur",
               `hoverCard("leave", "character", "${character.nameChar}")`
             );
-
-            // COMPLEX
-            // creating elements
-            // if (leftChars < 5) {
-            //   var charCard = document.createElement("button");
-
-            // // setting id's
-            // charCard.id = `btn_${character.nameChar}`;
-
-            //   // put values in innerHTML
-            //   charCard.style.backgroundImage = `url(../assets/imgs/chars/${character.nameChar}/PORTRAIT.png)`;
-
-            // // appending a class
-            // charCard.className = "btn-char unselected";
-
-            // // setting attributes
-            // charCard.setAttribute(
-            //   "onmouseenter",
-            //   `hoverCharacter("${character.nameChar}", "enter")`
-            // );
-            // charCard.setAttribute(
-            //   "onmouseleave",
-            //   `hoverCharacter("${character.nameChar}", "leave")`
-            // );
-            // charCard.setAttribute(
-            //   "onclick",
-            //   `setCharacter(${character.idChar}, "${character.nameChar}")`
-            // );
-            // /* keyboard settings */
-            // charCard.setAttribute("tabindex", character.idChar);
-            // charCard.setAttribute(
-            //   "onfocus",
-            //   `hoverCharacter("${character.nameChar}", "enter")`
-            // );
-            // charCard.setAttribute(
-            //   "onblur",
-            //   `hoverCharacter("${character.nameChar}", "leave")`
-            // );
-
-            //   if (leftChars == 4) {
-            //     charCard.style.marginRight = "-2.8vw";
-            //   }
-            //   leftChars++;
-            //   // appending childs
-            //   leftGroup.appendChild(charCard);
-            // } else {
-            //   // COMPLEX
-            //   // creating elements
-            //   var charCard = document.createElement("button");
-
-            //   // setting id's
-            //   charCard.id = `btn_${character.nameChar}`;
-
-            //   // put values in innerHTML
-            //   charCard.style.backgroundImage = `url(../assets/imgs/chars/${character.nameChar}/PORTRAIT.png)`;
-
-            //   // appending a class
-            //   charCard.className = "btn-char unselected";
-
-            //     // setting attributes
-            //     charCard.setAttribute(
-            //       "onmouseenter",
-            //       `hoverCharacter("${character.nameChar}", "enter")`
-            //     );
-            //     charCard.setAttribute(
-            //       "onmouseleave",
-            //       `hoverCharacter("${character.nameChar}", "leave")`
-            //     );
-            //     charCard.setAttribute(
-            //       "onclick",
-            //       `setCharacter(${character.idChar}, "${character.nameChar}")`
-            //     );
-            //     /* keyboard settings */
-            //     charCard.setAttribute("tabindex", character.idChar);
-            //     charCard.setAttribute(
-            //       "onfocus",
-            //       `hoverCharacter("${character.nameChar}", "enter")`
-            //     );
-            //     charCard.setAttribute(
-            //       "onblur",
-            //       `hoverCharacter("${character.nameChar}", "leave")`
-            //     );
-
-            //   if (rightChars == 3) {
-            //     charCard.style.marginLeft = "-2.8vw";
-            //   }
-            //   rightChars++;
-            //   // appending childs
-            //   rightGroup.appendChild(charCard);
-            // }
           }
-
           // finalizarAguardar();
         });
       } else {
@@ -330,7 +251,9 @@ function setCard(btnType, idChar, nameChar) {
 
 sessionStorage.PLAYER_CHAR = "";
 sessionStorage.ENEMY_CHAR = "";
-// var player;
+let arrayArcade = [];
+const totalEnemies = 9;
+let arcadeEnemy = false;
 function battleStorage(idChar, charSelected) {
   var idVar = idChar;
   console.log("ID CHARACTER: ", idVar);
@@ -345,21 +268,43 @@ function battleStorage(idChar, charSelected) {
     }),
   })
     .then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!");
+      console.log("ESTOU NO THEN DO battleStorage()!");
       if (resposta.ok) {
         console.log(resposta);
 
         resposta.json().then((json) => {
           console.log(sessionStorage.CHARS);
-          if (charSelected == "player") {
-            sessionStorage.PLAYER_CHAR = JSON.stringify(json);
-          } else {
-            sessionStorage.ENEMY_CHAR = JSON.stringify(json);
+          if (arcadeEnemy) {
+            sessionStorage.ENEMY_CHAR = JSON.stringify(json);            
             window.location = "battle.html";
+          } else {
+            if (charSelected == "player") {
+              sessionStorage.PLAYER_CHAR = JSON.stringify(json);
+              if (gamemode == "arcade") {
+                arcadeEnemy = true;
+                arrayArcade.push(JSON.parse(sessionStorage.PLAYER_CHAR).idChar);
+                for (let i = 1; i < totalEnemies; i++) {
+                  arrayArcade.push(0);
+                }
+                for (let i = 1; i <= 8; i++) {
+                  if (i == arrayArcade[0]) {
+                    i++;
+                  }
+                  randomizeArray(i);
+                }
+                arrayArcade.shift();
+                arrayArcade[arrayArcade.length - 1] = 10;                
+                sessionStorage.ARCADE = JSON.stringify(arrayArcade);
+                battleStorage(arrayArcade[0]);
+              }
+            } else {
+              sessionStorage.ENEMY_CHAR = JSON.stringify(json);
+              window.location = "battle.html";
+            }
           }
         });
       } else {
-        console.log("Houve um erro ao tentar realizar o login!");
+        console.log("There waas an error in battleStorage()!");
       }
     })
     .catch(function (erro) {
@@ -367,6 +312,16 @@ function battleStorage(idChar, charSelected) {
     });
 
   return false;
+}
+
+let number = 0;
+function randomizeArray(idChar) {
+  number = Math.floor(Math.random() * 8);
+  if (arrayArcade[number] == 0 ) {
+    arrayArcade[number] = idChar;
+  } else {
+    randomizeArray(idChar);
+  }
 }
 
 function randomizeSet() {

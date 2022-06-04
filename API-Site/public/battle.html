@@ -49,12 +49,6 @@
         <span class="span-log span-defense"><b>B</b>ROKE</span>
       </div>
     </div>
-
-    <div class="div-special">
-      <div id="player_attacks"></div>
-      <div id="enemy_attacks"></div>
-    </div>
-
     <!-- TOP SECTION -->
     <div class="top-section">
       <!-- PLAYER SIDE -->
@@ -135,7 +129,6 @@
       </div>
     </div>
     <!-- END OF TOP SECTION -->
-
     <!-- CHARACTERS -->
     <div class="div-chars">
       <div id="player_group" class="div-char-group" style="margin-right: 5vw">
@@ -185,8 +178,6 @@
         <img id="enemy_sprite" src="" class="div-sprite" draggable="false"></img>
       </div>
     </div>
-    <!-- END OF CHARACTERS -->
-
     <!-- BOTTOM SECTION: MANA/TURNS -->
     <div class="bottom-section">
       <!-- player mana -->
@@ -206,6 +197,40 @@
         <div id="enemy_gauge2" class="div-mana"></div>
         <div id="enemy_gauge3" class="div-mana"></div>
         <div id="enemy_EX" class="div-EX" style="right: 0">EX</div>
+      </div>
+    </div>
+    <!-- RESULT -->
+    <div id="hidden-result" class="background-card" style="opacity: 1; z-index: 10;">
+      <div class="div-card card-result">
+        <p id="title_result">STAGE 1</p>
+        <p id="user_arkScore" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeScore.png"
+            alt="AC-Icon"
+            draggable="false"
+          />
+          +500
+        </p>
+        <p id="user_arkCoin" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeKoins.png"
+            alt="AC-Icon"
+            draggable="false"
+          />
+          +200
+        </p>
+        <div id="result_buttons">
+          <button
+          id="btn_login"
+          onclick="login()"
+          class="btn-ark"
+          type="button"
+          disabled
+          tabindex="4"
+        >
+          FIGHT
+        </button>
+        </div>
       </div>
     </div>
   </body>

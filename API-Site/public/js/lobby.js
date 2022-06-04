@@ -1,5 +1,3 @@
-// fighters_items.addEventListener("load", plotPortraits("fighter"));
-// stages_items.addEventListener("load", plotPortraits("stage"));
 function plotPortraits(plot, search) {
   const charsArray = [
     "Ryu",
@@ -59,19 +57,27 @@ function plotPortraits(plot, search) {
   }
 }
 
-side_menu.addEventListener("load", sideMenu("show"));
+side_menu.addEventListener("load", sideMenu("start"));
+
 function sideMenu(status) {
   const menu = document.querySelector("#side_menu");
   const container = document.querySelector("#container_sec");
   const btnClose = document.querySelector("#btn_closeMenu");
-  if (status == "show") {
+  if (status == "start") {
+    user_name.innerHTML = sessionStorage.PLAYER_USERNAME;
+    user_arkScore.innerHTML += sessionStorage.PLAYER_ARKSCORE;
+    user_arkCoin.innerHTML += sessionStorage.PLAYER_ARKCOIN;
+    setTimeout(() => {
+      sideMenu("show");
+    }, 1000);
+  } else if (status == "show") {
     menu.style.left = "0vh";
     container.style.left = "16.5vw";
     btnClose.style.marginRight = "0%";
     btnClose.style.backgroundImage = "url(../assets/imgs/close.png)";
     btnClose.style.backgroundSize = "40% 40%";
     btnClose.setAttribute("onclick", "sideMenu('hide')");
-  } else {
+  } else if (status == "hide") {
     menu.style.left = "-25vh";
     container.style.left = "10vw";
     btnClose.style.marginRight = "-24%";
@@ -83,8 +89,6 @@ function sideMenu(status) {
 
 sec_shop.style.opacity = 1;
 container_sec.addEventListener("load", changeSections("play"));
-// container_sec.addEventListener("load", changeSections("play"));
-// sec_shop.style.display = "none;"
 function changeSections(section) {
   console.log("Changing section...");
   const cardsLobby = document.querySelectorAll(".card-lobby");
@@ -143,6 +147,10 @@ function changeSections(section) {
 function lobbyOnClik(card) {
   const cardsLobby = document.querySelectorAll(".card-lobby");
   if (card == "arcade") {
+    sessionStorage.GAMEMODE = "arcade";
+    window.location = "../selection.html";
+  } else if (card == "versus") {
+    sessionStorage.GAMEMODE = "versus";
     window.location = "../selection.html";
   } else if (card == "fighters" || card == "stages") {
     const market = document.querySelector(`#market_${card}`);
@@ -352,7 +360,7 @@ function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
         console.log(`Past ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
         sessionStorage.PLAYER_ARKCOIN = newArkVar;
         console.log(`New ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
-
+        user_arkCoin.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AC-Icon" draggable="false" />${sessionStorage.PLAYER_ARKCOIN}`;
         setItem(playerID, itemType, itemID);
       } else {
         throw "There was an error changing the ArkCoin value!";
@@ -385,7 +393,6 @@ function setItem(playerID, itemType, itemID) {
   })
     .then(function (resposta) {
       console.log("resposta: ", resposta);
-
       if (resposta.ok) {
         console.log("Item registered");
       } else {

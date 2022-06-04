@@ -18,10 +18,27 @@
     <div id="side_menu" class="side-menu">
       <div id="btn_closeMenu" class="btn-close close-menu"></div>
       <div class="side-header">
-        <img id="user_photo" src="assets/imgs/chars/Akuma/SplashMIN.png" alt="USER IMG" />
-        <p id="user_name">Vitor Mendes</p>
-        <p id="user_arkScore" class="user-arkpoints">0</p>
-        <p id="user_arkCoin" class="user-arkpoints">5600</p>
+        <img
+          id="user_photo"
+          src="assets/imgs/chars/Ken/SplashMIN.png"
+          alt="USER IMG"
+          draggable="false"
+        />
+        <p id="user_name">Username</p>
+        <p id="user_arkScore" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeScore.png"
+            alt="AS-Icon"
+            draggable="false"
+          />
+        </p>
+        <p id="user_arkCoin" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeKoins.png"
+            alt="AC-Icon"
+            draggable="false"
+          />
+        </p>
       </div>
       <hr class="side-hr" />
       <div class="side-body">
@@ -33,6 +50,7 @@
         <button onclick="logoutAccount()">LOGOUT</button>
       </div>
     </div>
+    <!-- SECTIONS -->
     <div id="container_sec" class="container-sec">
       <!-- PLAY SECTION -->
       <section id="sec_play">
@@ -43,7 +61,13 @@
         >
           ARCADE
         </div>
-        <div id="card_versus" class="card-lobby clVersus">VERSUS</div>
+        <div
+          id="card_versus"
+          class="card-lobby clVersus"
+          onclick="lobbyOnClik('versus')"
+        >
+          VERSUS
+        </div>
       </section>
       <!-- SHOP SECTION -->
       <section id="sec_shop">
@@ -130,7 +154,11 @@
               <h4 id="h_overall"></h4>
             </div>
           </div>
-          <button id="button_purchase_fighter" class="button-purchase" onclick="purchase()"></button>
+          <button
+            id="button_purchase_fighter"
+            class="button-purchase"
+            onclick="purchase()"
+          ></button>
         </div>
         <img id="statStage" />
         <div id="statMask"></div>
@@ -140,8 +168,18 @@
         <div class="btn-close close-stats" onclick="showStats('hide')"></div>
         <div id="stageBox">
           <div id="stageTitle">Shadaloo Fortress</div>
-          <img id="stageImg" src="assets/imgs/stages/stage_Akuma.gif" alt="Stage Gif" />
-          <button id="button_purchase_stage" class="button-purchase" onclick="purchase()"><img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />2500</button>
+          <img
+            id="stageImg"
+            src="assets/imgs/stages/stage_Akuma.gif"
+            alt="Stage Gif"
+          />
+          <button
+            id="button_purchase_stage"
+            class="button-purchase"
+            onclick="purchase()"
+          >
+            <img src="assets/imgs/ArkadeKoins.png" alt="AK-Icon" />2500
+          </button>
         </div>
       </div>
     </div>

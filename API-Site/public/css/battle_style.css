@@ -559,6 +559,31 @@ button:disabled:hover {
   border: 0.3vw solid #cedaff;
 }
 
+/*---------------------------------------------------------------------------------------------------------------------*/
+/* HIDDEN */
+.card-result {
+  /* size */
+  width: 25vw;
+  height: 60vh;
+  /* position */
+  position: absolute;
+  /* flex */
+  display: flex;
+  /* misc */
+  background-color: #212121;
+}
+.card-result p {
+  /* font */
+  font-family: Banks;
+  font-size: 2vw;
+  color: #FFF;
+  /* flex */
+  justify-content: center
+}
+.card-result img {
+  width: 3vw !important;
+  height: 6vh !important;
+}
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 /* KEYFRAMES */
 @keyframes idleButtons {

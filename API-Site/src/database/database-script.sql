@@ -12,7 +12,7 @@ namePlayer VARCHAR(30),
 emailPlayer VARCHAR(60),
 password VARBINARY(150),
 arkScore INT DEFAULT 0,
-arkCoin INT DEFAULT 0,
+arkCoin INT DEFAULT 1000,
 register TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -211,7 +211,3 @@ INSERT INTO Items VALUES
 (NULL, 2, NULL, 1);
 SELECT * FROM Items;
 -- UPDATE Items SET column = '' WHERE idItem = X;
-
-    SELECT * FROM Characters
-		JOIN Stages ON idChar = fkChar
-			WHERE nameChar = 'Ryu';

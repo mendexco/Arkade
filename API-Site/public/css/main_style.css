@@ -730,7 +730,7 @@ p u:hover {
   height: 100vh;
   /* position */
   position: absolute;
-  left: 0vh;
+  left: -25vh;
   z-index: 10;
   /* flex */
   display: flex;
@@ -741,6 +741,7 @@ p u:hover {
   background-color: #ed145b90;
   /* misc */
   transition: all 0.5s;
+  user-select: none;
 }
 .close-menu {
   /* size */
@@ -796,8 +797,9 @@ p u:hover {
   width: 14vh;
   height: 14vh;
   border-radius: 200px;
-  /* misc */
+  /* color */
   background-color: #ed145b;
+  border: 0.3vh solid #ed145b;
 }
 #user_name {
   /* font */
@@ -807,11 +809,24 @@ p u:hover {
   color: #fff;
 }
 .user-arkpoints {
+  /* size */
+  width: 40%;
+  margin-top: 2%;
   /* font */
   font-family: "Banks";
   font-size: 2vh;
   font-weight: 500;
   color: #fff;
+  /* flex */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.user-arkpoints img {
+  /* size */
+  width: 1.8vh;
+  height: 1.8vh;
+  margin-right: 6%;
 }
 .side-body {
   /* border: 0.1vh solid blue; */

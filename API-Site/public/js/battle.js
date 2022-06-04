@@ -8,6 +8,7 @@ var diceSides = 0;
 // chars table
 var playerObj = JSON.parse(sessionStorage.PLAYER_CHAR);
 
+var playerID = playerObj.idChar;
 var playerName = playerObj.nameChar;
 var playerLifeTotal = playerObj.life;
 var playerLifeNow = playerLifeTotal;
@@ -65,6 +66,7 @@ var pSP3Side = playerObj.sp3Side;
 // chars table
 var enemyObj = JSON.parse(sessionStorage.ENEMY_CHAR);
 
+var enemyID = enemyObj.idChar;
 var enemyName = enemyObj.nameChar;
 var enemyLifeTotal = enemyObj.life;
 var enemyLifeNow = enemyLifeTotal;
@@ -135,13 +137,16 @@ var gaugeColor = "rgb(58, 58, 245)";
 var defending = false;
 var defenseStatus = "";
 var attackStatus = "";
-
+const gamemode = sessionStorage.GAMEMODE;
 // -----------------------------------------------------------------------------------------------------------------------------
 
 // other essecial setus
 setupEssencials();
 function setupEssencials() {
   // setting stage
+  if (gamemode == "arcade") {
+    sessionStorage.STAGE = enemyName;
+  }
   div_stage.style.backgroundImage = `url(../assets/imgs/stages/stage_${sessionStorage.STAGE}.gif)`;
   // setting sfx
   stage_music.src = `assets/audios/musics/${sessionStorage.STAGE}Theme.mp3`;
@@ -274,6 +279,32 @@ function changeTurn() {
   }
 }
 
+document.addEventListener("keypress", function (event) {
+  if (btn_attack.disabled == false) {
+    if (event.code == "KeyA" && div_actions.style.display == "flex") {
+      rollHit("PA");
+    } else if (event.code == "KeyD" && div_actions.style.display == "flex") {
+      defend();
+    } else if (event.code == "KeyS" && div_actions.style.display == "flex") {
+      showPowers();
+    } else if (
+      (event.code == "Digit1" || event.code == "Numpad1") &&
+      playerGauge >= 1
+    ) {
+      magicHit("m1", "MA");
+    } else if (
+      (event.code == "Digit2" || event.code == "Numpad2") &&
+      playerGauge >= 2
+    ) {
+      magicHit("m2", "MA");
+    } else if (
+      (event.code == "Digit3" || event.code == "Numpad3") &&
+      playerGauge >= 3
+    ) {
+      magicHit("m3", "MA");
+    }
+  }
+});
 function disableButtons() {
   btn_attack.disabled = true;
   btn_defend.disabled = true;
@@ -490,10 +521,10 @@ function rollHit(typePARAM) {
   disableButtons();
 
   diceSides = 20;
-  var diceNumber = randomizeRoll(diceSides);
-  var hitStatus = "";
-  var toMiss = 5;
-  var toHit = 17;
+  let diceNumber = randomizeRoll(diceSides);
+  let hitStatus = "";
+  const toMiss = 2;
+  const toHit = 17;
 
   // diceNumber = 16;
   if (diceNumber < toMiss) {
@@ -537,7 +568,7 @@ function typeAI() {
   toPA += enemyGauge;
 
   diceSides = 20;
-  var diceNumber = randomizeRoll(diceSides);
+  let diceNumber = randomizeRoll(diceSides);
   // diceNumber = 20;
   if (diceNumber < toPA) {
     console.log("ENEMY IS USING PHYSICAL ATTACK");
@@ -547,7 +578,7 @@ function typeAI() {
       console.log("ENEMY IS USING MAGICAL ATTACK");
       magicAI();
     } else {
-      var diceNumber2 = randomizeRoll(diceSides);
+      let diceNumber2 = randomizeRoll(diceSides);
       if (diceNumber2 > 10) {
         console.log("ENEMY IS USING PHYSICAL ATTACK");
         rollHit("PA");
@@ -563,7 +594,7 @@ function typeAI() {
 
 // randomize enemy's magic select using VECTOR
 function magicAI() {
-  var magics = ["m1", "m2", "m3"];
+  const magics = ["m1", "m2", "m3"];
   var magicLevel = "";
   if (enemyGauge == 3) {
     diceSides = 2;
@@ -585,7 +616,7 @@ function magicAI() {
 // play a dice to randomiz a number
 // dice number of sides is given in the function's parameter
 function randomizeRoll(sides) {
-  var randomRoll = Math.floor(Math.random() * sides) + 1;
+  let randomRoll = Math.floor(Math.random() * sides) + 1;
   console.log(`Dice: ${randomRoll}`);
   return randomRoll;
 }
@@ -597,13 +628,13 @@ function randomizeRoll(sides) {
 // - opponent resistance
 // - canceled or not through defense instance
 function attackModifier(hitStatus, type) {
-  var attack = 0;
-  var PR = 0;
-  var MR = 0;
-  var M1 = 0;
-  var M2 = 0;
-  var M3 = 0;
-  var defenseDmg = 0;
+  let attack = 0;
+  let PR = 0;
+  let MR = 0;
+  let M1 = 0;
+  let M2 = 0;
+  let M3 = 0;
+  let defenseDmg = 0;
   // get correct character's attack
   if (turnOwner == "player") {
     attack = playerAttack;
@@ -682,8 +713,8 @@ function attackModifier(hitStatus, type) {
       }
       defenseStatus = "miss";
     } else if (
-      player_defenseBAR.style.width == "10vw" ||
-      enemy_defenseBAR.style.width == "10vw"
+      (turnOwner == "enemy" && player_defenseBAR.style.width == "10vw") ||
+      (turnOwner == "player" && enemy_defenseBAR.style.width == "10vw")
     ) {
       attack *= 1.5;
       if (turnOwner == "player") {
@@ -710,7 +741,7 @@ function attackModifier(hitStatus, type) {
 }
 
 function reduceDefense(character, dmg) {
-  var actualDefense = "";
+  let actualDefense = "";
   if (character == "player") {
     actualDefense = player_defenseBAR.style.width.replace("vw", "");
     if (dmg + Number(actualDefense) > 10) {
@@ -915,8 +946,8 @@ function animateDefense() {
   }
 }
 
-var usingMagic = "";
-var anmDuration = 0;
+let usingMagic = "";
+let anmDuration = 0;
 function animateAction(char, typeAction, roundPass) {
   var charShadow = document.getElementById(`${char}_sprite`);
   player_arrow.style.display = "none";
@@ -1039,8 +1070,8 @@ function animateAction(char, typeAction, roundPass) {
 // change box image of round victory
 // reset fighter's health
 // if someone win 2 times, redirect to endGame() function
-var intervalRound;
-var gameState = "continue";
+let intervalRound;
+let gameState = "continue";
 function endRound(roundWinner, attackType) {
   updateMenu();
   if (roundWinner == "player") {
@@ -1083,7 +1114,7 @@ function endRound(roundWinner, attackType) {
 }
 
 function animateRound(char) {
-  var charShadow = document.getElementById(`${char}_sprite`);
+  let charShadow = document.getElementById(`${char}_sprite`);
   if (char == "player") {
     player_sprite.style.width = `${pEntryWidth}vw`;
     player_sprite.style.height = `${pEntryHeight}vh`;
@@ -1160,5 +1191,50 @@ function endGame(winner) {
   disableButtons();
   console.log("desabling buttons...");
   console.log(`${winner} is the winner`);
-  window.location = `lobby.html`;
+  if (winner == "enemy") {
+    window.location = `lobby.html`;
+  } else {
+    if (enemyID >= 10) {
+      console.log("Cabo");
+    } else {
+      nextEnemy();
+    }
+  }
 }
+
+let arrayArcade = JSON.parse(sessionStorage.ARCADE);
+console.log(arrayArcade);
+function nextEnemy() {
+  arrayArcade.shift();
+  sessionStorage.ARCADE = JSON.stringify(arrayArcade);
+  let idVar = arrayArcade[0];
+  console.log("ID CHARACTER: ", idVar);
+  fetch("/chars/setChar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      idServer: idVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("ESTOU NO THEN DO nextEnemy()!");
+      if (resposta.ok) {
+        console.log(resposta);
+        resposta.json().then((json) => {
+          console.log(sessionStorage.CHARS);
+          sessionStorage.ENEMY_CHAR = JSON.stringify(json);
+          window.location = "battle.html";
+        });
+      } else {
+        console.log("There was an error while going to next enemy!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+    });
+
+  return false;
+}
+
