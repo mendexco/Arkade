@@ -47,16 +47,17 @@
       </div>
       <hr class="side-hr" />
       <div class="side-footer">
-        <button href="lobby.html">LOBBY</button>
-        <button onclick="logoutAccount()">LOGOUT</button>
+        <button onclick="confirmAction('show', 'lobby', 'Return to Lobby?')">LOBBY</button>
+        <button onclick="confirmAction('show', 'logoutAccount()', 'Return to Home Page?')">LOGOUT</button>
       </div>
     </div>
     <!-- CONFIRM -->
     <div id="confirm_card" class="background-card">
       <div class="div-card card-confirm">
         <p id="question">Exit?</p>
-        <div id="result_buttons">
+        <div id="confirm_buttons">
           <button
+          id="btn_no"
           onclick="confirmAction('hide')"
           class="btn-ark"
           type="button"
@@ -65,7 +66,7 @@
           NO
         </button>
           <button
-          id="btn_result"
+          id="btn_yes"
           onclick="confirmAction('hide')"
           class="btn-ark"
           type="button"

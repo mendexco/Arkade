@@ -301,7 +301,7 @@ function showStats(
               button.disabled = false;
               button.setAttribute(
                 "onclick",
-                `buyItem(${sessionStorage.PLAYER_ID}, ${price}, 'arkCoin', '${item}', ${idItem})`
+                `confirmAction('show', "buyItem(${sessionStorage.PLAYER_ID}, ${price}, 'arkCoin', '${item}', ${idItem})", "Buy this item?")`
               );
             }
           });
@@ -316,6 +316,7 @@ function showStats(
 }
 
 function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
+  confirmAction("hide");
   // ARKCOINS UPDATE
   let scoreVar = Number(sessionStorage.PLAYER_ARKCOIN) + 0;
   let coinsVar = Number(sessionStorage.PLAYER_ARKCOIN) - arkCoins;

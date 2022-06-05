@@ -47,7 +47,33 @@
       </div>
       <hr class="side-hr" />
       <div class="side-footer">
-        <button onclick="logoutAccount()">LOGOUT</button>
+        <button onclick="confirmAction('show', 'logoutAccount()', 'Return to Home Page?')">LOGOUT</button>
+      </div>
+    </div>
+    <!-- CONFIRM -->
+    <div id="confirm_card" class="background-card">
+      <div class="div-card card-confirm">
+        <p id="question">Exit?</p>
+        <div id="confirm_buttons">
+          <button
+            id="btn_no"
+            onclick="confirmAction('hide')"
+            class="btn-ark"
+            type="button"
+            tabindex="1"
+          >
+            NO
+          </button>
+          <button
+            id="btn_yes"
+            onclick="confirmAction('hide')"
+            class="btn-ark"
+            type="button"
+            tabindex="2"
+          >
+            YES
+          </button>
+        </div>
       </div>
     </div>
     <!-- SECTIONS -->

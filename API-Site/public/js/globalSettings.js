@@ -60,7 +60,7 @@ function clearSession() {
 function logoutAccount() {
   console.log("Cleaning session...");
   sessionStorage.clear();
-  window.location = "index.html"; 
+  window.location = "index.html";
 }
 
 function sideMenu(status, sec) {
@@ -77,7 +77,7 @@ function sideMenu(status, sec) {
     btnClose.style.backgroundImage = "url(../assets/imgs/close.png)";
     btnClose.style.backgroundSize = "40% 40%";
     btnClose.setAttribute("onclick", "sideMenu('hide')");
-    if (typeof container_sec != "undefined") {      
+    if (typeof container_sec != "undefined") {
       container.style.left = "16.5vw";
     }
   } else if (status == "hide") {
@@ -86,20 +86,57 @@ function sideMenu(status, sec) {
     btnClose.style.backgroundImage = "url(../assets/imgs/menu.png)";
     btnClose.style.backgroundSize = "60% 60%";
     btnClose.setAttribute("onclick", "sideMenu('show')");
-    if (typeof container_sec != "undefined") {      
+    if (typeof container_sec != "undefined") {
       container.style.left = "10vw";
     }
   }
 }
 
-confirmAction("show");
-function confirmAction(status, action, page) {
+// confirmAction("show");
+function confirmAction(status, action, msg) {
   const card = document.querySelector("#confirm_card");
-  if (status == "show") {
-    card.style.zIndex = "15";
-    card.style.opacity = "1";
-  } else if (status == "hide") {
+  if (status == "hide") {
     card.style.zIndex = "-5";
     card.style.opacity = "0";
+  } else if (status == "show") {
+    question.innerHTML = msg;
+    card.style.zIndex = "15";
+    card.style.opacity = "1";
+    confirm_buttons.innerHTML = `
+    <button
+    id="btn_no"
+    onclick="confirmAction('hide')"
+    class="btn-ark"
+    type="button"
+    tabindex="1"
+    >
+      NO
+    </button>
+    `;
+    if (action == "lobby") {
+      confirm_buttons.innerHTML += `
+      <button
+      id="btn_yes"
+      onclick="window.location='${action}.html'"
+      class="btn-ark"
+      type="button"
+      tabindex="2"
+    >
+      YES
+    </button>
+      `;
+    } else {
+      confirm_buttons.innerHTML += `
+      <button
+      id="btn_yes"
+      onclick="${action}"
+      class="btn-ark"
+      type="button"
+      tabindex="2"
+    >
+      YES
+    </button>
+      `;
+    }
   }
 }

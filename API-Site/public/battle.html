@@ -210,7 +210,7 @@
         </p>
         <div id="result_buttons">
           <button
-          onclick="resultButton('lobby')"
+          onclick="confirmAction('show', `resultButton('lobby')`, 'Return to Lobby?')"
           class="btn-ark"
           type="button"
           tabindex="1"
@@ -225,6 +225,32 @@
           tabindex="2"
         >
           SELECT
+        </button>
+        </div>
+      </div>
+    </div>
+    <!-- CONFIRM -->
+    <div id="confirm_card" class="background-card">
+      <div class="div-card card-confirm">
+        <p id="question">Exit?</p>
+        <div id="confirm_buttons">
+          <button
+          id="btn_no"
+          onclick="confirmAction('hide')"
+          class="btn-ark"
+          type="button"
+          tabindex="1"
+        >
+          NO
+        </button>
+          <button
+          id="btn_yes"
+          onclick="confirmAction('hide')"
+          class="btn-ark"
+          type="button"
+          tabindex="2"
+        >
+          YES
         </button>
         </div>
       </div>
