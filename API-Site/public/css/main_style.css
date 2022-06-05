@@ -411,6 +411,177 @@ p b {
   min-width: 55%;
 }
 
+/*------------------------------------------------------------------------------------*/
+/* RANKING */
+.rank-index {
+  /* size */
+  width: 80% !important;
+  height: 88% !important;
+  /* position */
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 10% !important;
+  /* flex */
+  display: flex !important;
+}
+.rank-index .kpi-card {
+  height: 86.5%;
+  top: 11vh;
+}
+#sec_rank .market-header p {
+  /* font */
+  font-family: Squids;
+  font-size: 8vh;
+  color: #ed145b;
+  text-shadow: 0 0 1.4vh #ed145b;
+  user-select: none;
+}
+#sec_rank .market-list {
+  justify-content: flex-end;
+}
+#sec_rank table {
+  /* size */
+  width: 40%;
+  height: fit-content;
+  /* misc */
+  border-collapse: collapse;
+  user-select: none;
+}
+#sec_rank thead {
+  /* position */
+  position: sticky;
+  top: 0;
+  background-color: #141414;
+  border-bottom: 1vh solid #141414;
+  z-index: 5;
+  /* font */
+  font-family: "Squids";
+  color: #fff;
+  font-size: 4vh;
+  text-align: center;
+}
+#sec_rank td {
+  /* size */
+  height: 13vh;
+  transition: all 0.4s;
+}
+#sec_rank tr {
+  transition: all 0.4s;
+}
+thead td {
+  border-bottom: 1vh solid #141414;
+  text-shadow: 0 0 0.5vh #fff;
+}
+.tr-ark:hover {
+  background-color: #ed145b !important;
+}
+.tr-first:hover {
+  background-color: #410016 !important;
+}
+.tr-ark:hover .td-ark {
+  text-shadow: 0 0 1vh #fff;
+}
+.tr-ark:hover .user-photo {
+  background-color: #212121;
+  filter: drop-shadow(0 0 0.6vh #000);
+}
+.td-ark {
+  /* size */
+  height: 7vh !important;
+  padding-left: 1vw;
+  border-bottom: 0.1vw solid #600925;
+  /* font */
+  font-size: 1.2vw;
+  color: #fff;
+  text-align: center;
+}
+.td-name {
+  text-align: left;
+}
+.td-ark img {
+  /* size */
+  width: 2.5vw;
+  height: 5vh;
+  padding-left: 0;
+  margin-top: 1.4vh;
+  border: 0 !important;
+}
+.kpi-card {
+  background-color: #141414;
+  /* size */
+  width: 29%;
+  height: 42%;
+  /* position */
+  position: absolute;
+  left: 0.3vw;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* misc */
+  user-select: none;
+  transition: all 0.2s;
+}
+.kpi-card:hover {
+  background-color: #000;
+}
+.kpi-card:hover .kpi-p {
+  font-size: 4.4vh;
+  text-decoration: overline;
+  text-shadow: 0 0 1.4vh #FFF;
+}
+.kpi-p {
+  font-family: Squids;
+  font-size: 4vh;
+  color: #fff;
+  margin-bottom: -4vh;
+  transition: all 0.2s;
+}
+.kpi-important {
+  font-size: 14vh;
+  font-weight: 1000;
+  text-shadow: 0 0 1vh #ed145b;
+  color: #ed145b;
+}
+.kpi-span {
+  font-size: 3vh;
+  color: #FFF;
+}
+.kpi-span b {
+  color: #ed145b;
+}
+#first .kpi-p {
+  margin-bottom: 1vh;
+}
+#first_photo {
+  /* size */
+  width: 16vh;
+  height: 16vh;
+  filter: drop-shadow(0 0 1vh #ed145b);
+}
+#first_name {
+  font-size: 4vh;
+  text-shadow: 0 0 1vh #fff;
+}
+#first_arkScore {
+  /* size */
+  width: 30%;
+  margin-top: 0;
+  /* font */
+  font-size: 3vh;
+  justify-content: center;
+  font-weight: 1000;
+  color: #ed145b;
+  text-shadow: 0 0 1vh #ed145b;
+}
+#first_arkScore img {
+  /* size */
+  width: 3vh;
+  height: 3vh;
+  margin-right: 3%;
+  margin-top: 2%;
+}
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* HIDDEN */
 /* CARD */
@@ -825,7 +996,7 @@ p u:hover {
   justify-content: center;
   align-items: center;
 }
-#user_photo {
+.user-photo {
   /* size */
   width: 14vh;
   height: 14vh;
@@ -833,8 +1004,10 @@ p u:hover {
   /* color */
   background-color: #ed145b;
   border: 0.3vh solid #ed145b;
+  /* misc */
+  transition: all 1s;
 }
-#user_name {
+.user-name {
   /* font */
   font-family: "Banks";
   font-size: 2.5vh;
@@ -1037,6 +1210,21 @@ p u:hover {
 #card_stages {
   margin-left: 30vw;
   align-self: flex-start;
+}
+/* section rank */
+#sec_rank {
+  /* border: 0.3vh solid red; */
+  /* size */
+  width: 100%;
+  height: 100%;
+  /* flex */
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* misc */
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 .market {
   /* border: 0.3vh solid green; */

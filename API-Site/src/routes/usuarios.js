@@ -19,6 +19,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.get("/rankList/", function (req, res) {
+    usuarioController.listRank(req, res);
+  });
+
 router.put("/updatePlayer/:idPlayer", function (req, res) {
     usuarioController.updatePlayerArk(req, res);
 });

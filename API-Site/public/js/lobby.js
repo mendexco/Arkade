@@ -70,14 +70,19 @@ function changeSections(section) {
   for (let i = 0; i < cardsLobby.length; i++) {
     cardsLobby[i].style.display = "inline-grid";
   }
-  if (section == "play" && sec_shop.style.opacity == 1) {
+  if (
+    section == "play" &&
+    (sec_shop.style.opacity == 1 || sec_rank.style.opacity == 1)
+  ) {
     market_fighters.style.display = "none";
     market_stages.style.display = "none";
     sec_play.style.opacity = "0";
     sec_shop.style.opacity = "0";
+    sec_rank.style.opacity = "0";
     setTimeout(() => {
       sec_play.style.display = "flex";
       sec_shop.style.display = "none";
+      sec_rank.style.display = "none";
       setTimeout(() => {
         sec_play.style.opacity = "1";
         for (let i = 0; i < cardsLobby.length; i++) {
@@ -90,7 +95,8 @@ function changeSections(section) {
       }, 250);
     }, 500);
   } else if (
-    (section == "shop" && sec_play.style.opacity == 1) ||
+    (section == "shop" &&
+      (sec_play.style.opacity == 1 || sec_rank.style.opacity == 1)) ||
     (section == "shop" &&
       (market_fighters.style.display == "flex" ||
         market_stages.style.display == "flex"))
@@ -99,9 +105,11 @@ function changeSections(section) {
     market_stages.style.display = "none";
     sec_shop.style.opacity = "0";
     sec_play.style.opacity = "0";
+    sec_rank.style.opacity = "0";
     setTimeout(() => {
       sec_shop.style.display = "flex";
       sec_play.style.display = "none";
+      sec_rank.style.display = "none";
       setTimeout(() => {
         sec_shop.style.opacity = "1";
         for (let i = 0; i < cardsLobby.length; i++) {
@@ -112,6 +120,22 @@ function changeSections(section) {
         card_arcade.style.marginLeft = "30vh";
         card_versus.style.marginRight = "30vh";
       }, 250);
+    }, 500);
+  } else if (section == "rank") {
+    loadRank();
+    market_fighters.style.display = "none";
+    market_stages.style.display = "none";
+    sec_shop.style.opacity = "0";
+    sec_play.style.opacity = "0";
+    sec_rank.style.display = "flex";
+    card_arcade.style.marginLeft = "30vh";
+    card_versus.style.marginRight = "30vh";
+    card_fighters.style.marginRight = "30vh";
+    card_stages.style.marginLeft = "30vh";
+    setTimeout(() => {
+      sec_rank.style.opacity = "1";
+      sec_shop.style.display = "none";
+      sec_play.style.display = "none";
     }, 500);
   } else {
     console.log("CREATE SECTION");

@@ -1218,36 +1218,42 @@ function endGame(winner) {
     log_result.style.color = "#FF0000";
     if (gamemode == "arcade") {
       btn_result.disabled = "true";
-      addArk(-800, 40);
+      addArk(-800, 40, 1, 0, 1);
       user_arkScore.innerHTML = `${imgS}-800`;
       user_arkCoin.innerHTML = `${imgC}+40`;
     } else if (gamemode == "versus") {
-      addArk(0, 0);
+      addArk(0, 0, 1, 0, 1);
       user_arkScore.innerHTML = `${imgS}+0`;
       user_arkCoin.innerHTML = `${imgC}+0`;
     }
   } else {
     log_result.innerHTML = "VICTORY";
     log_result.style.color = "#ed145b";
+    let bonus = 9 - arrayArcade.length;
     if (gamemode == "arcade") {
       if (enemyID >= 10) {
         btn_result.disabled = "true";
       }
-      addArk(1000, 120);
-      user_arkScore.innerHTML = `${imgS}+1000`;
-      user_arkCoin.innerHTML = `${imgC}+120`;
+      let score = 1000 + (bonus * 120);
+      let coins = 120 + (bonus * 12);
+      addArk(score, coins, 1, 1, 0);
+      user_arkScore.innerHTML = `${imgS}+${score}`;
+      user_arkCoin.innerHTML = `${imgC}+${coins}`;
     } else if (gamemode == "versus") {
-      addArk(0, 60);
+      addArk(0, 60, 1, 1, 0);
       user_arkScore.innerHTML = `${imgS}+0`;
       user_arkCoin.innerHTML = `${imgC}+60`;
     }
   }
 }
 
-function addArk(arkScore, arkCoins) {
-  let scoreVar = Number(sessionStorage.PLAYER_ARKSCORE) + arkScore;
-  let coinsVar = Number(sessionStorage.PLAYER_ARKCOIN) + arkCoins;
-  let typeVar = "both";
+function addArk(arkScore, arkCoins, fights, wins, loss) {
+  let scoreVar = (Number(sessionStorage.PLAYER_ARKSCORE) + arkScore);
+  let coinsVar = (Number(sessionStorage.PLAYER_ARKCOIN) + arkCoins);
+  let fightsVar = (Number(sessionStorage.PLAYER_FIGHTS) + fights);
+  let winsVar = (Number(sessionStorage.PLAYER_WINS) + wins);
+  let lossVar = (Number(sessionStorage.PLAYER_LOSS) + loss);
+  let typeVar = "all";
   fetch(`/usuarios/updatePlayer/${sessionStorage.PLAYER_ID}`, {
     method: "PUT",
     headers: {
@@ -1256,7 +1262,11 @@ function addArk(arkScore, arkCoins) {
     body: JSON.stringify({
       scoreServer: scoreVar,
       coinsServer: coinsVar,
+      fightsServer: fightsVar,
+      winsServer: winsVar,
+      lossServer: lossVar,
       typeServer: typeVar,
+
     }),
   })
     .then(function (resposta) {
@@ -1264,8 +1274,11 @@ function addArk(arkScore, arkCoins) {
       if (resposta.ok) {
         sessionStorage.PLAYER_ARKSCORE = scoreVar;
         sessionStorage.PLAYER_ARKCOIN = coinsVar;
+        sessionStorage.PLAYER_FIGHTS = fightsVar;
+        sessionStorage.PLAYER_WINS = winsVar;
+        sessionStorage.PLAYER_LOSS = lossVar;
       } else {
-        throw "There was an error changing the ArkPoints!";
+        throw "There was an error changing the Player status!";
       }
     })
     .catch(function (resposta) {

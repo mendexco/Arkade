@@ -63,7 +63,7 @@ function logoutAccount() {
   window.location = "index.html";
 }
 
-function sideMenu(status, sec) {
+function sideMenu(status) {
   const menu = document.querySelector("#side_menu");
   const container = document.querySelector("#container_sec");
   const btnClose = document.querySelector("#btn_closeMenu");
@@ -90,6 +90,82 @@ function sideMenu(status, sec) {
       container.style.left = "10vw";
     }
   }
+}
+
+function loadRank() {
+  fetch(`/usuarios/rankList`)
+    .then(function (resposta) {
+      if (resposta.ok) {
+        if (resposta.status == 204) {
+          alert("no users registered");
+          throw "no users registered";
+        }
+        resposta.json().then(function (resposta) {
+          console.log("Users in rank: ", JSON.stringify(resposta));
+          const tbody = document.querySelector("#table_body");
+          // tbody.innerHTML = "";
+          for (let i = 0; i < resposta.length; i++) {
+            let user = resposta[i];
+
+            let row = document.createElement("tr");
+            let colPOS = document.createElement("td");
+            let colIMG = document.createElement("td");
+            let colNAME = document.createElement("td");
+            let colSCORE = document.createElement("td");
+
+            colPOS.innerHTML = `${i + 1}º`;
+            colIMG.innerHTML = `<img src="assets/imgs/chars/Ryu/SplashMIN.png" class="user-photo" />`;
+            colNAME.innerHTML = `${user.namePlayer}`;
+            colSCORE.innerHTML = `${user.arkScore}`;
+
+            row.className = "tr-ark";
+            colPOS.className = "td-ark";
+            colPOS.style = "text-shadow: 0 0 1vh #FFF";
+            colIMG.className = "td-ark";
+            colIMG.style = "text-align: right; width: 0";
+            colNAME.className = "td-ark td-name";
+            colSCORE.className = "td-ark";
+
+            if (i % 2 == 0) {
+              row.style.backgroundColor = "#1d1c1c";
+            }            
+
+            row.appendChild(colPOS);
+            row.appendChild(colIMG);
+            row.appendChild(colNAME);
+            row.appendChild(colSCORE);
+            tbody.appendChild(row);
+
+            if (i == 0) {
+              first_name.innerHTML = `${user.namePlayer}`;
+              first_arkScore.innerHTML = `<img src="assets/imgs/ArkadeScore.png" alt="AS-Icon" draggable="false">${user.arkScore}`;
+              colPOS.style = "color: #ed145b; text-shadow: 0 0 1vh #ed145b; font-weight: 1000; font-size: 1.7vw";
+              row.classList.add("tr-first");              
+            }
+
+            if (user.idPlayer == sessionStorage.PLAYER_ID) {
+              user_pos.innerHTML = `${i + 1}º`;
+            }
+          }
+          if (typeof log_fights != "undefined" ) {
+            log_fights.innerHTML = `Fights: <b>${sessionStorage.PLAYER_FIGHTS}</b>`;
+            log_wins.innerHTML = `Wins: <b>${sessionStorage.PLAYER_WINS}</b>`;
+            log_loss.innerHTML = `Loss: <b>${sessionStorage.PLAYER_LOSS}</b>`;
+          } else {
+            page_header.style.top = "-1vh";
+          }
+          total_players.innerHTML = `${resposta.length}`;
+          // finalizarAguardar();
+        });
+      } else {
+        throw "There's an error in the API!";
+      }
+    })
+    .catch(function (resposta) {
+      console.error(resposta);
+      // console.log("");
+      // finalizarAguardar();
+    });
 }
 
 // confirmAction("show");

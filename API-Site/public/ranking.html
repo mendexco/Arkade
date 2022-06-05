@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/imgs/ark-logoRED.png" />
     <link rel="stylesheet" href="css/main_style.css" />
     <title>ARKADE</title>
@@ -20,10 +17,10 @@
     <header id="page_header" class="page-header">
       <div class="container">
         <ul>
-          <li>HOME</li>
+          <li onclick="window.location = 'index.html'">HOME</li>
           <li>ABOUT</li>
           <li>SOURCE</li>
-          <li onclick="window.location = 'ranking.html'">RANKING</li>
+          <li>RANKING</li>
         </ul>
         <li id="li_login" onclick="hiddenCard('open')">LOGIN</li>
       </div>
@@ -32,72 +29,56 @@
     <!-- BANNER -->
     <div class="banner">
       <!-- PRESENTATION -->
-      <section class="section sec1">
-        <div class="div-title">
-          <video
-            id="video_title"
-            src="assets/videos/menu_video.mp4"
-            loop
-            muted
-            preload
-          ></video>
-          <h1 id="text_title" class="video-text">ARKADE</h1>
-        </div>
-        <img
-          id="img_arrow"
-          class="img-arrow"
-          src="assets/imgs/pages/home/sec1Arrow.png"
-          onclick="nextSection('sec2')"
-          alt="banner arrow"
-        />
-      </section>
-      <!-- INFO SECTION 1 -->
-      <section id="sec2" class="section sec-default1 sec2">
-        <div class="container">
-          <div class="text-group">
-            <h1>rEvivE thE strEEt</h1>
-            <p>
-              <b>ARKADE</b> is a fan-made <b>Street Fighter</b> turn-based game,
-              focused on strategy and odds, offering a modern and nostalgic
-              experience for fighting game lovers, mixing old school visuals
-              with newest <b>SFV</b> soundtrack
-            </p>
+      <section id="sec_rank" class="rank-index">
+        <div class="market" style="display: flex">
+          <div class="market-header" style="display: flex">
+            <p>RANKING</p>
           </div>
-          <img
-            src="assets/imgs/pages/home/ryu.png"
-            class="img_secdefault1"
-            id="img_sec1"
-            alt="Ryu Image"
-          />
-        </div>
-      </section>
-      <!-- INFO SECTION 2 -->
-      <section id="sec3" class="section sec-default1 sec3">
-        <div class="container">
-          <div class="text-group">
-            <h1>bE thE fightEr</h1>
-            <p>
-              Enter <b>classic</b> sceneries and battle until triumph or
-              disaster. Play with classic characters of the
-              <b>Street Fighter</b> series, each one with classic and unique
-              <b>powers</b>
-            </p>
+          <div class="market-list" style="display: flex">
+            <div class="kpi">
+              <div class="kpi-card">
+                <p class="kpi-p">TOTAL PLAYERS</p>
+                <p id="total_players" class="kpi-important">0</p>
+              </div>
+              <div
+                id="first"
+                class="kpi-card"
+                style="left: 23.8vw;"
+              >
+                <p class="kpi-p">FIRST</p>
+                <img
+                  id="first_photo"
+                  class="user-photo"
+                  src="assets/imgs/chars/Ken/SplashMIN.png"
+                  alt="USER IMG"
+                  draggable="false"
+                />
+                <p id="first_name" class="user-name">Username</p>
+                <p id="first_arkScore" class="user-arkpoints">
+                  <img
+                    src="assets/imgs/ArkadeScore.png"
+                    alt="AS-Icon"
+                    draggable="false"
+                  />
+                </p>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td style="text-align: left">PLAYER</td>
+                  <td>SCORE</td>
+                </tr>
+              </thead>
+              <tbody id="table_body">
+                <!-- INSERT USERS -->
+              </tbody>
+            </table>
           </div>
-          <img
-            src="assets/imgs/pages/home/chunli.png"
-            class="img_secdefault1"
-            id="img_sec2"
-            alt="Chun-Li Image"
-          />
         </div>
       </section>
-      <!-- FOOTER -->
-      <footer id="page_footer" class="page-footer">
-        <section class="section sec-default1">
-          <div class="container"></div>
-        </section>
-      </footer>
-    </div>
     <!-- HIDDEN -->
     <div id="card_group" class="background-card">
       <div class="hidden-card">
@@ -257,3 +238,7 @@
 
 <script src="js/globalSettings.js"></script>
 <script src="js/index.js"></script>
+<script>
+  sec_rank.style.display = "flex";
+  loadRank()
+</script>

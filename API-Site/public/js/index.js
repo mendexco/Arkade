@@ -1,10 +1,12 @@
 // AUTO FUNCTIONS
-body_index.addEventListener(
-  "load",
-  scrollStart(),
-  titleAnimation(),
-  clearSession()
-);
+if (typeof text_title != "undefined") {
+  body_index.addEventListener(
+    "load",
+    scrollStart(),
+    titleAnimation(),
+    clearSession()
+  );
+}
 
 function scrollStart() {
   window.scrollTo({
@@ -67,12 +69,14 @@ function nextSection(element) {
 }
 
 window.addEventListener("scroll", () => {
-  const headerVar = document.querySelector("#page_header");
-  let video = isInViewport("#video_title");
-  if (video == false) {
-    headerVar.classList.add("header-scroll");
-  } else {
-    headerVar.classList.remove("header-scroll");
+  if (typeof text_title != "undefined") {
+    const headerVar = document.querySelector("#page_header");
+    let video = isInViewport("#video_title");
+    if (video == false) {
+      headerVar.classList.add("header-scroll");
+    } else {
+      headerVar.classList.remove("header-scroll");
+    }
   }
 });
 
@@ -268,7 +272,7 @@ function signup() {
           console.log(json);
           console.log(JSON.stringify(json));
           let idJson = json;
-          initialItems(idJson.insertId, 'initial', 1);
+          initialItems(idJson.insertId, "initial", 1);
           loadingIcon("img_load_signup", "png");
           changeCard("login");
         });
@@ -367,6 +371,9 @@ function login() {
           sessionStorage.PLAYER_EMAIL = json.emailPlayer;
           sessionStorage.PLAYER_ARKSCORE = json.arkScore;
           sessionStorage.PLAYER_ARKCOIN = json.arkCoin;
+          sessionStorage.PLAYER_FIGHTS = json.fights;
+          sessionStorage.PLAYER_WINS = json.wins;
+          sessionStorage.PLAYER_LOSS = json.loss;
           setTimeout(function () {
             loadingIcon("img_load_signup", "gif");
             window.location = "./lobby.html";

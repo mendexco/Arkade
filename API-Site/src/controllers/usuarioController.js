@@ -96,10 +96,30 @@ function cadastrar(req, res) {
   }
 }
 
+function listRank(req, res) {
+  usuarioModel
+    .ranking()
+    .then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("No players found!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("An error occurred while searching players: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function updatePlayerArk(req, res) {
   let idPlayer = req.params.idPlayer;
   let arkScore = req.body.scoreServer;
   let arkCoins = req.body.coinsServer;
+  let fights = req.body.fightsServer;
+  let wins = req.body.winsServer;
+  let loss = req.body.lossServer;
   let arkType = req.body.typeServer;
 
   if (arkScore < 0) {
@@ -107,7 +127,7 @@ function updatePlayerArk(req, res) {
   }
 
   usuarioModel
-    .updatePlayer(idPlayer, arkScore, arkCoins, arkType)
+    .updatePlayer(idPlayer, arkScore, arkCoins, fights, wins, loss, arkType)
     .then(function (resultado) {
       res.json(resultado);
     })
@@ -158,6 +178,7 @@ function registerItem(req, res) {
 module.exports = {
   entrar,
   cadastrar,
+  listRank,
   updatePlayerArk,
   registerItem,
   listar,
