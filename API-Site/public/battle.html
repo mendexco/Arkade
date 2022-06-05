@@ -200,35 +200,31 @@
       </div>
     </div>
     <!-- RESULT -->
-    <div id="hidden-result" class="background-card" style="opacity: 1; z-index: 10;">
+    <div id="hidden_result" class="background-card">
       <div class="div-card card-result">
-        <p id="title_result">STAGE 1</p>
+        <p id="title_result">RESULT</p>
+        <p id="log_result">VICTORY</p>
         <p id="user_arkScore" class="user-arkpoints">
-          <img
-            src="assets/imgs/ArkadeScore.png"
-            alt="AC-Icon"
-            draggable="false"
-          />
-          +500
         </p>
         <p id="user_arkCoin" class="user-arkpoints">
-          <img
-            src="assets/imgs/ArkadeKoins.png"
-            alt="AC-Icon"
-            draggable="false"
-          />
-          +200
         </p>
         <div id="result_buttons">
           <button
-          id="btn_login"
-          onclick="login()"
+          onclick="resultButton('lobby')"
           class="btn-ark"
           type="button"
-          disabled
-          tabindex="4"
+          tabindex="1"
         >
-          FIGHT
+          LOBBY
+        </button>
+          <button
+          id="btn_result"
+          onclick="resultButton('selection')"
+          class="btn-ark"
+          type="button"
+          tabindex="2"
+        >
+          SELECT
         </button>
         </div>
       </div>

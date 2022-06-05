@@ -62,3 +62,44 @@ function logoutAccount() {
   sessionStorage.clear();
   window.location = "index.html"; 
 }
+
+function sideMenu(status, sec) {
+  const menu = document.querySelector("#side_menu");
+  const container = document.querySelector("#container_sec");
+  const btnClose = document.querySelector("#btn_closeMenu");
+  if (status == "start") {
+    user_name.innerHTML = sessionStorage.PLAYER_USERNAME;
+    user_arkScore.innerHTML += sessionStorage.PLAYER_ARKSCORE;
+    user_arkCoin.innerHTML += sessionStorage.PLAYER_ARKCOIN;
+  } else if (status == "show") {
+    menu.style.left = "0vh";
+    btnClose.style.marginRight = "0%";
+    btnClose.style.backgroundImage = "url(../assets/imgs/close.png)";
+    btnClose.style.backgroundSize = "40% 40%";
+    btnClose.setAttribute("onclick", "sideMenu('hide')");
+    if (typeof container_sec != "undefined") {      
+      container.style.left = "16.5vw";
+    }
+  } else if (status == "hide") {
+    menu.style.left = "-25vh";
+    btnClose.style.marginRight = "-24%";
+    btnClose.style.backgroundImage = "url(../assets/imgs/menu.png)";
+    btnClose.style.backgroundSize = "60% 60%";
+    btnClose.setAttribute("onclick", "sideMenu('show')");
+    if (typeof container_sec != "undefined") {      
+      container.style.left = "10vw";
+    }
+  }
+}
+
+confirmAction("show");
+function confirmAction(status, action, page) {
+  const card = document.querySelector("#confirm_card");
+  if (status == "show") {
+    card.style.zIndex = "15";
+    card.style.opacity = "1";
+  } else if (status == "hide") {
+    card.style.zIndex = "-5";
+    card.style.opacity = "0";
+  }
+}

@@ -9,17 +9,76 @@
     <link rel="stylesheet" href="css/selection_style.css" />
     <title>Character Select | ARKADE</title>
   </head>
-
   <body draggable="false">
     <!-- LOADING SCREEN -->
     <div id="div_loading" class="div-loading">
       <img src="assets/loading_logo.gif" />
+    </div>    
+    <!-- SIDE MENU -->
+    <div id="side_menu" class="side-menu">
+      <div id="btn_closeMenu" class="btn-close close-menu"></div>
+      <div class="side-header">
+        <img
+          id="user_photo"
+          src="assets/imgs/chars/Ken/SplashMIN.png"
+          alt="USER IMG"
+          draggable="false"
+        />
+        <p id="user_name">Username</p>
+        <p id="user_arkScore" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeScore.png"
+            alt="AS-Icon"
+            draggable="false"
+          />
+        </p>
+        <p id="user_arkCoin" class="user-arkpoints">
+          <img
+            src="assets/imgs/ArkadeKoins.png"
+            alt="AC-Icon"
+            draggable="false"
+          />
+        </p>
+      </div>
+      <hr class="side-hr" />
+      <div class="side-body">
+        <button onclick="changeSections('play')" disabled>PLAY</button>
+        <button onclick="changeSections('shop')" disabled>SHOP</button>
+      </div>
+      <hr class="side-hr" />
+      <div class="side-footer">
+        <button href="lobby.html">LOBBY</button>
+        <button onclick="logoutAccount()">LOGOUT</button>
+      </div>
     </div>
-    
+    <!-- CONFIRM -->
+    <div id="confirm_card" class="background-card">
+      <div class="div-card card-confirm">
+        <p id="question">Exit?</p>
+        <div id="result_buttons">
+          <button
+          onclick="confirmAction('hide')"
+          class="btn-ark"
+          type="button"
+          tabindex="1"
+        >
+          NO
+        </button>
+          <button
+          id="btn_result"
+          onclick="confirmAction('hide')"
+          class="btn-ark"
+          type="button"
+          tabindex="2"
+        >
+          YES
+        </button>
+        </div>
+      </div>
+    </div>
+    </div>
     <audio id="select_music" type="audio/mp3" autoplay></audio>
-    
     <div id="back_stage"></div>
-
     <div class="div-mid">
       <div id="player_preview" class="div-preview">
         <img src="assets/imgs/none.png" id="img_player" class="img-preview" />
@@ -28,7 +87,6 @@
         <img src="assets/imgs/none.png" id="img_enemy" class="img-preview" />
       </div>
     </div>
-
     <!-- CHARACTERS SELECTION -->
     <div class="div-bottom">
       <!-- names -->
@@ -172,7 +230,6 @@
         </div>
       </div>
     </div>
-
     <span
       id="random_symbol"
       onclick="randomizeSet()"

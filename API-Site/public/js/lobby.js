@@ -58,34 +58,9 @@ function plotPortraits(plot, search) {
 }
 
 side_menu.addEventListener("load", sideMenu("start"));
-
-function sideMenu(status) {
-  const menu = document.querySelector("#side_menu");
-  const container = document.querySelector("#container_sec");
-  const btnClose = document.querySelector("#btn_closeMenu");
-  if (status == "start") {
-    user_name.innerHTML = sessionStorage.PLAYER_USERNAME;
-    user_arkScore.innerHTML += sessionStorage.PLAYER_ARKSCORE;
-    user_arkCoin.innerHTML += sessionStorage.PLAYER_ARKCOIN;
-    setTimeout(() => {
-      sideMenu("show");
-    }, 1000);
-  } else if (status == "show") {
-    menu.style.left = "0vh";
-    container.style.left = "16.5vw";
-    btnClose.style.marginRight = "0%";
-    btnClose.style.backgroundImage = "url(../assets/imgs/close.png)";
-    btnClose.style.backgroundSize = "40% 40%";
-    btnClose.setAttribute("onclick", "sideMenu('hide')");
-  } else if (status == "hide") {
-    menu.style.left = "-25vh";
-    container.style.left = "10vw";
-    btnClose.style.marginRight = "-24%";
-    btnClose.style.backgroundImage = "url(../assets/imgs/menu.png)";
-    btnClose.style.backgroundSize = "60% 60%";
-    btnClose.setAttribute("onclick", "sideMenu('show')");
-  }
-}
+setTimeout(() => {
+  sideMenu("show");
+}, 1000);
 
 sec_shop.style.opacity = 1;
 container_sec.addEventListener("load", changeSections("play"));
@@ -342,23 +317,25 @@ function showStats(
 
 function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
   // ARKCOINS UPDATE
-  let newArkVar = Number(sessionStorage.PLAYER_ARKCOIN) - arkCoins;
-  let arkTypeVar = arkType;
+  let scoreVar = Number(sessionStorage.PLAYER_ARKCOIN) + 0;
+  let coinsVar = Number(sessionStorage.PLAYER_ARKCOIN) - arkCoins;
+  let typeVar = arkType;
   fetch(`/usuarios/updatePlayer/${playerID}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      arkServer: newArkVar,
-      typeServer: arkTypeVar,
+      scoreServer: scoreVar,
+      coinsServer: coinsVar,
+      typeServer: typeVar,
     }),
   })
     .then(function (resposta) {
       console.log("resposta: ", resposta);
       if (resposta.ok) {
         console.log(`Past ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
-        sessionStorage.PLAYER_ARKCOIN = newArkVar;
+        sessionStorage.PLAYER_ARKCOIN = coinsVar;
         console.log(`New ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
         user_arkCoin.innerHTML = `<img src="assets/imgs/ArkadeKoins.png" alt="AC-Icon" draggable="false" />${sessionStorage.PLAYER_ARKCOIN}`;
         setItem(playerID, itemType, itemID);

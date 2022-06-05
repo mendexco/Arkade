@@ -1187,18 +1187,97 @@ function verifyEnd(gameState, roundWinner) {
   }, 2000);
 }
 
+// endGame("player");
 function endGame(winner) {
   disableButtons();
   console.log("desabling buttons...");
   console.log(`${winner} is the winner`);
+  hidden_result.style.zIndex = "10";
+  hidden_result.style.opacity = "1";
+  if (gamemode == "arcade") {
+    title_result.innerHTML = `STAGE ${sessionStorage.STAGECOUNT}`;
+    btn_result.setAttribute("onclick", "resultButton('battle')");
+    btn_result.innerHTML = "NEXT";
+  }
+  let imgS = `
+  <img
+  src="assets/imgs/ArkadeScore.png"
+  alt="AC-Icon"
+  draggable="false"
+  />
+  `;
+  let imgC = `
+  <img
+  src="assets/imgs/ArkadeKoins.png"
+  alt="AC-Icon"
+  draggable="false"
+  />
+  `;
   if (winner == "enemy") {
-    window.location = `lobby.html`;
-  } else {
-    if (enemyID >= 10) {
-      console.log("Cabo");
-    } else {
-      nextEnemy();
+    log_result.innerHTML = "DEFEAT";
+    log_result.style.color = "#FF0000";
+    if (gamemode == "arcade") {
+      btn_result.disabled = "true";
+      addArk(-800, 40);
+      user_arkScore.innerHTML = `${imgS}-800`;
+      user_arkCoin.innerHTML = `${imgC}+40`;
+    } else if (gamemode == "versus") {
+      addArk(0, 0);
+      user_arkScore.innerHTML = `${imgS}+0`;
+      user_arkCoin.innerHTML = `${imgC}+0`;
     }
+  } else {
+    log_result.innerHTML = "VICTORY";
+    log_result.style.color = "#ed145b";
+    if (gamemode == "arcade") {
+      if (enemyID >= 10) {
+        btn_result.disabled = "true";
+      }
+      addArk(1000, 120);
+      user_arkScore.innerHTML = `${imgS}+1000`;
+      user_arkCoin.innerHTML = `${imgC}+120`;
+    } else if (gamemode == "versus") {
+      addArk(0, 60);
+      user_arkScore.innerHTML = `${imgS}+0`;
+      user_arkCoin.innerHTML = `${imgC}+60`;
+    }
+  }
+}
+
+function addArk(arkScore, arkCoins) {
+  let scoreVar = Number(sessionStorage.PLAYER_ARKSCORE) + arkScore;
+  let coinsVar = Number(sessionStorage.PLAYER_ARKCOIN) + arkCoins;
+  let typeVar = "both";
+  fetch(`/usuarios/updatePlayer/${sessionStorage.PLAYER_ID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      scoreServer: scoreVar,
+      coinsServer: coinsVar,
+      typeServer: typeVar,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+      if (resposta.ok) {
+        sessionStorage.PLAYER_ARKSCORE = scoreVar;
+        sessionStorage.PLAYER_ARKCOIN = coinsVar;
+      } else {
+        throw "There was an error changing the ArkPoints!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function resultButton(page) {
+  if (page != "battle") {
+    window.location = `${page}.html`;
+  } else {
+    nextEnemy();
   }
 }
 
@@ -1225,6 +1304,7 @@ function nextEnemy() {
         resposta.json().then((json) => {
           console.log(sessionStorage.CHARS);
           sessionStorage.ENEMY_CHAR = JSON.stringify(json);
+          sessionStorage.STAGECOUNT++;
           window.location = "battle.html";
         });
       } else {
@@ -1237,4 +1317,3 @@ function nextEnemy() {
 
   return false;
 }
-

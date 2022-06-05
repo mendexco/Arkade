@@ -521,6 +521,31 @@ p b {
   user-select: none;
 }
 
+/* CONFIRM */
+#confirm_card {
+}
+.card-confirm {
+  /* size */
+  width: 30vw;
+  height: 60vh;
+  /* color */
+  background-color: #212121;
+}
+.card-confirm p {
+  /* spacing */
+  margin-bottom: 10vh;
+  /* font */
+  font-family: "Banks";
+  font-size: 2vw;
+  color: #fff;
+}
+.card-confirm button {
+  /* size */
+  width: 8vw;
+  height: 6vh;
+  /* spacing */
+  margin: 0px 0.6vw 0 0.6vw;
+}
 /*FORM*/
 .form {
   /* flex */
@@ -719,9 +744,12 @@ p u:hover {
 
 /* LOBBY */
 .body-lobby {
-  background-color: #141414;
   /* flex */
   display: flex;
+  /* background */
+  background-color: #141414;
+  background-image: url(../assets/imgs/pages/lobby/background.gif);
+  background-size: 60% 60%;
 }
 /* SIDE MENU */
 .side-menu {
@@ -780,6 +808,11 @@ p u:hover {
 }
 .side-menu button:active {
   background-color: #350514;
+}
+.side-menu button:disabled {
+  color: #777777;
+  background-color: #320415;
+  cursor: url(../assets/imgs/arrowBlock.png), not-allowed;
 }
 .side-header {
   /* border: 0.1vh solid red; */
@@ -846,7 +879,9 @@ p u:hover {
   height: 30%;
   /* flex */
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 .side-hr {
   /* size */

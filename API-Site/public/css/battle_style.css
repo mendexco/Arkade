@@ -563,26 +563,67 @@ button:disabled:hover {
 /* HIDDEN */
 .card-result {
   /* size */
-  width: 25vw;
+  width: 28vw;
   height: 60vh;
   /* position */
   position: absolute;
   /* flex */
   display: flex;
+  justify-content: space-evenly;
   /* misc */
-  background-color: #212121;
+  background-color: #212121F0;
+}
+#title_result {
+  /* size */
+  width: 100%;
+  margin: 0;
+  /* font */
+  text-align: center;
+  font-family: Squids;
+  font-size: 2.6vw;
+  font-weight: 1000;
+}
+#log_result {
+  /* size */
+  width: 100%;
+  margin-top: -6vw;
+  /* font */
+  text-align: center;
+  font-size: 1.4vw;
+  color: #ed145b;
+  text-shadow: 0 0 1vh #ed145b;
 }
 .card-result p {
   /* font */
   font-family: Banks;
-  font-size: 2vw;
+  font-size: 1.8vw;
+  font-weight: 600;
   color: #FFF;
   /* flex */
-  justify-content: center
+  justify-content: flex-start;
+  /* spacing */
+  margin: -3vh 0 -3vh 0;
 }
 .card-result img {
-  width: 3vw !important;
-  height: 6vh !important;
+  /* size */
+  width: 2.5vw !important;
+  height: 5vh !important;
+  margin-left: 1.5vw;
+}
+#result_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.card-result .btn-ark {
+  /* size */
+  width: 9vw;
+  height: 5.4vh;
+  margin: 0 0.2vw 0 0.2vw;
+}
+.card-result button:hover {
+  color: #FFF;
+  text-shadow: 0 0 0.5vh #FFF;
 }
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 /* KEYFRAMES */

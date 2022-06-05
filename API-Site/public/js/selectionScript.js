@@ -4,6 +4,11 @@ var charsArray = [];
 var stagesArray = [];
 var stageName = [];
 
+side_menu.addEventListener("load", sideMenu("start"));
+setTimeout(() => {
+  sideMenu("hide");
+}, 1000);
+
 bgAudio();
 select_music.volume = 0.05;
 function bgAudio() {
@@ -251,6 +256,7 @@ function setCard(btnType, idChar, nameChar) {
 
 sessionStorage.PLAYER_CHAR = "";
 sessionStorage.ENEMY_CHAR = "";
+sessionStorage.STAGECOUNT = 0;
 let arrayArcade = [];
 const totalEnemies = 9;
 let arcadeEnemy = false;
@@ -271,7 +277,6 @@ function battleStorage(idChar, charSelected) {
       console.log("ESTOU NO THEN DO battleStorage()!");
       if (resposta.ok) {
         console.log(resposta);
-
         resposta.json().then((json) => {
           console.log(sessionStorage.CHARS);
           if (arcadeEnemy) {
@@ -295,6 +300,7 @@ function battleStorage(idChar, charSelected) {
                 arrayArcade.shift();
                 arrayArcade[arrayArcade.length - 1] = 10;                
                 sessionStorage.ARCADE = JSON.stringify(arrayArcade);
+                sessionStorage.STAGECOUNT = 1;
                 battleStorage(arrayArcade[0]);
               }
             } else {

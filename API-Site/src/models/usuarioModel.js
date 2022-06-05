@@ -30,13 +30,23 @@ function cadastrar(name, email, password) {
     return database.executar(instrucao);
 }
 
-function updatePlayer(idPlayer, arkPoints, typeArk) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idPlayer, arkPoints, typeArk );
-    let instrucao = `
+function updatePlayer(idPlayer, arkScore, arkCoins, typeArk) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idPlayer, arkScore, arkCoins, typeArk );
+    let instrucao = "";
+    if (typeArk == "both") {
+        instrucao = `
         UPDATE Player SET 
-        ${typeArk} = ${arkPoints} 
+        arkScore = ${arkScore},
+        arkCoin = ${arkCoins} 
         WHERE idPlayer = ${idPlayer};
-    `;
+        `;
+    } else {
+        instrucao = `
+        UPDATE Player SET 
+        ${typeArk} = ${arkCoins} 
+        WHERE idPlayer = ${idPlayer};
+        `;
+    }
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

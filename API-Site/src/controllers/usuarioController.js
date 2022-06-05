@@ -98,11 +98,16 @@ function cadastrar(req, res) {
 
 function updatePlayerArk(req, res) {
   let idPlayer = req.params.idPlayer;
-  let arkValue = req.body.arkServer;
+  let arkScore = req.body.scoreServer;
+  let arkCoins = req.body.coinsServer;
   let arkType = req.body.typeServer;
 
+  if (arkScore < 0) {
+    arkScore = 0;
+  }
+
   usuarioModel
-    .updatePlayer(idPlayer, arkValue, arkType)
+    .updatePlayer(idPlayer, arkScore, arkCoins, arkType)
     .then(function (resultado) {
       res.json(resultado);
     })
