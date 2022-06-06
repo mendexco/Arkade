@@ -218,9 +218,6 @@ function signup() {
     passwordVar == "" ||
     confirmVar == ""
   ) {
-    // cardErro.style.display = "block";
-    // mensagem_erro.innerHTML = "Campo não preenchido!";
-    // ressaltando bordas
     ipt_username_signup.style.border = "0.1vh solid #7e1818";
     ipt_email_signup.style.border = "0.1vh solid #7e1818";
     ipt_password_signup.style.border = "0.1vh solid #7e1818";
@@ -233,8 +230,6 @@ function signup() {
 
   // INVALID EMAIL
   if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-    // cardErro.style.display = "block";
-    // mensagem_erro.innerHTML = "E-mail inválido!";
     ipt_email_signup.style.border = "0.1vh solid #7e1818";
     loadingIcon("img_load_signup", "png");
     return false;
@@ -244,15 +239,13 @@ function signup() {
 
   // DIFFERENT PASSWORDS
   if (passwordVar != confirmVar) {
-    // cardErro.style.display = "block";
-    // mensagem_erro.innerHTML = "As senhas necessitam ser iguais";
     ipt_password_signup.style.border = "0.1vh solid #7e1818";
     ipt_confirm.style.border = "0.1vh solid #7e1818";
     loadingIcon("img_load_signup", "png");
     return false;
   } else {
     // setInterval(sumirMensagem, 5000);
-  }
+  }  
 
   fetch("/usuarios/cadastrar", {
     method: "POST",

@@ -13,6 +13,9 @@ emailPlayer VARCHAR(60),
 password VARBINARY(150),
 arkScore INT DEFAULT 0,
 arkCoin INT DEFAULT 1000,
+fights INT DEFAULT 0,
+wins INT DEFAULT 0,
+loss INT DEFAULT 0,
 register TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -127,9 +130,9 @@ SELECT * FROM Characters
 
 -- INSERTS
 -- PLAYER INSERTS
-INSERT INTO Player VALUES
-(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), DEFAULT, DEFAULT, DEFAULT),
-(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO Player (namePlayer, emailPlayer, password) VALUES
+('Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt')),
+('Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'));
 SELECT * FROM Player;
 -- UPDATE Player SET column = '' WHERE idPlayer = X;
 

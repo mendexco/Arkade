@@ -1,0 +1,7 @@
+- apresentação
+- referencia street fighter
+- explicar street fighter
+- explicar ligação (infância, pai, irmão)
+- passada rápida nas tecnologias (html, css, js, node.js, mysql workbench, photoshop, vegas pro 18, fighters generation, imageMagick, trello, github gitbash)
+- explicar site
+- dificuldade, superação, agradecer
