@@ -6,6 +6,9 @@ if (typeof text_title != "undefined") {
     titleAnimation(),
     clearSession()
   );
+} else {
+  page_header.style.top = "0vh";
+  body_index.style.overflowY = "auto";
 }
 
 function scrollStart() {
@@ -68,15 +71,17 @@ function nextSection(element) {
   el.scrollIntoView({ behavior: "smooth" });
 }
 
+const headerVar = document.querySelector("#page_header");
 window.addEventListener("scroll", () => {
   if (typeof text_title != "undefined") {
-    const headerVar = document.querySelector("#page_header");
     let video = isInViewport("#video_title");
     if (video == false) {
       headerVar.classList.add("header-scroll");
     } else {
       headerVar.classList.remove("header-scroll");
     }
+  } else {
+    headerVar.classList.add("header-scroll");
   }
 });
 

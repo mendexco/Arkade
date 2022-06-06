@@ -1229,8 +1229,8 @@ function endGame(winner) {
   } else {
     log_result.innerHTML = "VICTORY";
     log_result.style.color = "#ed145b";
-    let bonus = 9 - arrayArcade.length;
     if (gamemode == "arcade") {
+      let bonus = 9 - arrayArcade.length;
       if (enemyID >= 10) {
         btn_result.disabled = "true";
       }

@@ -208,7 +208,7 @@ html {
   background-position: 0 100%;
 }
 .page-header li:hover::after {
-  width: 5vh;
+  width: 5vh !important;
 }
 #li_login {
   /* font */
@@ -216,6 +216,15 @@ html {
   /* position */
   position: absolute;
   right: 1vw;
+}
+.li-selected {
+  background: 0 !important;
+  -webkit-text-fill-color: white !important;
+  text-shadow: 0vw 0vh 0.8vw #FFF !important;
+}
+.li-selected::after {
+  background-color: #FFF !important;
+  width: 4vh !important;
 }
 /* HEADER SCROLL */
 .header-scroll {
@@ -237,7 +246,31 @@ html {
 .page-footer section {
   height: 50vh;
 }
-
+.footer-info {
+  /* border: 1px solid red; */
+  width: 20vw;
+  height: 30vh;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-info a {
+  cursor: url(../assets/imgs/arrowPointer.png), pointer;
+}
+.footer-info hr {
+  width: 100%;
+  margin: 2vh;
+}
+.footer-info p {
+  font-size: 2.8vh;
+  color: #FFF;
+}
+.footer-info p img {
+  height: 4vh;
+  margin-left: 0.4vw;
+  margin-bottom: -1vh;
+}
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* BANNER */
 .banner {
@@ -409,6 +442,25 @@ p b {
 }
 .sec3 .text-group {
   min-width: 55%;
+}
+
+/*------------------------------------------------------------------------------------*/
+/* ABOUT */
+.secAbout1 {
+  /* color */
+  background-color: #000000;
+  background-image: linear-gradient(to bottom, #141414 60%, #000000 100%);
+}
+.secAbout1 .container {
+  flex-direction: row;
+}
+.secAbout2 {
+  /* color */
+  background-color: #000000;
+  background-image: linear-gradient(to bottom, #000000 60%, #141414 100%);
+}
+.secAbout2 .container {
+  flex-direction: row-reverse;
 }
 
 /*------------------------------------------------------------------------------------*/
