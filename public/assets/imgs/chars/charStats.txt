@@ -137,12 +137,12 @@ DESC: While Ryu is the serious, nice and stoic of the two, Ken is the complete o
 - loseTop: 47
 - loseSide: 19
 
-- atkSpeed: 1880
+- atkSpeed: 800
 - atkWidth: 38
 - atkHeight: 64
 - atkTop: 26
 - atkSide: 31
-- sp1Speed: 4050
+- sp1Speed: 2050
 - sp1Width: 59
 - sp1Height: 69
 - sp1Top: 24
@@ -196,7 +196,7 @@ DESC: Sagat encompasses a stereotypical 'proud fighter' personality, since he is
 - atkHeight: 71
 - atkTop: 20
 - atkSide: 30
-- sp1Speed: 700
+- sp1Speed: 1790
 - sp1Width: 53
 - sp1Height: 58
 - sp1Top: 33
@@ -245,7 +245,7 @@ DESC: Guile is a tough man, both physically and mentally, who takes pride in fam
 - loseTop: 68
 - loseSide: 22
 
-- atkSpeed: 1700
+- atkSpeed: 1100
 - atkWidth: 56
 - atkHeight: 66
 - atkTop: 25
@@ -353,7 +353,7 @@ DESC: Vega is vain, overconfident, and highly convinced of his own abilities, al
 - loseTop: 56
 - loseSide: 18
 
-- atkSpeed: 1480
+- atkSpeed: 680
 - atkWidth: 42
 - atkHeight: 60
 - atkTop: 30
