@@ -220,7 +220,7 @@ html {
 .li-selected {
   background: 0 !important;
   -webkit-text-fill-color: white !important;
-  text-shadow: 0vw 0vh 0.8vw #FFF !important;
+  text-shadow: 0vw 0vh 0.5vw #FFF !important;
 }
 .li-selected::after {
   background-color: #FFF !important;

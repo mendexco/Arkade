@@ -38,7 +38,7 @@ fkBasic INT,
 FOREIGN KEY (fkBasic) REFERENCES BasicMetrics(idBasic),
 fkAdvanced INT,
 FOREIGN KEY (fkAdvanced) REFERENCES AdvancedMetrics(idAdvanced),
-charDesc VARCHAR(1000)
+charDesc VARCHAR(600)
 );
 
 CREATE TABLE BasicMetrics (
@@ -135,6 +135,17 @@ INSERT INTO Player (namePlayer, emailPlayer, password) VALUES
 ('Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt')),
 ('Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'));
 SELECT * FROM Player;
+INSERT INTO Player VALUES
+(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2450, ),
+(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), 2850);
+(NULL, 'Gabriel', 'gabriel@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1098);
+(NULL, 'Eduarda', 'eduarda.calixto@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2010);
+(NULL, 'Thiago', 'thiago.ramos@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 980);
+(NULL, 'Delfino', 'guilherme.delfino@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 0);
+(NULL, 'Soares', 'vini.soares@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1560);
+(NULL, 'Wladimir', 'wlad.imir@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1990);
+(NULL, 'Marco', 'marco.rover@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2000);
+(NULL, 'Dan', 'dan.josua@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2000);
 -- UPDATE Player SET column = '' WHERE idPlayer = X;
 
 -- CHARACTERS INSERTS
