@@ -27,7 +27,7 @@ function entrar(emailPlayer, password) {
   return database.executar(instrucao);
 }
 
-function cadastrar(name, email, password) {
+function cadastrar(name, email, password, icon) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",
     name,
@@ -35,8 +35,8 @@ function cadastrar(name, email, password) {
     "AES_ENCRYPT(password)"
   );
   let instrucao = `
-        INSERT INTO Player (namePlayer, emailPlayer, password) VALUES 
-        ('${name}', '${email}', AES_ENCRYPT('${password}', 'arkcrypt'));
+        INSERT INTO Player (namePlayer, emailPlayer, password, iconPlayer) VALUES 
+        ('${name}', '${email}', AES_ENCRYPT('${password}', 'arkcrypt'), '${icon}');
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
@@ -48,7 +48,7 @@ function ranking() {
   );
   let instrucao = `
         SELECT * FROM Player
-            ORDER BY arkScore DESC, register DESC;
+            ORDER BY arkScore DESC, register ASC;
     `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);

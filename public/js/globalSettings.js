@@ -71,6 +71,7 @@ function sideMenu(status) {
     user_name.innerHTML = sessionStorage.PLAYER_USERNAME;
     user_arkScore.innerHTML += sessionStorage.PLAYER_ARKSCORE;
     user_arkCoin.innerHTML += sessionStorage.PLAYER_ARKCOIN;
+    user_photo.src = `assets/imgs/chars/${sessionStorage.PLAYER_ICON}/SplashMIN.png`;
   } else if (status == "show") {
     menu.style.left = "0vh";
     btnClose.style.marginRight = "0%";
@@ -103,7 +104,7 @@ function loadRank() {
         resposta.json().then(function (resposta) {
           console.log("Users in rank: ", JSON.stringify(resposta));
           const tbody = document.querySelector("#table_body");
-          // tbody.innerHTML = "";
+          tbody.innerHTML = "";
           for (let i = 0; i < resposta.length; i++) {
             let user = resposta[i];
 
@@ -114,7 +115,7 @@ function loadRank() {
             let colSCORE = document.createElement("td");
 
             colPOS.innerHTML = `${i + 1}º`;
-            colIMG.innerHTML = `<img src="assets/imgs/chars/Ryu/SplashMIN.png" class="user-photo" />`;
+            colIMG.innerHTML = `<img src="assets/imgs/chars/${user.iconPlayer}/SplashMIN.png" class="user-photo" />`;
             colNAME.innerHTML = `${user.namePlayer}`;
             colSCORE.innerHTML = `${user.arkScore}`;
 
@@ -137,6 +138,7 @@ function loadRank() {
             tbody.appendChild(row);
 
             if (i == 0) {
+              first_photo.src = `assets/imgs/chars/${user.iconPlayer}/SplashMIN.png`;
               first_name.innerHTML = `${user.namePlayer}`;
               first_arkScore.innerHTML = `<img src="assets/imgs/ArkadeScore.png" alt="AS-Icon" draggable="false">${user.arkScore}`;
               colPOS.style = "color: #ed145b; text-shadow: 0 0 1vh #ed145b; font-weight: 1000; font-size: 1.7vw";

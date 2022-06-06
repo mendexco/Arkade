@@ -169,8 +169,8 @@ function setupEssencials() {
   name_player.innerHTML = playerName;
   name_enemy.innerHTML = enemyName;
   // portrait of each character
-  player_portrait.style.backgroundImage = `url(../assets/imgs/chars/${playerName}/PORTRAIT.png)`;
-  enemy_portrait.style.backgroundImage = `url(../assets/imgs/chars/${enemyName}/PORTRAIT.png)`;
+  player_portrait.style.backgroundImage = `url(../assets/imgs/chars/${playerName}/SplashMIN.png)`;
+  enemy_portrait.style.backgroundImage = `url(../assets/imgs/chars/${enemyName}/SplashMIN.png)`;
   // defense bar
   player_defenseBAR.style.width = "0vw";
   enemy_defenseBAR.style.width = "0vw";
@@ -1294,7 +1294,10 @@ function resultButton(page) {
   }
 }
 
-let arrayArcade = JSON.parse(sessionStorage.ARCADE);
+let arrayArcade;
+if (gamemode == "arcade") {
+  arrayArcade = JSON.parse(sessionStorage.ARCADE);
+}
 console.log(arrayArcade);
 function nextEnemy() {
   arrayArcade.shift();

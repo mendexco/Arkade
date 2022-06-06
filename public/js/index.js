@@ -209,6 +209,7 @@ function signup() {
   let emailVar = ipt_email_signup.value;
   let passwordVar = ipt_password_signup.value;
   let confirmVar = ipt_confirm.value;
+  let iconVar = "";
 
   // INPUT VALIDATIONS
   // EMPTY FIELD
@@ -247,6 +248,22 @@ function signup() {
     // setInterval(sumirMensagem, 5000);
   }  
 
+  const charsArray = [
+    "Ryu",
+    "Ken",
+    "Sagat",
+    "Guile",
+    "Dhalsim",
+    "Vega",
+    "Balrog",
+    "Chun-Li",
+    "Akuma",
+    "M.Bison",
+  ];
+
+  let randomChar = Math.floor(Math.random() * charsArray.length);
+  iconVar = charsArray[randomChar];
+
   fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {
@@ -256,6 +273,7 @@ function signup() {
       nameServer: nameVar,
       emailServer: emailVar,
       passwordServer: passwordVar,
+      iconServer: iconVar,
     }),
   })
     .then(function (resposta) {
@@ -367,10 +385,10 @@ function login() {
           sessionStorage.PLAYER_FIGHTS = json.fights;
           sessionStorage.PLAYER_WINS = json.wins;
           sessionStorage.PLAYER_LOSS = json.loss;
+          sessionStorage.PLAYER_ICON = json.iconPlayer;          
           setTimeout(function () {
             loadingIcon("img_load_signup", "gif");
             window.location = "./lobby.html";
-            // window.location = "./selection.html";
           }, 1000); // apenas para exibir o loading
         });
       } else {

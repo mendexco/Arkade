@@ -45,8 +45,15 @@ function plotPortraits(plot, search) {
         <p class="fighter-p">${char.toUpperCase()}</p>
       </div>
       `;
-      } else {
+      } else if (plot == "stage") {
         stages_items.innerHTML += `
+      <div onclick="searchDetails('${char}', 'stage')" class="stage-item">
+      <img class="stage-img" src="assets/imgs/stages/stage_${char}.png">
+      <p class="stage-p">${stagesArray[i].toUpperCase()}</p>
+      </div>
+      `;
+      }else if (plot == "icon") {
+        icons_items.innerHTML += `
       <div onclick="searchDetails('${char}', 'stage')" class="stage-item">
       <img class="stage-img" src="assets/imgs/stages/stage_${char}.png">
       <p class="stage-p">${stagesArray[i].toUpperCase()}</p>
@@ -151,7 +158,7 @@ function lobbyOnClik(card) {
   } else if (card == "versus") {
     sessionStorage.GAMEMODE = "versus";
     window.location = "../selection.html";
-  } else if (card == "fighters" || card == "stages") {
+  } else if (card == "fighters" || card == "stages" || card == "icons") {
     const market = document.querySelector(`#market_${card}`);
     for (let i = 0; i < cardsLobby.length; i++) {
       cardsLobby[i].style.opacity = "0";
