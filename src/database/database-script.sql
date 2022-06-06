@@ -131,21 +131,22 @@ SELECT * FROM Characters
 
 -- INSERTS
 -- PLAYER INSERTS
-INSERT INTO Player (namePlayer, emailPlayer, password) VALUES
-('Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt')),
-('Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'));
-SELECT * FROM Player;
 INSERT INTO Player VALUES
-(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2450, ),
-(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), 2850);
-(NULL, 'Gabriel', 'gabriel@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1098);
-(NULL, 'Eduarda', 'eduarda.calixto@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2010);
-(NULL, 'Thiago', 'thiago.ramos@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 980);
-(NULL, 'Delfino', 'guilherme.delfino@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 0);
-(NULL, 'Soares', 'vini.soares@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1560);
-(NULL, 'Wladimir', 'wlad.imir@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1990);
-(NULL, 'Marco', 'marco.rover@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2000);
-(NULL, 'Dan', 'dan.josua@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2000);
+(NULL, 'arkade', 'arkade@.com', AES_ENCRYPT('arkade', 'arkcrypt'), 0, 100000, 0, 0, 0, 'Ryu', '0000-00-00 00:00:00');
+INSERT INTO Player VALUES
+(NULL, 'Vitor', 'vitormendesco@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2450, 1780, 10, 8, 2, 'Ryu', DEFAULT),
+(NULL, 'Vinicius', 'viniciuscosta@outlook.com', AES_ENCRYPT('123456', 'arkcrypt'), 2850, 2900, 12, 11, 1, 'Akuma', DEFAULT),
+(NULL, 'Gabriel', 'gabriel@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1098, 500, 7, 3, 4, 'Ken', DEFAULT),
+(NULL, 'Eduarda', 'eduarda.calixto@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2010, 4500, 6, 6, 0, 'Chun-Li', DEFAULT),
+(NULL, 'Thiago', 'thiago.ramos@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 980, 100, 4, 2, 2, 'Sagat', DEFAULT),
+(NULL, 'Delfino', 'guilherme.delfino@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 0, 0, 21, 0, 21, 'Guile', DEFAULT),
+(NULL, 'Soares', 'vini.soares@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1560, 2222, 10, 8, 2, 'Dhalsim', DEFAULT),
+(NULL, 'Wladimir', 'wlad.imir@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1990, 1234, 9, 7, 2, 'Vega', DEFAULT),
+(NULL, 'Marco', 'marco.rover@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 2000, 4321, 9, 6, 3, 'M.Bison', DEFAULT),
+(NULL, 'Dan', 'dan.josua@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 195, 3232, 4, 2, 2, 'Ken', DEFAULT),
+(NULL, 'Rafa', 'rafa.pi@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 998, 1432, 10, 7, 3, 'Akuma', DEFAULT),
+(NULL, 'Fabo', 'fabio.ceslaki@gmail.com', AES_ENCRYPT('123456', 'arkcrypt'), 1332, 1332, 11, 5, 6, 'Balrog', DEFAULT);
+SELECT * FROM Player;
 -- UPDATE Player SET column = '' WHERE idPlayer = X;
 
 -- CHARACTERS INSERTS
