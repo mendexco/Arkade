@@ -1057,6 +1057,9 @@ p u:hover {
   /* misc */
   transition: all 1s;
 }
+.user-photo2 {
+  background-color: blue;
+}
 .user-name {
   /* font */
   font-family: "Banks";
