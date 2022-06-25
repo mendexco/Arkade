@@ -15,8 +15,4 @@ router.post("/setChar", function (req, res) {
     charController.setCharacter(req, res);
 });
 
-router.delete("/deletar/:idUsuario", function (req, res) {
-    avisoController.deletar(req, res);
-});
-
 module.exports = router;

@@ -1,9 +1,8 @@
 /* LOAD CHARACTERS */
-var randomizeLength = 9;
-var charsArray = [];
-var stagesArray = [];
-var stageName = [];
-
+const randomizeLength = 9;
+let charsArray = [];
+let stagesArray = [];
+let stageName = [];
 side_menu.addEventListener("load", sideMenu("start"));
 setTimeout(() => {
   sideMenu("hide");
@@ -12,7 +11,7 @@ setTimeout(() => {
 bgAudio();
 select_music.volume = 0.05;
 function bgAudio() {
-  var randomSong = Math.floor(Math.random() * 4) + 1;
+  let randomSong = Math.floor(Math.random() * 4) + 1;
   select_music.src = `assets/audios/musics/SelectionTheme${randomSong}.mp3`;
   select_music.play();
   select_music.onended = function () {
@@ -39,28 +38,28 @@ function loadStages() {
   stage_name.style.width = "40%";
   back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectStage.gif)`;
   fetch(`/chars/listStages/${sessionStorage.PLAYER_ID}`)
-    .then(function (resposta) {
-      if (resposta.ok) {
-        if (resposta.status == 204) {
-          var divChars = document.getElementById("div_stages");
-          var msg = document.createElement("span");
+    .then(function (response) {
+      if (response.ok) {
+        if (response.status == 204) {
+          const divChars = document.getElementById("div_stages");
+          const msg = document.createElement("span");
           msg.innerHTML = "-";
           msg.value = "0";
           divChars.appendChild(msg);
           throw "no stages created";
         }
 
-        resposta.json().then(function (resposta) {
-          console.log("Stages created: ", JSON.stringify(resposta));
-          var stageCounter = 0;
-          while (stageCounter < resposta.length) {
-            randomizeLength = resposta.length;
-            var stage = resposta[stageCounter];
+        response.json().then(function (response) {
+          console.log("Stages created: ", JSON.stringify(response));
+          let stageCounter = 0;
+          while (stageCounter < response.length) {
+            randomizeLength = response.length;
+            let stage = response[stageCounter];
             stageCounter++;
             stagesArray.push(stage.nameChar);
             stageName.push(stage.nameStage);
 
-            var stageCard = document.getElementById(`stage_${stage.nameChar}`);
+            let stageCard = document.getElementById(`stage_${stage.nameChar}`);
             // setting id's
             stageCard.id = `stage_${stage.nameChar}`;
             // appending a class
@@ -90,16 +89,13 @@ function loadStages() {
               `hoverCard("leave", "stage", "${stage.nameChar}")`
             );
           }
-          // finalizarAguardar();
         });
       } else {
         throw "There's an error in the API!";
       }
     })
-    .catch(function (resposta) {
-      console.error(resposta);
-      // console.log("");
-      // finalizarAguardar();
+    .catch(function (response) {
+      console.error(response);
     });
 }
 
@@ -110,27 +106,27 @@ function loadChars() {
   stage_name.style =
     "width: 20%; font-size: 2vw; text-align: center; animation: 0; text-shadow: 0.1vw 0.2vh #ed145b; margin-top: -46vh; max-width: 13vw;";
   fetch(`/chars/listChars/${sessionStorage.PLAYER_ID}`)
-    .then(function (resposta) {
-      if (resposta.ok) {
-        if (resposta.status == 204) {
-          var divChars = document.getElementById("div_characters");
-          var msg = document.createElement("span");
+    .then(function (response) {
+      if (response.ok) {
+        if (response.status == 204) {
+          const divChars = document.getElementById("div_characters");
+          const msg = document.createElement("span");
           msg.innerHTML = "-";
           msg.value = "0";
           divChars.appendChild(msg);
           throw "no characters created";
         }
 
-        resposta.json().then(function (resposta) {
-          console.log("Chars created: ", JSON.stringify(resposta));
-          var charsCounter = 0;
-          while (charsCounter < resposta.length) {
-            randomizeLength = resposta.length;
-            var character = resposta[charsCounter];
+        response.json().then(function (response) {
+          console.log("Chars created: ", JSON.stringify(response));
+          let charsCounter = 0;
+          while (charsCounter < response.length) {
+            randomizeLength = response.length;
+            let character = response[charsCounter];
             charsCounter++;
             charsArray.push(character.nameChar);
 
-            var charCard = document.getElementById(`btn_${character.nameChar}`);
+            let charCard = document.getElementById(`btn_${character.nameChar}`);
             // setting id's
             charCard.id = `btn_${character.nameChar}`;
             // appending a class
@@ -160,24 +156,21 @@ function loadChars() {
               `hoverCard("leave", "character", "${character.nameChar}")`
             );
           }
-          // finalizarAguardar();
         });
       } else {
         throw "There's an error in the API!";
       }
     })
-    .catch(function (resposta) {
-      console.error(resposta);
-      // console.log("");
-      // finalizarAguardar();
+    .catch(function (response) {
+      console.error(response);
     });
 }
 
-var playerChoose = false;
-var enemyChoose = false;
+let playerChoose = false;
+let enemyChoose = false;
 function hoverCard(status, btnType, nameChar, nameStage) {
   if (btnType == "stage") {
-    var cardSelected = document.getElementById(`stage_${nameChar}`);
+    let cardSelected = document.getElementById(`stage_${nameChar}`);
     if (status == "enter") {
       console.log(cardSelected);
       cardSelected.classList.add("chosen-stage");
@@ -188,7 +181,7 @@ function hoverCard(status, btnType, nameChar, nameStage) {
     }
   } else {
     if (enemyChoose == false) {
-      var cardSelected = document.getElementById(`btn_${nameChar}`);
+      let cardSelected = document.getElementById(`btn_${nameChar}`);
       if (playerChoose == false) {
         if (status == "enter") {
           cardSelected.classList.add("chosen-char");
@@ -210,11 +203,11 @@ function hoverCard(status, btnType, nameChar, nameStage) {
   }
 }
 
-var playerID = 0;
-var enemyID = 0;
+let playerID = 0;
+let enemyID = 0;
 function setCard(btnType, idChar, nameChar) {
   if (btnType == "stage") {
-    var cardSelected = document.getElementById(`stage_${nameChar}`);
+    let cardSelected = document.getElementById(`stage_${nameChar}`);
     console.log(cardSelected);
     back_stage.style.backgroundImage = `url(../assets/imgs/chars/selection/SelectChar.gif)`;
     back_stage.style.filter = `blur(0vw) brightness(1)`;
@@ -222,7 +215,7 @@ function setCard(btnType, idChar, nameChar) {
     player_name.innerHTML = "";
     loadChars();
   } else {
-    var cardSelected = document.getElementById(`btn_${nameChar}`);
+    let cardSelected = document.getElementById(`btn_${nameChar}`);
     console.log(cardSelected);
     if (playerChoose == false) {
       playerChoose = true;
@@ -242,8 +235,8 @@ function setCard(btnType, idChar, nameChar) {
       console.log(nameChar);
       battleStorage(enemyID, "enemy");
 
-      var disabledButtons = document.getElementsByClassName("unselected");
-      var buttonCount = 0;
+      const disabledButtons = document.getElementsByClassName("unselected");
+      let buttonCount = 0;
       while (buttonCount < disabledButtons.length) {
         disabledButtons[buttonCount].disabled = true;
         buttonCount++;
@@ -261,7 +254,7 @@ let arrayArcade = [];
 const totalEnemies = 9;
 let arcadeEnemy = false;
 function battleStorage(idChar, charSelected) {
-  var idVar = idChar;
+  const idVar = idChar;
   console.log("ID CHARACTER: ", idVar);
 
   fetch("/chars/setChar", {
@@ -273,12 +266,11 @@ function battleStorage(idChar, charSelected) {
       idServer: idVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("ESTOU NO THEN DO battleStorage()!");
-      if (resposta.ok) {
-        console.log(resposta);
-        resposta.json().then((json) => {
-          console.log(sessionStorage.CHARS);
+    .then(function (response) {
+      console.log("IN THEN OF battleStorage()!");
+      if (response.ok) {
+        console.log(response);
+        response.json().then((json) => {
           if (arcadeEnemy) {
             sessionStorage.ENEMY_CHAR = JSON.stringify(json);            
             window.location = "battle.html";
@@ -331,7 +323,7 @@ function randomizeArray(idChar) {
 }
 
 function randomizeSet() {
-  var idChar = Math.floor(Math.random() * randomizeLength) + 1;
+  let idChar = Math.floor(Math.random() * randomizeLength) + 1;
   if (div_stages.style.display == "flex") {
     setCard("stage", idChar, saveCard);
   } else {
@@ -340,9 +332,9 @@ function randomizeSet() {
   }
 }
 
-var saveCard = 0;
+let saveCard = 0;
 function randomizePreview(status) {
-  var idChar = Math.floor(Math.random() * randomizeLength) + 1;
+  let idChar = Math.floor(Math.random() * randomizeLength) + 1;
   if (div_stages.style.display == "flex") {
     if (status == "enter") {
       hoverCard(status, "stage", stagesArray[idChar], stageName[idChar]);
@@ -351,13 +343,4 @@ function randomizePreview(status) {
       hoverCard(status, "stage", saveCard, stagesArray[idChar]);
     }
   }
-}
-
-function finalizarAguardar(texto) {
-  var divLoading = document.getElementById("div_loading");
-  divLoading.style.display = "none";
-  //   var divErrosLogin = document.getElementById("div_erros_login");
-  //   if (texto) {
-  //     divErrosLogin.innerHTML = texto;
-  //   }
 }

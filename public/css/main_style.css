@@ -653,7 +653,7 @@ thead td {
   background-color: #000000c9;
   opacity: 0;
   /* misc */
-  transition: all 0.5s;
+  transition: all 0.5s, width 0s, height 0s;
 }
 .hidden-card {
   border-radius: 0.6vh;

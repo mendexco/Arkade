@@ -26,7 +26,7 @@ function titleAnimation() {
     top: 0,
     behavior: "smooth",
   });
-  var div = document.querySelector(".div-title");
+  const div = document.querySelector(".div-title");
   text_title.style.top = "44vh";
   setTimeout(function () {
     text_title.style.opacity = "1";
@@ -269,7 +269,7 @@ function signup() {
   let randomChar = Math.floor(Math.random() * charsArray.length);
   iconVar = charsArray[randomChar];
 
-  fetch("/usuarios/cadastrar", {
+  fetch("/users/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -281,10 +281,10 @@ function signup() {
       iconServer: iconVar,
     }),
   })
-    .then(function (resposta) {
-      if (resposta.ok) {
-        console.log("resposta: ", resposta);
-        resposta.json().then((json) => {
+    .then(function (response) {
+      if (response.ok) {
+        console.log("response: ", response);
+        response.json().then((json) => {
           console.log(json);
           console.log(JSON.stringify(json));
           let idJson = json;
@@ -296,8 +296,8 @@ function signup() {
         throw "There was an error while Signing Up!";
       }
     })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
+    .catch(function (response) {
+      console.log(`#ERRO: ${response}`);
       loadingIcon("img_load_signup", "png");
     });
 
@@ -307,7 +307,7 @@ function initialItems(playerID, itemType, itemID) {
   let playerIDVar = playerID;
   let itemTypeVar = itemType;
   let itemIDVar = itemID;
-  fetch("/usuarios/setItem", {
+  fetch("/users/setItem", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -318,17 +318,17 @@ function initialItems(playerID, itemType, itemID) {
       itemIDServer: itemIDVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("resposta: ", resposta);
+    .then(function (response) {
+      console.log("response: ", response);
 
-      if (resposta.ok) {
+      if (response.ok) {
         console.log("Item registered");
       } else {
         throw "There was an error registering the item!";
       }
     })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
+    .catch(function (response) {
+      console.log(`#ERRO: ${response}`);
     });
 }
 
@@ -338,10 +338,8 @@ function login() {
   let emailVar = ipt_email_login.value;
   let passwordVar = ipt_password_login.value;
 
-  // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS
+  // VERIFY IF EMAIL OR PASSWORD ARE EMPTY 
   if (emailVar == "" || passwordVar == "") {
-    // cardErro.style.display = "block";
-    // mensagem_erro.innerHTML = "Campo não preenchido!";
     input_email.style.border = "0.1vh solid #7e1818";
     input_senha.style.border = "0.1vh solid #7e1818";
     loadingIcon("img_load_login", "png");
@@ -350,9 +348,8 @@ function login() {
     // setInterval(sumirMensagem, 5000);
   }
 
+  // VERIFY IF EMAIL IS PROPERLY OCCUPIED
   if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-    // cardErro.style.display = "block";
-    // mensagem_erro.innerHTML = "E-mail inválido!";
     input_email.style.border = "0.1vh solid #7e1818";
     loadingIcon("img_load_login", "png");
     return false;
@@ -361,9 +358,9 @@ function login() {
   }
 
   console.log("FORM LOGIN: ", emailVar);
-  console.log("FORM SENHA: ", passwordVar);
+  console.log("FORM PASSWORD: ", passwordVar);
 
-  fetch("/usuarios/autenticar", {
+  fetch("/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -373,13 +370,13 @@ function login() {
       passwordServer: passwordVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!");
+    .then(function (response) {
+      console.log("IN THEN OF entrar()!");
 
-      if (resposta.ok) {
-        console.log(resposta);
+      if (response.ok) {
+        console.log(response);
 
-        resposta.json().then((json) => {
+        response.json().then((json) => {
           console.log(json);
           console.log(JSON.stringify(json));
           sessionStorage.PLAYER_ID = json.idPlayer;

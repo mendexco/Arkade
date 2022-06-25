@@ -1,40 +1,39 @@
-var database = require("../database/config");
+const database = require("../database/config");
 
 function listChar(idPlayer) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listChar()");
-    var instrucao = `
+    console.log("ACCESSING CHARS MODEL \n \n\t\t >> If error de 'Error: connect ECONNREFUSED',\n \t\t >> verify your credentials to access at database\n \t\t >> and if your database is running properly. \n\n function listChar()");
+    let instruction = `
     SELECT idPlayer, namePlayer, idChar, nameChar FROM Player 
         JOIN Items ON idPlayer = fkPlayer
             RIGHT JOIN Characters ON idChar = fkChar
                 WHERE idPlayer = ${idPlayer};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executing the SQL Query: \n" + instruction);
+    return database.execute(instruction);
 }
-// SELECT idChar, nameChar FROM Characters;
 
 function listStage(idPlayer) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listStage()");
-    var instrucao = `
+    console.log("ACCESSING CHARS MODEL \n \n\t\t >> If error de 'Error: connect ECONNREFUSED',\n \t\t >> verify your credentials to access at database\n \t\t >> and if your database is running properly. \n\n function listStage()");
+    let instruction = `
     SELECT idStage, nameStage, nameChar FROM Items
 	    JOIN Stages ON Stages.idStage = Items.fkStage		
 	    	JOIN Characters ON Characters.idChar = Stages.fkChar
 	    		WHERE fkPlayer = ${idPlayer};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executing the SQL Query: \n" + instruction);
+    return database.execute(instruction);
 }
 
 function setBattleChar(idChar) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function setBattleChar(): ", idChar)
-    var instrucao = `
+    console.log("ACCESSING CHARS MODEL \n \n\t\t >> If error de 'Error: connect ECONNREFUSED',\n \t\t >> verify your credentials to access at database\n \t\t >> and if your database is running properly. \n\n function setBattleChar(): ", idChar)
+    let instruction = `
     SELECT * FROM Characters 
 	    JOIN BasicMetrics ON idBasic = fkBasic
 		    JOIN AdvancedMetrics ON idAdvanced = fkAdvanced
 			    WHERE idChar = ${idChar};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executing the SQL Query: \n" + instruction);
+    return database.execute(instruction);
 }
 module.exports = {
     listChar,

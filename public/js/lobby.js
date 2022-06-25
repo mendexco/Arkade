@@ -176,7 +176,7 @@ function searchDetails(character, type) {
   let charNameVar = character;
   console.log("NAME CHARACTER: ", charNameVar);
 
-  fetch("/medidas/charDetails", {
+  fetch("/stats/charDetails", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -185,12 +185,12 @@ function searchDetails(character, type) {
       nameServer: charNameVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("ESTOU NO THEN DO charDetails()!");
-      if (resposta.ok) {
-        console.log(resposta);
+    .then(function (response) {
+      console.log("IN THEN OF charDetails()!");
+      if (response.ok) {
+        console.log(response);
 
-        resposta.json().then((json) => {
+        response.json().then((json) => {
           console.log(json);
           let idItemVar = json.idChar;
           let nameVar = json.nameChar;
@@ -300,17 +300,17 @@ function showStats(
   }
   if (item == "fighter" || item == "stage") {
     fetch(`/chars/${route}/${sessionStorage.PLAYER_ID}`)
-      .then(function (resposta) {
-        if (resposta.ok) {
-          resposta.json().then(function (resposta) {
-            console.log(resposta);
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (response) {
+            console.log(response);
             let purchased = false;
-            for (let i = 0; i < resposta.length; i++) {
+            for (let i = 0; i < response.length; i++) {
               let nameColumn = "";
               if (item == "fighter") {
-                nameColumn = resposta[i].nameChar;
+                nameColumn = response[i].nameChar;
               } else if (item == "stage") {
-                nameColumn = resposta[i].nameStage;
+                nameColumn = response[i].nameStage;
               }
               if (nameColumn == name) {
                 purchased = true;
@@ -340,8 +340,8 @@ function showStats(
           throw "There's an error in the API!";
         }
       })
-      .catch(function (resposta) {
-        console.error(resposta);
+      .catch(function (response) {
+        console.error(response);
       });
   }
 }
@@ -352,7 +352,7 @@ function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
   let scoreVar = Number(sessionStorage.PLAYER_ARKCOIN) + 0;
   let coinsVar = Number(sessionStorage.PLAYER_ARKCOIN) - arkCoins;
   let typeVar = arkType;
-  fetch(`/usuarios/updatePlayer/${playerID}`, {
+  fetch(`/users/updatePlayer/${playerID}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -363,9 +363,9 @@ function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
       typeServer: typeVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("resposta: ", resposta);
-      if (resposta.ok) {
+    .then(function (response) {
+      console.log("response: ", response);
+      if (response.ok) {
         console.log(`Past ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
         sessionStorage.PLAYER_ARKCOIN = coinsVar;
         console.log(`New ArkCoins: ${sessionStorage.PLAYER_ARKCOIN}`);
@@ -375,8 +375,8 @@ function buyItem(playerID, arkCoins, arkType, itemType, itemID) {
         throw "There was an error changing the ArkCoin value!";
       }
     })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
+    .catch(function (response) {
+      console.log(`#ERRO: ${response}`);
     });
 
   let button = document.querySelector(`#button_purchase_${itemType}`);
@@ -389,7 +389,7 @@ function setItem(playerID, itemType, itemID) {
   let playerIDVar = playerID;
   let itemTypeVar = itemType;
   let itemIDVar = itemID;
-  fetch("/usuarios/setItem", {
+  fetch("/users/setItem", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -400,15 +400,15 @@ function setItem(playerID, itemType, itemID) {
       itemIDServer: itemIDVar,
     }),
   })
-    .then(function (resposta) {
-      console.log("resposta: ", resposta);
-      if (resposta.ok) {
+    .then(function (response) {
+      console.log("response: ", response);
+      if (response.ok) {
         console.log("Item registered");
       } else {
         throw "There was an error registering the item!";
       }
     })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
+    .catch(function (response) {
+      console.log(`#ERRO: ${response}`);
     });
 }

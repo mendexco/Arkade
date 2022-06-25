@@ -94,19 +94,19 @@ function sideMenu(status) {
 }
 
 function loadRank() {
-  fetch(`/usuarios/rankList`)
-    .then(function (resposta) {
-      if (resposta.ok) {
-        if (resposta.status == 204) {
+  fetch(`/users/rankList`)
+    .then(function (response) {
+      if (response.ok) {
+        if (response.status == 204) {
           alert("no users registered");
           throw "no users registered";
         }
-        resposta.json().then(function (resposta) {
-          console.log("Users in rank: ", JSON.stringify(resposta));
+        response.json().then(function (response) {
+          console.log("Users in rank: ", JSON.stringify(response));
           const tbody = document.querySelector("#table_body");
           tbody.innerHTML = "";
-          for (let i = 0; i < resposta.length; i++) {
-            let user = resposta[i];
+          for (let i = 0; i < response.length; i++) {
+            let user = response[i];
 
             let row = document.createElement("tr");
             let colPOS = document.createElement("td");
@@ -156,15 +156,15 @@ function loadRank() {
           } else {
             page_header.style.top = "-1vh";
           }
-          total_players.innerHTML = `${resposta.length}`;
+          total_players.innerHTML = `${response.length}`;
           // finalizarAguardar();
         });
       } else {
         throw "There's an error in the API!";
       }
     })
-    .catch(function (resposta) {
-      console.error(resposta);
+    .catch(function (response) {
+      console.error(response);
       // console.log("");
       // finalizarAguardar();
     });

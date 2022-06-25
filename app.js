@@ -1,17 +1,17 @@
-process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-// process.env.AMBIENTE_PROCESSO = "producao";
+process.env.PROCCESS_AMBIENT = "development";
+// process.env.PROCCESS_AMBIENT = "production";
 
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA = 3333;
+var PORT = 3333;
 
 var app = express();
 
 var indexRouter = require("./src/routes/index");
-var usuarioRouter = require("./src/routes/usuarios");
+var usersRouter = require("./src/routes/users");
 var charsRouter = require("./src/routes/chars");
-var medidasRouter = require("./src/routes/medidas");
+var statsRouter = require("./src/routes/stats");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,13 +20,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/usuarios", usuarioRouter);
+app.use("/users", usersRouter);
 app.use("/chars", charsRouter);
-app.use("/medidas", medidasRouter)
+app.use("/stats", statsRouter)
 
-app.listen(PORTA, function () {
-    console.log(`Servidor do site está rodando rodando: http://localhost:${PORTA} \n
-    Você está rodando sua aplicação em ${process.env.AMBIENTE_PROCESSO} \n
-    \t\tSe "desenvolvimento", banco local (MySQL Workbench). \n
-    \t\tSe "producao", banco remoto (SQL Server em nuvem Azure)`);
+app.listen(PORT, function () {
+    console.log(`Site server is running in: http://localhost:${PORT} \n
+    You are running your application in ${process.env.PROCCESS_AMBIENT} \n
+    \t\tIf "development", local database (MySQL Workbench). \n
+    \t\tIf "production", remote database (SQL Server in Azure cloud)`);
 });
