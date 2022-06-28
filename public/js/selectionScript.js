@@ -1,5 +1,5 @@
 /* LOAD CHARACTERS */
-const randomizeLength = 9;
+let randomizeLength = 9;
 let charsArray = [];
 let stagesArray = [];
 let stageName = [];

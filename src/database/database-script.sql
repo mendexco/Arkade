@@ -194,22 +194,3 @@ INSERT INTO Stages VALUES
 (NULL, 10, 'Shadaloo Fortress', 2500);
 SELECT * FROM Stages JOIN Characters ON idChar = fkChar;
 -- UPDATE Stages SET column = '' WHERE idStage = X;
-
--- ITEMS INSERTS (MAIN)
-INSERT INTO Items VALUES
-(NULL, 1, 1, 1),
-(NULL, 1, 2, 2),
-(NULL, 1, 3, 3),
-(NULL, 1, 4, 4),
-(NULL, 1, 5, 5),
-(NULL, 1, 6, 6),
-(NULL, 1, 7, 7),
-(NULL, 1, 8, 8),
-(NULL, 1, 9, 9),
-(NULL, 1, 10, 10);
--- ITEMS INSERTS (SECONDARY)
-INSERT INTO Items VALUES
-(NULL, 2, 1, NULL),
-(NULL, 2, NULL, 1);
-SELECT * FROM Items;
--- UPDATE Items SET column = '' WHERE idItem = X;

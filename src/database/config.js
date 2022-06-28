@@ -1,3 +1,9 @@
+// IF YOUR WORKBENCH RETURN THIS ERROR:
+// "Client does not support authentication protocol requested by server; consider upgrading MySQL client"
+// Execute the following query in MYSQL Workbench:
+// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+// flush privileges;
+// ORIGINAL LINK WITH SOLUTION: https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
 var mysql = require("mysql2");
 var sql = require('mssql');
 

@@ -1130,7 +1130,7 @@ function endGame(winner) {
     log_result.style.color = "#ed145b";
     if (gamemode == "arcade") {
       let bonus = 9 - arrayArcade.length;
-      if (enemyID >= 10) {
+      if (enemyObj.idChar >= 10) {
         btn_result.disabled = "true";
       }
       let score = 1000 + bonus * 120;
