@@ -1,4 +1,10 @@
-### ARKADE
+# **Arkade**
+<div align="center">
+<img alt="prints" width="100%" src="public\assets\readme\arkade.gif" alt="arkade intro">
+</div>
+
+#
+
 - 🎮 Turn Game
 - 🎲 Tiny A.I.
 - 🕹️ 1 month development
@@ -26,7 +32,7 @@
 #
 
 ##
-<img align="right" alt="Ryu-pic" height="200" style="border-radius:50px;" src="public\assets\readme\ryu.png">
+<img align="right" alt="Ryu-pic" height="200" style="border-radius:50px;" src="public\assets\readme\ryu.png" alt="ryu">
  <br><br>
   
 <div align="center" style="display: inline_block;">
