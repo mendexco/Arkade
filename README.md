@@ -2,8 +2,31 @@
 - 🎮 Turn Game
 - 🎲 Tiny A.I.
 - 🕹️ 1 month development
+
+#
+
+> <br />
+>
+> **`Running Tutorial`**
+>><br />
+>>
+>> 1. You will need to have **MySQL Workbench**
+>> 2. Open Workbench, **connect** with your user, open the archive at:
+>>>`src/database/`**`database-script.sql`**
+>> 
+>> 3. Execute **all** the queries
+>> 4. Now go to:
+>>>`src/database/`**`config.js`**
+>> 5. And from **line 28 to line 31**, customize with your **user** and **password**
+>> 6. After that, just open **Arkade main folder**, and in **terminal**, type:
+>>>**`npm start`**
+>>
+>><br />
+
+#
+
 ##
-<img align="right" alt="Ryu-pic" height="200" style="border-radius:50px;" src="ryu.png">
+<img align="right" alt="Ryu-pic" height="200" style="border-radius:50px;" src="public\assets\readme\ryu.png">
  <br><br>
   
 <div align="center" style="display: inline_block;">
